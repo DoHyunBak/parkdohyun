@@ -23,12 +23,13 @@ export default function HeroSection({ profile, kpis }) {
 
       <div className="flex flex-wrap gap-4 pt-4">
         <a
-          href={profile.resumeLink}
-          className="rounded-lg bg-white px-6 py-3.5 font-bold text-black transition-colors hover:bg-zinc-200"
-        >
-          이력서 (PDF)
-        </a>
-      </div>
+            href={profile.resumeLink}
+            download
+            className="flex w-full items-center justify-center rounded-xl bg-white px-8 py-4 font-bold text-black transition-colors hover:bg-zinc-200 sm:w-auto"
+          >
+            Resume (PDF)
+          </a>
+        </div>
 
       <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-800/50 md:grid-cols-3">
         {kpis.map((kpi) => {

@@ -5,10 +5,12 @@ export const portfolioData = {
     headline: "Future-Oriented\nBackend Developer.",
     subHeadline:
       "Focusing on how technology supports real business operations. I am a backend engineer dedicated to enterprise system management, encompassing data flows and business processes.",
-    email: "badberg2002@gmail.com",
+    email: "mailto:badberg2002@gmail.com",
+    phone: "tel:01099569414",
     github: "https://github.com/DoHyunBak",
     linkedin: "https://linkedin.com/in/dohyunbak",
-    resumeLink: "#",
+    // public/resume.pdf 파일을 내려받는 링크
+    resumeLink: "/resume.pdf",
   },
   kpis: [
     { id: 1, label: "핵심 도메인", value: "ERP / SAP", icon: "building2" },
@@ -51,7 +53,7 @@ export const portfolioData = {
         "Established a simplified EAM architecture in collaboration with ITCEN Global, providing a reliable technical foundation for business operations.",
       role: "Backend Development & Database Administration (DBA)",
       links: {
-        github: "https://github.com/your-repo",
+        github: "https://github.com/U-sto/U-sto_BE",
         docs: "https://notion.so/your-docs",
       },
       architecture: [
