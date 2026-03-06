@@ -6,7 +6,7 @@ export default function QuoteSection() {
         <br className="hidden sm:block" />
         "to recurse divine."
       </h2>
-      <p className="text-sm text-zinc-500 font-mono">- Seymour Cray</p>
+      <p className="text-sm text-zinc-500 font-mono">-L. Peter Deutsch-</p>
     </section>
   );
 }
