@@ -11,11 +11,18 @@ export default function ProjectsSection({ projects }) {
       />
 
       <div className="space-y-6">
-        {projects.map((project) => (
-          <article
-            key={project.id}
-            className="relative block rounded-3xl border border-zinc-800/60 bg-zinc-900/30 p-8 transition-colors hover:border-zinc-700 md:p-10"
-          >
+        {projects.map((project) => {
+          const isPlanned = project.status === "planned";
+
+          return (
+            <article
+              key={project.id}
+              className={`relative block rounded-3xl border p-8 md:p-10 transition-colors ${
+                isPlanned
+                  ? "border-zinc-800 bg-zinc-900/10 opacity-60"
+                  : "border-zinc-800/60 bg-zinc-900/30 hover:border-zinc-700"
+              }`}
+            >
             <div className="max-w-4xl">
               <div className="mb-6 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -102,7 +109,8 @@ export default function ProjectsSection({ projects }) {
               </div>
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

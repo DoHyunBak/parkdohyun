@@ -42,6 +42,7 @@ export const portfolioData = {
     {
       id: "p1",
       title: "대학물품관리시스템",
+      status: "active",
       tags: ["Java", "Spring Boot", "AWS", "MySQL", "Docker", "Flyway"],
       problem:
         "Managing large-scale organizational assets across departments lacks centralized ownership and lifecycle tracking, similar to enterprise challenges.",
@@ -64,6 +65,7 @@ export const portfolioData = {
     {
       id: "p2",
       title: "스마트 전자결재 시스템 (예정)",
+      status: "planned",
       tags: ["Java", "Spring Boot", "JPA", "ERP System"],
       problem:
         "Scalability limits due to hardcoded business processes and complex approval lines within the organization.",
@@ -80,6 +82,7 @@ export const portfolioData = {
     {
       id: "p3",
       title: "전사적 데이터 통합 플랫폼 (예정)",
+      status: "planned",
       tags: ["Spring Boot", "MySQL", "SAP Ecosystem"],
       problem:
         "Data silo phenomenon and inconsistency between internal individual systems and external business platforms.",

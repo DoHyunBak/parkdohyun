@@ -16,7 +16,11 @@ export default function TopNavigation({ name, scrolled }) {
       }`}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6">
-        <span className="text-lg font-bold tracking-tight text-white">{name}.</span>
+        <img
+          src="/myLogo.png"
+          alt={`${name} 로고`}
+          className="h-12 w-12 object-contain"
+        />
         <div className="flex items-center gap-6 text-sm font-bold">
           {navItems.map((item) => (
             <a
