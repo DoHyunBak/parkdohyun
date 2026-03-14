@@ -6,7 +6,7 @@ export const portfolioData = {
     subHeadline:
       "Focusing on how technology supports real business operations. I am a backend engineer dedicated to enterprise system management, encompassing data flows and business processes.",
     email: "mailto:badberg2002@gmail.com",
-    phone: "tel:01099569414",
+    tistory: "https://parkdohyun.tistory.com/",
     github: "https://github.com/DoHyunBak",
     linkedin: "https://linkedin.com/in/dohyunbak",
     resumeLink: "/resume_park.pdf",
@@ -41,14 +41,14 @@ export const portfolioData = {
   projects: [
     {
       id: "p1",
-      title: "대학물품관리시스템",
+      title: " 관리시스템",
       status: "active",
       tags: ["Java", "Spring Boot", "AWS", "MySQL", "Docker", "Flyway"],
       problem:
         "Managing large-scale organizational assets across departments lacks centralized ownership and lifecycle tracking, similar to enterprise challenges.",
-      solution:
+      solution: 
         "Designed a backend system for structured asset data management, tracking asset lifecycles, and supporting organizational allocation, inspired by ERP/SAP asset modules.",
-      result:
+      result:   
         "Established a simplified EAM architecture in collaboration with ITCEN Global, providing a reliable technical foundation for business operations.",
       role: "Backend Development & Database Administration (DBA)",
       links: {
