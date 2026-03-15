@@ -50,7 +50,7 @@ export const portfolioData = {
         "Designed a backend system for structured asset data management, tracking asset lifecycles, and supporting organizational allocation, inspired by ERP/SAP asset modules.",
       result:   
         "Established a simplified EAM architecture in collaboration with ITCEN Global, providing a reliable technical foundation for business operations.",
-      role: "Backend Development & Database Administration (DBA)",
+      role: "Backend Development(Spring) & Database Administration (DBA) & Cloud Engineering(AWS)",
       links: {
         github: "https://github.com/U-sto/U-sto_BE",
         docs: "http://13.124.10.41:8080/swagger-ui/index.html#/",
