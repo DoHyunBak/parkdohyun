@@ -125,34 +125,34 @@ export const portfolioData = {
   certifications: [
     {
       status: "취득",
-      name: "SQLD",
+      name: "SQL개발자(SQLD)",
       detail: "Database modeling and SQL performance tuning capabilities.",
     },
     {
       status: "취득",
-      name: "ADsP",
+      name: "데이터분석준전문가(ADsP)",
       detail: "Data structuring and statistical analysis-based business logic application.",
     },
     {
       status: "취득",
-      name: "컴퓨터활용능력 2급",
+      name: "컴퓨터활용능력2급(Computer Literacy Level 2)",
       detail: "Basic spreadsheet and data management capabilities.",
     },
     {
       status: "준비중",
-      name: "정보처리기사",
+      name: "정보처리기사(Engineer Information Processing)",
       detail:
         "Systematization of knowledge across software engineering and enterprise system architecture.",
     },
     {
       status: "준비중",
-      name: "빅데이터분석기사",
+      name: "빅데이터분석기사(Big Data Analysis Engineer)",
       detail:
         "Understanding of large-scale data collection, storage, processing pipelines, and analysis modeling.",
     },
     {
       status: "준비중",
-      name: "전산회계 1급",
+      name: "전산회계1급(Computerized Accounting Level 1)",
       detail:
         "Securing deep domain knowledge of corporate accounting systems and business rules.",
     },
