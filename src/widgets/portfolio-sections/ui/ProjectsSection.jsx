@@ -41,7 +41,7 @@ export default function ProjectsSection({ projects }) {
 
               <div className="grid grid-cols-1 gap-8 text-sm md:grid-cols-3">
                 <div>
-                  <span className="mb-2 block font-bold text-zinc-500">배경 및 문제</span>
+                  <span className="mb-2 block font-bold text-white">배경 및 문제</span>
                   <p className="text-sm leading-relaxed text-zinc-300 font-mono">{project.problem}</p>
                 </div>
                 <div>

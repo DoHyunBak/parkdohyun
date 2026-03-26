@@ -12,7 +12,7 @@ export default function SkillsSection({ skills }) {
         {skills.map((skill) => (
           <div
             key={skill.category}
-            className="-mx-4 flex flex-col gap-4 rounded-xl border-b border-zinc-800/50 px-4 py-6 transition-colors hover:bg-zinc-900/20 md:flex-row md:gap-12 md:py-8"
+            className="-mx-4 flex flex-col gap-3 rounded-xl border-b border-zinc-800/50 px-4 py-4 transition-colors hover:bg-zinc-900/20 md:flex-row md:items-center md:gap-8 md:py-5"
           >
             <div className="w-full md:w-1/4">
               <h4 className="font-bold text-white">{skill.category}</h4>

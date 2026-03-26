@@ -3,7 +3,7 @@ import { TistoryIcon } from "@/shared/ui/TistoryIcon";
 
 export default function ContactSection({ profile }) {
   return (
-    <section id="contact" className="border-t border-zinc-900 py-24">
+    <section id="contact" className="border-t border-zinc-900 py-16">
       <div className="mx-auto max-w-3xl space-y-10 text-center">
         <div>
           <h2 className="mb-4 text-4xl font-black tracking-tight text-white">Let's build reliable systems.</h2>

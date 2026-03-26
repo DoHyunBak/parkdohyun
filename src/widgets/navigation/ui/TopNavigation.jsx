@@ -3,7 +3,7 @@ const navItems = [
   { href: "#experience", label: "학력" },
   { href: "#projects", label: "프로젝트" },
   { href: "#skills", label: "역량" },
-  { href: "#language", label: "Language" },
+  { href: "#language", label: "언어" },
   { href: "#certs", label: "자격증" },
 ];
 

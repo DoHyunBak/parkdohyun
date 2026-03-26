@@ -7,7 +7,6 @@ import ExperienceSection from "@/widgets/portfolio-sections/ui/ExperienceSection
 import HeroSection from "@/widgets/portfolio-sections/ui/HeroSection";
 import PhilosophySection from "@/widgets/portfolio-sections/ui/PhilosophySection";
 import ProjectsSection from "@/widgets/portfolio-sections/ui/ProjectsSection";
-import QuoteSection from "@/widgets/portfolio-sections/ui/QuoteSection";
 import SkillsSection from "@/widgets/portfolio-sections/ui/SkillsSection";
 import LanguageSection from "@/widgets/portfolio-sections/ui/LanguageSection";
 import useScrolled from "@/shared/hooks/useScrolled";
@@ -50,9 +49,6 @@ export default function PortfolioPage() {
         </RevealOnScroll>
         <RevealOnScroll delay={160}>
           <ContactSection profile={portfolioData.profile} />
-        </RevealOnScroll>
-        <RevealOnScroll delay={180}>
-          <QuoteSection />
         </RevealOnScroll>
       </main>
 
