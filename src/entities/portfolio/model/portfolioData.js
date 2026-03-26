@@ -2,7 +2,7 @@ export const portfolioData = {
   profile: {
     name: "박도현",
     role: "Enterprise Backend Engineer",
-    headline: "Future-Oriented\nBackend Developer.",
+    headline: "Futuristic\nBackend Developer.",
     subHeadline:
       "Focusing on how technology supports real business operations. I am a backend engineer dedicated to enterprise system management, encompassing data flows and business processes.",
     email: "mailto:badberg2002@gmail.com",
