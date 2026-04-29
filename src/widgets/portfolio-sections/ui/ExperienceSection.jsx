@@ -6,7 +6,7 @@ export default function ExperienceSection({ experience }) {
   const term = "2021.03 ~ 2027.03";
 
   return (
-    <section id="experience" className="space-y-10 border-t border-zinc-900 pt-8">
+    <section id="experience" className="space-y-6 border-t border-zinc-900 pt-6 md:space-y-10 md:pt-8">
       <SectionHeader
         title="Education"
         description="Academic background and focus."
@@ -23,7 +23,7 @@ export default function ExperienceSection({ experience }) {
         {edu && (
           <CodeCard fileName="Education.java" topRight={term} lineNumbers={["01", "02", "03", "04", "05", "06"]}>
             <div className="space-y-3">
-              <div className="space-y-1 text-sm text-zinc-400">
+              <div className="space-y-1 text-[13px] text-zinc-400 sm:text-sm">
                 <div>
                   <span className="text-[#c792ea]">Education</span>{" "}
                   <span className="text-white">edu_bachelor</span>{" "}

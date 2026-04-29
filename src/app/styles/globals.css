@@ -6,16 +6,474 @@
 
 :root {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #090b0f;
+  background: #05070d;
 }
 
 html {
   scroll-behavior: smooth;
-  background: #090b0f;
+  background: #05070d;
 }
 
 body {
-  background: #090b0f;
+  background: #05070d;
+}
+
+.theme-high-contrast {
+  color-scheme: dark;
+  background: #020617;
+}
+
+.theme-high-contrast ::selection {
+  background: #facc15;
+  color: #020617;
+}
+
+@layer components {
+  .developer-canvas {
+    position: relative;
+    isolation: isolate;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(59, 130, 246, 0.18), transparent 28rem),
+      radial-gradient(circle at 82% 18%, rgba(139, 92, 246, 0.14), transparent 26rem),
+      radial-gradient(circle at 52% 72%, rgba(34, 211, 238, 0.1), transparent 30rem),
+      linear-gradient(180deg, #05070d 0%, #080b12 48%, #0b1020 100%);
+  }
+
+  .developer-canvas::before,
+  .developer-canvas::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .developer-canvas::before {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.28));
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.28));
+    animation: developer-grid-drift 90s linear infinite;
+  }
+
+  .developer-canvas::after {
+    opacity: 0.08;
+    background-image: radial-gradient(rgba(226, 232, 240, 0.7) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    mix-blend-mode: overlay;
+  }
+
+  .developer-ambient-motion {
+    position: fixed;
+    inset: -18%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.78;
+    background:
+      radial-gradient(ellipse at 16% 24%, rgba(59, 130, 246, 0.16), transparent 34%),
+      radial-gradient(ellipse at 84% 18%, rgba(139, 92, 246, 0.12), transparent 32%),
+      radial-gradient(ellipse at 50% 86%, rgba(34, 211, 238, 0.1), transparent 36%);
+    background-repeat: no-repeat;
+    background-size: 130% 130%, 120% 120%, 140% 140%;
+    filter: blur(18px);
+    transform: translate3d(0, 0, 0);
+    animation: developer-ambient-drift 32s ease-in-out infinite alternate;
+  }
+
+  .developer-flow-motion {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    background:
+      linear-gradient(90deg, transparent 0%, rgba(125, 211, 252, 0.02) 36%, rgba(125, 211, 252, 0.22) 50%, rgba(125, 211, 252, 0.02) 64%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, rgba(45, 212, 191, 0.02) 34%, rgba(45, 212, 191, 0.18) 50%, rgba(45, 212, 191, 0.02) 66%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, rgba(167, 139, 250, 0.02) 35%, rgba(167, 139, 250, 0.16) 50%, rgba(167, 139, 250, 0.02) 65%, transparent 100%);
+    background-position:
+      -34rem 18%,
+      calc(100% + 26rem) 58%,
+      18% -28rem;
+    background-repeat: no-repeat;
+    background-size:
+      34rem 1px,
+      26rem 1px,
+      1px 28rem;
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.22));
+    animation: developer-flow-scan 18s ease-in-out infinite;
+  }
+
+  .developer-app-shell,
+  .developer-card {
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+  }
+
+  .developer-app-shell {
+    position: relative;
+    overflow: visible;
+  }
+
+  .developer-app-shell::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 22% 0%, rgba(59, 130, 246, 0.16), transparent 24rem),
+      radial-gradient(circle at 88% 14%, rgba(34, 211, 238, 0.1), transparent 20rem);
+    opacity: 0.9;
+  }
+
+  .developer-toolbar {
+    background: rgba(2, 6, 23, 0.74);
+    border-color: rgba(148, 163, 184, 0.12);
+    backdrop-filter: blur(12px);
+  }
+
+  .developer-explorer-panel {
+    position: sticky;
+    top: 1rem;
+    z-index: 10;
+    display: flex;
+    align-self: start;
+    height: calc(100vh - 2rem);
+    flex-direction: column;
+    overflow: hidden;
+    border-right: 1px solid rgba(148, 163, 184, 0.18);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.08), transparent 14rem),
+      rgba(2, 6, 23, 0.86);
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+  }
+
+  .developer-explorer-header {
+    display: flex;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+    background:
+      linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(2, 6, 23, 0.66)),
+      rgba(2, 6, 23, 0.8);
+    padding: 0 1rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  }
+
+  .developer-explorer-scroll {
+    background:
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08), transparent 1px) 2.5rem 0 / 1px 100% no-repeat,
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 9rem);
+  }
+
+  .developer-explorer-root {
+    background: rgba(15, 23, 42, 0.58);
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08);
+  }
+
+  .developer-explorer-root:hover,
+  .developer-explorer-row:hover,
+  .developer-explorer-file:hover {
+    background: rgba(30, 41, 59, 0.6);
+  }
+
+  .developer-explorer-node {
+    position: relative;
+  }
+
+  .developer-explorer-node::before {
+    content: "";
+    position: absolute;
+    left: 0.35rem;
+    top: 1.15rem;
+    width: 0.55rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+  }
+
+  .developer-explorer-row,
+  .developer-explorer-file {
+    position: relative;
+  }
+
+  .developer-explorer-children {
+    position: relative;
+    border-left: 1px solid rgba(148, 163, 184, 0.16);
+  }
+
+  .developer-explorer-file::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    width: 0.75rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.16);
+  }
+
+  .developer-editor-surface {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(148, 163, 184, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.025) 1px, transparent 1px),
+      rgba(2, 6, 23, 0.46);
+    background-size: 40px 40px;
+  }
+
+  .developer-editor-surface > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .developer-card {
+    position: relative;
+  }
+
+  .developer-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 42%);
+    opacity: 0.8;
+  }
+
+  .developer-code-watermark {
+    position: fixed;
+    right: max(1.5rem, calc((100vw - 80rem) / 2));
+    top: 8rem;
+    z-index: 0;
+    max-width: min(34rem, 42vw);
+    transform: rotate(-2deg);
+    color: rgba(148, 163, 184, 0.13);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    white-space: pre;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+@keyframes developer-ambient-drift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 8%,
+      46% 100%;
+  }
+
+  50% {
+    background-position:
+      8% 10%,
+      92% 0%,
+      54% 92%;
+  }
+
+  100% {
+    background-position:
+      3% 18%,
+      96% 14%,
+      48% 88%;
+  }
+}
+
+@keyframes developer-grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 48px 48px, 48px 48px;
+  }
+}
+
+@keyframes developer-flow-scan {
+  0% {
+    background-position:
+      -34rem 18%,
+      calc(100% + 26rem) 58%,
+      18% -28rem;
+  }
+
+  45% {
+    background-position:
+      46% 18%,
+      48% 58%,
+      18% 46%;
+  }
+
+  100% {
+    background-position:
+      calc(100% + 34rem) 18%,
+      -26rem 58%,
+      18% calc(100% + 28rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .developer-ambient-motion {
+    inset: -12%;
+    opacity: 0.42;
+    filter: blur(24px);
+    animation-duration: 44s;
+  }
+
+  .developer-canvas::before {
+    background-size: 56px 56px;
+    opacity: 0.55;
+  }
+
+  .developer-flow-motion {
+    opacity: 0.14;
+    animation-duration: 24s;
+  }
+
+  .developer-canvas::after,
+  .developer-code-watermark {
+    display: none;
+  }
+
+  .developer-editor-surface {
+    background-size: 56px 56px;
+  }
+}
+
+.theme-high-contrast .developer-canvas {
+  color: #e2e8f0;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(56, 189, 248, 0.22), transparent 30rem),
+    radial-gradient(circle at 84% 18%, rgba(167, 139, 250, 0.18), transparent 28rem),
+    radial-gradient(circle at 52% 72%, rgba(45, 212, 191, 0.14), transparent 32rem),
+    linear-gradient(180deg, #020617 0%, #030712 46%, #07111f 100%);
+}
+
+.theme-high-contrast .developer-canvas::before {
+  background-image:
+    linear-gradient(rgba(226, 232, 240, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 232, 240, 0.075) 1px, transparent 1px);
+}
+
+.theme-high-contrast .developer-canvas::after {
+  opacity: 0.12;
+}
+
+.theme-high-contrast .developer-ambient-motion {
+  opacity: 0.9;
+  background:
+    radial-gradient(ellipse at 16% 24%, rgba(56, 189, 248, 0.22), transparent 34%),
+    radial-gradient(ellipse at 84% 18%, rgba(167, 139, 250, 0.16), transparent 32%),
+    radial-gradient(ellipse at 50% 86%, rgba(45, 212, 191, 0.15), transparent 36%);
+}
+
+.theme-high-contrast .developer-flow-motion {
+  opacity: 0.42;
+  filter: drop-shadow(0 0 14px rgba(125, 211, 252, 0.32));
+}
+
+.theme-high-contrast .developer-app-shell,
+.theme-high-contrast .developer-card {
+  border-color: rgba(226, 232, 240, 0.28);
+  background: rgba(2, 6, 23, 0.9);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.theme-high-contrast .developer-toolbar {
+  border-color: rgba(226, 232, 240, 0.22);
+  background: rgba(2, 6, 23, 0.94);
+}
+
+.theme-high-contrast .developer-editor-surface {
+  background:
+    linear-gradient(rgba(226, 232, 240, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 232, 240, 0.055) 1px, transparent 1px),
+    rgba(2, 6, 23, 0.72);
+}
+
+.theme-high-contrast .developer-card::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%);
+}
+
+.theme-high-contrast .developer-code-watermark {
+  color: rgba(203, 213, 225, 0.2);
+}
+
+.theme-high-contrast .text-zinc-700 {
+  color: #94a3b8;
+}
+
+.theme-high-contrast .text-zinc-600 {
+  color: #a7b4c5;
+}
+
+.theme-high-contrast .text-zinc-500 {
+  color: #b6c2d1;
+}
+
+.theme-high-contrast .text-zinc-400 {
+  color: #cbd5e1;
+}
+
+.theme-high-contrast .text-zinc-300 {
+  color: #e2e8f0;
+}
+
+.theme-high-contrast .text-zinc-200,
+.theme-high-contrast .text-zinc-100,
+.theme-high-contrast .text-white {
+  color: #f8fafc;
+}
+
+.theme-high-contrast .border-zinc-900,
+.theme-high-contrast .border-zinc-800,
+.theme-high-contrast .border-zinc-700,
+.theme-high-contrast .border-slate-400\/10,
+.theme-high-contrast .border-slate-400\/15 {
+  border-color: rgba(226, 232, 240, 0.24);
+}
+
+.theme-high-contrast .bg-zinc-800,
+.theme-high-contrast [class*="bg-[#090b0f]"],
+.theme-high-contrast [class*="bg-[#0b0f14]"],
+.theme-high-contrast [class*="bg-[#0d1117]"] {
+  background-color: rgba(2, 6, 23, 0.94);
+}
+
+.theme-high-contrast [class*="bg-[#111318]"],
+.theme-high-contrast [class*="bg-[#151922]"],
+.theme-high-contrast [class*="bg-[#1b2130]"] {
+  background-color: rgba(15, 23, 42, 0.96);
+}
+
+.theme-high-contrast [class*="text-[#6fb6d8]"],
+.theme-high-contrast [class*="text-[#82aaff]"] {
+  color: #7dd3fc;
+}
+
+.theme-high-contrast [class*="text-[#c792ea]"] {
+  color: #e9d5ff;
+}
+
+.theme-high-contrast [class*="text-[#ecc48d]"] {
+  color: #fde68a;
+}
+
+.theme-high-contrast [class*="text-[#d6b56d]"] {
+  color: #facc15;
+}
+
+.theme-high-contrast a:focus-visible,
+.theme-high-contrast button:focus-visible {
+  outline: 2px solid rgba(103, 232, 249, 0.9);
+  outline-offset: 2px;
 }
 
 .word-keep-all {
@@ -34,6 +492,20 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .developer-ambient-motion,
+  .developer-flow-motion,
+  .developer-canvas::before {
+    animation: none;
+  }
+
+  .developer-ambient-motion {
+    opacity: 0.5;
+  }
+
+  .developer-flow-motion {
+    opacity: 0.16;
+  }
+
   .reveal,
   .reveal--visible {
     opacity: 1;

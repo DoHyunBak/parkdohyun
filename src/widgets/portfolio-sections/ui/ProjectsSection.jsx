@@ -1,9 +1,10 @@
+import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/shared/ui/SectionHeader";
 import CodeCard from "@/shared/ui/CodeCard";
 
 export default function ProjectsSection({ projects }) {
   return (
-    <section id="projects" className="space-y-10 border-t border-zinc-900 pt-8">
+    <section id="projects" className="space-y-6 border-t border-zinc-900 pt-6 md:space-y-10 md:pt-8">
       <SectionHeader
         title="Projects"
         description="Selected work and planned builds."
@@ -23,12 +24,16 @@ export default function ProjectsSection({ projects }) {
               key={project.id}
               fileName={`project-${project.id}.java`}
               topRight={isPlanned ? "planned" : "active"}
-              lineNumbers={["01", "02", "03", "04"]}
+              lineNumbers={["01", "02", "03", "04", "05"]}
               className={isPlanned ? "opacity-70" : ""}
             >
-              <a href={`#project-${project.id}`} className="block transition-colors hover:text-white">
+              <a
+                href={`#project-${project.id}`}
+                className="group block transition-colors hover:text-white"
+                aria-label={`${project.title} 자세히 보기`}
+              >
                 <div className="space-y-3">
-                  <div className="space-y-1 text-sm text-zinc-400">
+                  <div className="space-y-1 text-[13px] text-zinc-400 sm:text-sm">
                     <div>
                       <span className="text-[#c792ea]">Project</span>{" "}
                       <span className="text-white">{project.id}</span>{" "}
@@ -54,6 +59,10 @@ export default function ProjectsSection({ projects }) {
                     <div>
                       <span className="text-zinc-600">{"// "}{tagList}</span>
                     </div>
+                  </div>
+
+                  <div className="flex items-center justify-end">
+                    <ArrowRight className="h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:translate-x-1 group-hover:text-white" />
                   </div>
                 </div>
               </a>

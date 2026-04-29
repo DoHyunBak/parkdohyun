@@ -10,7 +10,7 @@ function toVarName(id = "") {
 
 export default function SkillsSection({ skills }) {
   return (
-    <section id="skills" className="space-y-10 border-t border-zinc-900 pt-8">
+    <section id="skills" className="space-y-6 border-t border-zinc-900 pt-6 md:space-y-10 md:pt-8">
       <SectionHeader
         title="Skills"
         description="Technologies I work with."
@@ -28,30 +28,46 @@ export default function SkillsSection({ skills }) {
               key={skill.id}
               fileName={`skill-${skill.id}.java`}
               topRight={skill.category}
-              lineNumbers={["01", "02", "03"]}
+              lineNumbers={["01", "02", "03", "04"]}
             >
-              <a href={`#/skills/${skill.id}`} className="group block transition-colors hover:text-white">
+              <a
+                href={`#/skills/${skill.id}`}
+                className="group block transition-colors hover:text-white"
+                aria-label={`${skill.category} 자세히 보기`}
+              >
                 <div className="space-y-3">
-                  <div className="space-y-1 text-sm text-zinc-400">
+                  <div className="space-y-1 text-[13px] text-zinc-400 sm:text-sm">
                     <div>
-                      <span className="text-[#c792ea]">Skills</span>{" "}
+                      <span className="text-[#c792ea]">Skill</span>{" "}
                       <span className="text-white">{varName}</span>{" "}
                       <span className="text-zinc-500">=</span>{" "}
                       <span className="text-[#c792ea]">new</span>{" "}
-                      <span className="text-[#c792ea]">Skills</span>
+                      <span className="text-white">Skill</span>
                       <span className="text-zinc-500">();</span>
+                    </div>
+                    <div>
+                      <span className="text-[#82aaff]">{varName}</span>
+                      <span className="text-zinc-500">.</span>
+                      <span className="text-[#82aaff]">category</span>{" "}
+                      <span className="text-zinc-500">=</span>{" "}
+                      <span className="text-[#ecc48d]">"{skill.category}"</span>
+                      <span className="text-zinc-500">;</span>
                     </div>
                     <div>
                       <span className="text-[#82aaff]">{varName}</span>
                       <span className="text-zinc-500">.</span>
                       <span className="text-[#82aaff]">tech</span>{" "}
                       <span className="text-zinc-500">=</span>{" "}
-                      <span className="text-[#ecc48d]">"{skill.tech}"</span>;
+                      <span className="text-[#ecc48d]">"{skill.tech}"</span>
+                      <span className="text-zinc-500">;</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs text-zinc-600">{"// "}{skill.description}</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-xs leading-relaxed text-zinc-600">
+                      {"// "}
+                      {skill.description}
+                    </span>
                     <ArrowRight className="h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:translate-x-1 group-hover:text-white" />
                   </div>
                 </div>

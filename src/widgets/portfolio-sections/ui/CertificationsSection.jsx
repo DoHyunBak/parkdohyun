@@ -12,7 +12,7 @@ function toVarName(id = "") {
 
 export default function CertificationsSection({ certifications = [] }) {
   return (
-    <section id="certs" className="space-y-10 border-t border-zinc-900 pt-8">
+    <section id="certs" className="space-y-6 border-t border-zinc-900 pt-6 md:space-y-10 md:pt-8">
       <SectionHeader
         title="Certifications"
         description="Certificates and study plans."
@@ -39,7 +39,7 @@ export default function CertificationsSection({ certifications = [] }) {
                 className="group block transition-colors hover:text-white"
               >
                 <div className="space-y-3">
-                  <div className="space-y-1 text-sm text-zinc-400">
+                  <div className="space-y-1 text-[13px] text-zinc-400 sm:text-sm">
                     <div>
                       <span className="text-[#c792ea]">Certification</span>{" "}
                       <span className="text-white">{varName}</span>{" "}

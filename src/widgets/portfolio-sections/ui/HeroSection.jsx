@@ -6,10 +6,10 @@ const kpiVars  = { building2: "domain",  server: "stack",  briefcase: "mindset" 
 
 export default function HeroSection({ profile, kpis }) {
   return (
-    <section className="space-y-8">
+    <section className="space-y-6 md:space-y-8">
       <CodeCard fileName="Developer.java" topRight="package portfolio" lineNumbers={["01", "02", "03", "04"]}>
         <div className="space-y-4">
-          <div className="space-y-1 text-sm">
+          <div className="space-y-1 text-[13px] sm:text-sm">
             <div>
               <span className="text-[#c792ea]">public class</span>{" "}
               <span className="text-white">Developer</span>{" "}
@@ -33,7 +33,7 @@ export default function HeroSection({ profile, kpis }) {
           </div>
 
           <div className="border-t border-zinc-800 pt-4 space-y-3">
-            <h1 className="text-5xl font-black leading-[1.1] text-white md:text-7xl lg:text-8xl">
+            <h1 className="text-4xl font-black leading-[1.1] text-white sm:text-5xl md:text-7xl lg:text-8xl">
               {profile.headline}
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
@@ -42,7 +42,7 @@ export default function HeroSection({ profile, kpis }) {
             <a
               href={profile.resumeLink}
               download
-              className="inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-[#151922] px-4 py-2 text-xs font-bold text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-[#1b2130]"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-zinc-700 bg-[#151922] px-4 py-2 text-xs font-bold text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-[#1b2130] sm:w-auto"
             >
               <Download className="h-4 w-4" />
               Resume.pdf
@@ -62,7 +62,7 @@ export default function HeroSection({ profile, kpis }) {
                   <Icon className="h-3.5 w-3.5" />
                   <span>// {kpi.label}</span>
                 </div>
-                <div className="text-sm">
+                <div className="text-[13px] sm:text-sm">
                   <span className="text-[#c792ea]">String</span>{" "}
                   <span className="text-[#82aaff]">{varName}</span>{" "}
                   <span className="text-zinc-500">=</span>{" "}

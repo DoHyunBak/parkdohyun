@@ -66,26 +66,26 @@ function PageShell({ type, item, children }) {
         <div className="mt-[-180px] h-[360px] w-[760px] rounded-full bg-[#273043]/30 blur-[120px]" />
       </div>
 
-      <main className="relative z-10 mx-auto max-w-7xl px-4 py-6 md:px-6">
+      <main className="relative z-10 mx-auto max-w-7xl px-3 py-4 sm:px-4 sm:py-6 md:px-6">
         <div className="overflow-hidden rounded-lg border border-zinc-800 bg-[#0d1117] shadow-2xl shadow-black/30">
           <div className="flex h-10 items-center justify-between border-b border-zinc-800 bg-[#111318]">
             <div className="flex h-full items-center">
-              <div className="flex h-full items-center gap-2 border-r border-zinc-800 bg-[#0d1117] px-4 text-xs text-zinc-300 font-mono">
+              <div className="flex h-full items-center gap-2 border-r border-zinc-800 bg-[#0d1117] px-3 text-xs text-zinc-300 font-mono md:px-4">
                 <FileCode2 className="h-3.5 w-3.5 text-[#6fb6d8]" />
                 {meta.eyebrow.toLowerCase()}.tsx
               </div>
             </div>
-            <div className="flex items-center gap-2 px-4 text-xs text-zinc-500 font-mono">
+            <div className="hidden items-center gap-2 px-4 text-xs text-zinc-500 font-mono sm:flex">
               <PanelLeft className="h-3.5 w-3.5" />
               detail view
             </div>
           </div>
 
-          <div className="border-b border-zinc-800 bg-[#0b0f14] px-4 py-2 text-xs text-zinc-500 font-mono">
+          <div className="truncate border-b border-zinc-800 bg-[#0b0f14] px-3 py-2 text-xs text-zinc-500 font-mono md:px-4">
             /src/pages/detail/{meta.eyebrow.toLowerCase()}.tsx
           </div>
 
-          <div className="px-4 py-8 md:px-8 lg:px-10">
+          <div className="px-3 py-6 sm:px-4 md:px-8 md:py-8 lg:px-10">
             <a
               href="#"
               className="mb-8 inline-flex items-center gap-2 rounded-md border border-zinc-800 bg-[#151922] px-4 py-2 text-xs font-bold text-zinc-400 transition-colors hover:border-zinc-600 hover:text-white"
@@ -93,11 +93,11 @@ function PageShell({ type, item, children }) {
               <ArrowLeft className="h-3.5 w-3.5" /> Back to workspace
             </a>
 
-            <header className="mb-10 border-b border-zinc-800 pb-8">
+            <header className="mb-8 border-b border-zinc-800 pb-6 md:mb-10 md:pb-8">
               <div className="mb-3 text-xs font-bold uppercase tracking-widest text-zinc-500 font-mono">
                 {meta.eyebrow}
               </div>
-              <h1 className="text-4xl font-black text-white md:text-6xl">{meta.title}</h1>
+              <h1 className="text-3xl font-black text-white sm:text-4xl md:text-6xl">{meta.title}</h1>
               <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400 font-mono md:text-base">
                 {meta.description}
               </p>

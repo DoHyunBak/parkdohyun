@@ -3,27 +3,8 @@
     {
       "name": "Default",
       "files": [
-        "src/app/App.jsx",
-        "src/app/styles/globals.css",
         "src/entities/portfolio/model/portfolioData.js",
-        "src/pages/portfolio/ui/PortfolioPage.jsx",
-        "src/shared/ui/SectionHeader.jsx",
-        "src/widgets/footer/ui/AppFooter.jsx",
-        "src/widgets/navigation/ui/TopNavigation.jsx",
-        "src/widgets/portfolio-sections/ui/CertificationsSection.jsx",
-        "src/widgets/portfolio-sections/ui/ContactSection.jsx",
-        "src/widgets/portfolio-sections/ui/ExperienceSection.jsx",
-        "src/widgets/portfolio-sections/ui/HeroSection.jsx",
-        "src/widgets/portfolio-sections/ui/LanguageSection.jsx",
-        "src/widgets/portfolio-sections/ui/PhilosophySection.jsx",
-        "src/widgets/portfolio-sections/ui/ProjectsSection.jsx",
-        "src/widgets/portfolio-sections/ui/SkillsSection.jsx",
-        "src/pages/detail/ui/DetailPage.jsx",
-        ".vscode/changelists.json",
-        "src/shared/ui/CodeCard.jsx",
-        "src/portfolio/education.tsx",
-        ".claude/settings.json",
-        "package-lock.json"
+        ".vscode/changelists.json"
       ]
     }
   ],

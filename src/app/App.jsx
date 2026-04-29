@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DetailPage from "@/pages/detail/ui/DetailPage";
 import PortfolioPage from "@/pages/portfolio/ui/PortfolioPage";
+import BackToTopButton from "@/shared/ui/BackToTopButton";
 
 const detailRoutes = new Set(["education", "skills", "language", "certifications"]);
 
@@ -30,9 +31,16 @@ export default function App() {
     }
   }, [route.type, route.itemId]);
 
-  if (detailRoutes.has(route.type)) {
-    return <DetailPage type={route.type} itemId={route.itemId} />;
-  }
+  const page = detailRoutes.has(route.type) ? (
+    <DetailPage type={route.type} itemId={route.itemId} />
+  ) : (
+    <PortfolioPage />
+  );
 
-  return <PortfolioPage />;
+  return (
+    <div className="theme-high-contrast min-h-screen bg-slate-950">
+      {page}
+      <BackToTopButton />
+    </div>
+  );
 }

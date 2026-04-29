@@ -4,7 +4,7 @@ import CodeCard from "@/shared/ui/CodeCard";
 
 export default function LanguageSection({ languages }) {
   return (
-    <section id="language" className="space-y-10 border-t border-zinc-900 pt-8">
+    <section id="language" className="space-y-6 border-t border-zinc-900 pt-6 md:space-y-10 md:pt-8">
       <SectionHeader
         title="Language"
         description="Languages I use or study."
@@ -24,7 +24,7 @@ export default function LanguageSection({ languages }) {
           >
             <a href={`#/language/${item.id}`} className="group block transition-colors hover:text-white">
               <div className="space-y-3">
-                <div className="space-y-1 text-sm text-zinc-400">
+                <div className="space-y-1 text-[13px] text-zinc-400 sm:text-sm">
                   <div>
                     <span className="text-[#c792ea]">Language</span>{" "}
                     <span className="text-white">{item.id}</span>{" "}
