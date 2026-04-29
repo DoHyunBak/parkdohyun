@@ -1,33 +1,66 @@
-import { Milestone } from "lucide-react";
 import SectionHeader from "@/shared/ui/SectionHeader";
+import CodeCard from "@/shared/ui/CodeCard";
 
 export default function ExperienceSection({ experience }) {
+  const edu = experience[0];
+  const term = "2021.03 ~ 2027.03";
+
   return (
     <section id="experience" className="space-y-10 border-t border-zinc-900 pt-8">
       <SectionHeader
-        title="학력"
-        description="Academic background and foundational knowledge for system engineering."
+        title="Education"
+        description="Academic background and focus."
+        fields={[
+          { type: "String", name: "school" },
+          { type: "String", name: "campus" },
+          { type: "String", name: "major" },
+          { type: "String", name: "degree" },
+          { type: "String", name: "term" },
+        ]}
       />
 
-      <div className="space-y-6">
-        {experience.map((exp) => (
-          <div
-            key={exp.id}
-            className="flex flex-col gap-6 rounded-3xl border border-zinc-800/50 bg-zinc-900/20 p-8 md:flex-row md:gap-12"
-          >
-            <div className="shrink-0 md:w-1/4">
-              <div className="mb-2 flex items-center gap-2 text-sm font-bold text-zinc-500 font-mono">
-                <Milestone className="h-4 w-4" /> {exp.period}
+      <div className="grid grid-cols-1 gap-4">
+        {edu && (
+          <CodeCard fileName="Education.java" topRight={term} lineNumbers={["01", "02", "03", "04", "05", "06"]}>
+            <div className="space-y-3">
+              <div className="space-y-1 text-sm text-zinc-400">
+                <div>
+                  <span className="text-[#c792ea]">Education</span>{" "}
+                  <span className="text-white">edu_bachelor</span>{" "}
+                  <span className="text-zinc-500">=</span>{" "}
+                  <span className="text-[#c792ea]">new</span>{" "}
+                  <span className="text-white">Education</span>
+                  <span className="text-zinc-500">();</span>
+                </div>
+                <div>
+                  <span className="text-[#82aaff]">edu_bachelor</span><span className="text-zinc-500">.</span><span className="text-[#82aaff]">school</span>{" "}
+                  <span className="text-zinc-500">=</span>{" "}
+                  <span className="text-[#ecc48d]">"한양대학교"</span>;
+                </div>
+                <div>
+                  <span className="text-[#82aaff]">edu_bachelor</span><span className="text-zinc-500">.</span><span className="text-[#82aaff]">campus</span>{" "}
+                  <span className="text-zinc-500">=</span>{" "}
+                  <span className="text-[#ecc48d]">"ERICA"</span>;
+                </div>
+                <div>
+                  <span className="text-[#82aaff]">edu_bachelor</span><span className="text-zinc-500">.</span><span className="text-[#82aaff]">major</span>{" "}
+                  <span className="text-zinc-500">=</span>{" "}
+                  <span className="text-[#ecc48d]">"소프트웨어융합대학 ICT융합학부"</span>;
+                </div>
+                <div>
+                  <span className="text-[#82aaff]">edu_bachelor</span><span className="text-zinc-500">.</span><span className="text-[#82aaff]">degree</span>{" "}
+                  <span className="text-zinc-500">=</span>{" "}
+                  <span className="text-[#ecc48d]">"공학사"</span>;
+                </div>
+                <div>
+                  <span className="text-[#82aaff]">edu_bachelor</span><span className="text-zinc-500">.</span><span className="text-[#82aaff]">term</span>{" "}
+                  <span className="text-zinc-500">=</span>{" "}
+                  <span className="text-[#ecc48d]">"{term}"</span>;
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-              <p className="mt-1 text-sm text-zinc-500 font-mono">{exp.role}</p>
             </div>
-
-            <div className="flex items-center md:w-3/4">
-              <p className="text-sm leading-relaxed text-zinc-300 font-mono">{exp.description}</p>
-            </div>
-          </div>
-        ))}
+          </CodeCard>
+        )}
       </div>
     </section>
   );

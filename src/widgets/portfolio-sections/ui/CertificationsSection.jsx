@@ -1,54 +1,86 @@
+import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/shared/ui/SectionHeader";
+import CodeCard from "@/shared/ui/CodeCard";
 
-function StatusBadge({ status }) {
-  if (status === "취득") {
-    return (
-      <span className="shrink-0 rounded-sm bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-black font-mono">
-        Acquired
-      </span>
-    );
-  }
-
-  if (status === "준비중") {
-    return (
-      <span className="shrink-0 rounded-sm border border-zinc-700 bg-zinc-800 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-300 font-mono">
-        Preparing
-      </span>
-    );
-  }
-
-  return (
-    <span className="shrink-0 rounded-sm border border-zinc-800 bg-transparent px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-mono">
-      Planned
-    </span>
-  );
+function toVarName(id = "") {
+  return String(id)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }
 
-export default function CertificationsSection({ certifications }) {
+export default function CertificationsSection({ certifications = [] }) {
   return (
     <section id="certs" className="space-y-10 border-t border-zinc-900 pt-8">
       <SectionHeader
-        title="자격증"
-        description="Objective indicators and future plans secured to build enterprise systems."
+        title="Certifications"
+        description="Certificates and study plans."
+        fields={[
+          { type: "String", name: "name" },
+          { type: "String", name: "status" },
+        ]}
       />
 
-      <div className="border-t border-zinc-800">
-        {certifications.map((cert) => (
-          <div
-            key={cert.name}
-            className="-mx-4 flex flex-col items-start gap-4 rounded-xl border-b border-zinc-800/50 px-4 py-6 transition-colors hover:bg-zinc-900/20 md:flex-row md:gap-12 md:py-8"
-          >
-            <div className="flex w-full items-center gap-3 md:w-1/3">
-              <StatusBadge status={cert.status} />
-              <h4 className={`font-bold ${cert.status === "취득" ? "text-white" : "text-zinc-400"}`}>
-                {cert.name}
-              </h4>
-            </div>
-            <div className="w-full md:w-2/3">
-              <p className="text-sm leading-relaxed text-zinc-400 font-mono">{cert.detail}</p>
-            </div>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        {certifications.map((cert) => {
+          const certId = cert.id;
+          const varName = toVarName(certId);
+
+          return (
+            <CodeCard
+              key={certId}
+              fileName={`cert-${certId}.java`}
+              topRight={cert.status}
+              lineNumbers={["01", "02", "03"]}
+            >
+              <a
+                href={`#/certifications/${certId}`}
+                className="group block transition-colors hover:text-white"
+              >
+                <div className="space-y-3">
+                  <div className="space-y-1 text-sm text-zinc-400">
+                    <div>
+                      <span className="text-[#c792ea]">Certification</span>{" "}
+                      <span className="text-white">{varName}</span>{" "}
+                      <span className="text-zinc-500">=</span>{" "}
+                      <span className="text-[#c792ea]">new</span>{" "}
+                      <span className="text-white">Certification</span>
+                      <span className="text-zinc-500">();</span>
+                    </div>
+
+                    <div>
+                      <span className="text-[#82aaff]">{varName}</span>
+                      <span className="text-zinc-500">.</span>
+                      <span className="text-[#82aaff]">name</span>{" "}
+                      <span className="text-zinc-500">=</span>{" "}
+                      <span className="text-[#ecc48d]">"{cert.name}"</span>
+                      <span className="text-zinc-500">;</span>
+                    </div>
+
+                    <div>
+                      <span className="text-[#82aaff]">{varName}</span>
+                      <span className="text-zinc-500">.</span>
+                      <span className="text-[#82aaff]">status</span>{" "}
+                      <span className="text-zinc-500">=</span>{" "}
+                      <span className="text-[#ecc48d]">"{cert.status}"</span>
+                      <span className="text-zinc-500">;</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-xs text-zinc-600">
+                      {"// "}
+                      {cert.detail}
+                    </span>
+
+                    <ArrowRight className="h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:translate-x-1 group-hover:text-white" />
+                  </div>
+                </div>
+              </a>
+            </CodeCard>
+          );
+        })}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ export const portfolioData = {
   profile: {
     name: "박도현",
     role: "Enterprise Backend Developer",
-    headline: "Futuristic\nBackend Developer.",
+    headline: "Portfolio of DoHyun Park",
     subHeadline:
       "Focusing on how technology supports real business operations. \nI am a backend engineer dedicated to enterprise system management, \nencompassing data flows and business processes.",
     email: "mailto:badberg2002@gmail.com",
@@ -40,7 +40,7 @@ export const portfolioData = {
   ],
   projects: [
     {
-      id: "p1",
+      id: "usto",
       title: " 대학물품관리관리시스템",
       status: "active",
       tags: ["Java", "Spring Boot", "AWS", "MySQL","RDS","Docker", "Flyway","Hexagonal Architecture","Open API"],
@@ -63,7 +63,7 @@ export const portfolioData = {
       ],
     },
     {
-      id: "p2",
+      id: "smockOut",
       title: "금연쉼터",
       status: "active",
       tags: ["Flutter", "Community App", "Mobile", "Spring Boot", "MySQL", "AWS", "Docker", "Flyway"],
@@ -80,10 +80,10 @@ export const portfolioData = {
       },
     },
     {
-      id: "p3",
-      title: "전사적 데이터 통합 플랫폼 (예정)",
-      status: "planned",
-      tags: ["Spring Boot", "MySQL", "SAP Ecosystem"],
+      id: "kids-friends",
+      title: "키즈카페 로봇",
+      status: "active",
+      tags: ["Spring Boot", "MySQL", "Temi Robot", "Raspberry Pi", "Sensor Integration","AI Chatbot"],
       problem:
         "Data silo phenomenon and inconsistency between internal individual systems and external business platforms.",
       solution:
@@ -92,6 +92,7 @@ export const portfolioData = {
         "Secured enterprise-wide data reliability and centralized management of business data flow.",
       role: "Data Integration & Backend Development",
       links: {
+        github: "https://github.com/Kids-Friends",
         docs: "#",
       },
     },
@@ -147,45 +148,48 @@ export const portfolioData = {
       certificates: [{ name: "JLPT", grade: "Planned" }],
     },
   ],
-  certifications: [
-    {
-      status: "취득",
-      name: "SQL개발자(SQLD)",
-      detail: "Database modeling and SQL performance tuning capabilities.",
-    },
-    {
-      status: "취득",
-      name: "데이터분석준전문가(ADsP)",
-      detail: "Data structuring and statistical analysis-based business logic application.",
-    },
-    {
-      status: "취득",
-      name: "컴퓨터활용능력2급(Computer Literacy Level 2)",
-      detail: "Basic spreadsheet and data management capabilities.",
-    },
-    {
-      status: "준비중",
-      name: "정보처리기사(Information Processing Engineer)",
-      detail:
-        "Systematization of knowledge across software engineering and enterprise system architecture.",
-    },
-    {
-      status: "준비중",
-      name: "빅데이터분석기사(Big Data Analysis Engineer)",
-      detail:
-        "Understanding of large-scale data collection, storage, processing pipelines, and analysis modeling.",
-    },
-    {
-      status: "준비중",
-      name: "전산회계1급(Computerized Accounting Level 1)",
-      detail:
-        "Securing deep domain knowledge of corporate accounting systems and business rules.",
-    },
-    {
-      status: "예정",
-      name: "SAP Certified Associate \n- Back-End Developer \n- ABAP Cloud",
-      detail:
-        "Acquiring enterprise ERP financial module and business process development capabilities.",
-    },
-  ],
+certifications: [
+  {
+    id: "sqld",
+    name: "SQLD",
+    status: "취득",
+    detail: "Database modeling and SQL performance tuning capabilities.",
+  },
+  {
+    id: "adsp",
+    name: "ADsP",
+    status: "취득",
+    detail: "Data structuring and statistical analysis-based business logic application.",
+  },
+  {
+    id: "cl2",
+    name: "컴퓨터활용능력2급",
+    status: "취득",
+    detail: "Basic spreadsheet and data management capabilities.",
+  },
+  {
+    id: "ipe",
+    name: "정보처리기사",
+    status: "준비중",
+    detail: "Systematization of knowledge across software engineering and enterprise system architecture.",
+  },
+  {
+    id: "bdae",
+    name: "빅데이터분석기사",
+    status: "준비중",
+    detail: "Understanding of large-scale data collection, storage, processing pipelines, and analysis modeling.",
+  },
+  {
+    id: "ca1",
+    name: "전산회계1급",
+    status: "준비중",
+    detail: "Securing deep domain knowledge of corporate accounting systems and business rules.",
+  },
+  {
+    id: "sap-abap",
+    name: "SAP Certified Associate - Back-End Developer - ABAP Cloud",
+    status: "예정",
+    detail: "Acquiring enterprise ERP financial module and business process development capabilities.",
+  },
+],
 };

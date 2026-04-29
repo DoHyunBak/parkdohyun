@@ -1,56 +1,60 @@
+import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/shared/ui/SectionHeader";
-
-function LevelBadge({ level }) {
-  const classNameByLevel = {
-    Native: "bg-white text-black",
-    Intermediate: "border border-zinc-700 bg-zinc-800 text-zinc-300",
-    Beginner: "border border-zinc-800 bg-transparent text-zinc-500",
-  };
-
-  const className = classNameByLevel[level] ?? "border border-zinc-800 bg-transparent text-zinc-500";
-
-  return (
-    <span
-      className={`shrink-0 rounded-sm px-2 py-1 text-[10px] font-bold uppercase tracking-wider font-mono ${className}`}
-    >
-      {level}
-    </span>
-  );
-}
+import CodeCard from "@/shared/ui/CodeCard";
 
 export default function LanguageSection({ languages }) {
   return (
     <section id="language" className="space-y-10 border-t border-zinc-900 pt-8">
-      <SectionHeader title="언어" description="Communication readiness for global collaboration." />
+      <SectionHeader
+        title="Language"
+        description="Languages I use or study."
+        fields={[
+          { type: "String", name: "language" },
+          { type: "String", name: "level" },
+        ]}
+      />
 
-      <div className="border-t border-zinc-800">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         {languages.map((item) => (
-          <div
-            key={item.language}
-            className="-mx-4 flex flex-col items-start gap-3 rounded-xl border-b border-zinc-800/50 px-4 py-4 transition-colors hover:bg-zinc-900/20 md:flex-row md:items-center md:gap-8 md:py-5"
+          <CodeCard
+            key={item.id}
+            fileName={`language-${item.id}.java`}
+            topRight={item.level}
+            lineNumbers={["01", "02", "03"]}
           >
-            <div className="flex w-full items-center gap-3 md:w-1/3">
-              <LevelBadge level={item.level} />
-              <h4 className="font-bold text-white">{item.language}</h4>
-            </div>
-            <div className="w-full md:w-2/3">
-              <div className="flex flex-wrap items-center gap-1.5 font-mono text-sm">
-                {(item.certificates ?? [{ name: "-", grade: "-" }]).map((cert) => (
-                  <div
-                    key={`${item.language}-${cert.name}-${cert.grade}`}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-900/50 px-2.5 py-1.5"
-                  >
-                    <span className="rounded border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-zinc-200">
-                      {cert.name}
-                    </span>
-                    <span className="rounded border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-zinc-300">
-                      {cert.grade}
-                    </span>
+            <a href={`#/language/${item.id}`} className="group block transition-colors hover:text-white">
+              <div className="space-y-3">
+                <div className="space-y-1 text-sm text-zinc-400">
+                  <div>
+                    <span className="text-[#c792ea]">Language</span>{" "}
+                    <span className="text-white">{item.id}</span>{" "}
+                    <span className="text-zinc-500">=</span>{" "}
+                    <span className="text-[#c792ea]">new</span>{" "}
+                    <span className="text-white">Language</span>
+                    <span className="text-zinc-500">();</span>
                   </div>
-                ))}
+                  <div>
+                    <span className="text-[#82aaff]">{item.id}</span>
+                    <span className="text-zinc-500">.</span>
+                    <span className="text-[#82aaff]">language</span>{" "}
+                    <span className="text-zinc-500">=</span>{" "}
+                    <span className="text-[#ecc48d]">"{item.language}"</span>;
+                  </div>
+                  <div>
+                    <span className="text-[#82aaff]">{item.id}</span>
+                    <span className="text-zinc-500">.</span>
+                    <span className="text-[#82aaff]">level</span>{" "}
+                    <span className="text-zinc-500">=</span>{" "}
+                    <span className="text-[#ecc48d]">"{item.level}"</span>;
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <ArrowRight className="h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:translate-x-1 group-hover:text-white" />
+                </div>
               </div>
-            </div>
-          </div>
+            </a>
+          </CodeCard>
         ))}
       </div>
     </section>

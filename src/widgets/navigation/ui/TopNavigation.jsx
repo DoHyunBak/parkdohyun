@@ -1,42 +1,60 @@
+import { Code2, GitBranch, Search } from "lucide-react";
+
 const navItems = [
-  { href: "#vision", label: "핵심철학" },
-  { href: "#experience", label: "학력" },
-  { href: "#projects", label: "프로젝트" },
-  { href: "#skills", label: "역량" },
-  { href: "#language", label: "언어" },
-  { href: "#certs", label: "자격증" },
+  { href: "#experience", label: "Education" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#certs", label: "Certifications" },
 ];
 
 export default function TopNavigation({ name, scrolled }) {
   return (
     <nav
-      className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full border-b transition-colors duration-300 ${
         scrolled
-          ? "bg-black/70 py-4 border-zinc-800 backdrop-blur-xl"
-          : "bg-transparent py-6 border-transparent"
+          ? "border-zinc-800 bg-[#090b0f]/95 backdrop-blur-xl"
+          : "border-zinc-900 bg-[#090b0f]/90 backdrop-blur-xl"
       }`}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6">
-        <img
-          src="/myLogo.png"
-          alt={`${name} 로고`}
-          className="h-12 w-12 object-contain"
-        />
-        <div className="flex items-center gap-6 text-sm font-bold">
+      <div className="flex h-12 items-center justify-between px-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <a href="#" aria-label="홈으로 이동" className="flex shrink-0 items-center gap-2">
+            <img
+              src="/myLogo.png"
+              alt={`${name} 로고`}
+              className="h-7 w-7 object-contain"
+            />
+            <span className="hidden text-xs font-semibold text-zinc-300 font-mono md:inline">
+              park-dohyun.code-workspace
+            </span>
+          </a>
+
+          <div className="hidden items-center gap-1 rounded-md border border-zinc-800 bg-[#111318] px-2 py-1 text-xs text-zinc-500 font-mono lg:flex">
+            <Code2 className="h-3.5 w-3.5" />
+            portfolio.jsx
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-sm font-bold">
+          <div className="hidden items-center gap-1 rounded-md border border-zinc-800 bg-[#111318] px-2 py-1 text-xs text-zinc-500 font-mono md:flex">
+            <Search className="h-3.5 w-3.5" />
+            Ctrl K
+          </div>
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="hidden text-zinc-400 transition-colors hover:text-white sm:block"
+              className="hidden rounded-md px-2 py-1 text-xs text-zinc-400 transition-colors hover:bg-zinc-800/60 hover:text-white md:block"
             >
               {item.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-md bg-white px-4 py-2 text-black transition-colors hover:bg-zinc-200"
+            className="inline-flex items-center gap-1.5 rounded-md border border-zinc-700 bg-[#151922] px-3 py-1.5 text-xs text-zinc-200 transition-colors hover:border-zinc-500 hover:bg-[#1b2130]"
           >
-            연락처
+            <GitBranch className="h-3.5 w-3.5" />
+            Contact
           </a>
         </div>
       </div>
