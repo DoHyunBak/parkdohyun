@@ -9,7 +9,6 @@ import ProjectsSection from "@/widgets/portfolio-sections/ui/ProjectsSection";
 import SkillsSection from "@/widgets/portfolio-sections/ui/SkillsSection";
 import LanguageSection from "@/widgets/portfolio-sections/ui/LanguageSection";
 import RevealOnScroll from "@/shared/ui/RevealOnScroll";
-import SpotlightCursor from "@/shared/ui/SpotlightCursor";
 import { ChevronDown, ChevronRight, FileCode2, Folder, GitBranch, PanelLeft } from "lucide-react";
 
 function fileLabel(value) {
@@ -167,28 +166,6 @@ function ExplorerPanel({ data }) {
 export default function PortfolioPage() {
   return (
     <div className="developer-canvas word-keep-all min-h-screen text-zinc-300 selection:bg-[#c6e478] selection:text-black">
-      <SpotlightCursor />
-      <div className="developer-ambient-motion" aria-hidden="true" />
-      <div className="developer-flow-motion" aria-hidden="true" />
-      <div className="developer-code-watermark hidden md:block" aria-hidden="true">
-        {`@RestController
-class PortfolioController {
-  private final ProjectService service;
-
-  @GetMapping("/projects")
-  List<ProjectDto> findAll() {
-    return service.findActiveProjects();
-  }
-}
-
-@Repository
-interface ProjectRepository
-  extends JpaRepository<Project, Long> {}`}
-      </div>
-      <div className="pointer-events-none fixed inset-0 z-0 flex justify-center">
-        <div className="mt-[-180px] h-[360px] w-[760px] rounded-full bg-blue-500/10 blur-[120px]" />
-      </div>
-
       <main className="relative z-10 mx-auto max-w-7xl px-3 py-4 sm:px-4 sm:py-6 md:px-6">
         <div className="developer-app-shell rounded-lg">
           <div className="developer-toolbar relative z-10 flex h-10 items-center justify-between border-b">

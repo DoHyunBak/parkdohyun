@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CatPortfolioPage from "@/pages/cat-portfolio/ui/CatPortfolioPage";
 import DetailPage from "@/pages/detail/ui/DetailPage";
 import PortfolioPage from "@/pages/portfolio/ui/PortfolioPage";
 import BackToTopButton from "@/shared/ui/BackToTopButton";
@@ -31,14 +32,17 @@ export default function App() {
     }
   }, [route.type, route.itemId]);
 
-  const page = detailRoutes.has(route.type) ? (
+  const isCatPortfolio = route.type === "cat";
+  const page = isCatPortfolio ? (
+    <CatPortfolioPage />
+  ) : detailRoutes.has(route.type) ? (
     <DetailPage type={route.type} itemId={route.itemId} />
   ) : (
     <PortfolioPage />
   );
 
   return (
-    <div className="theme-high-contrast min-h-screen bg-slate-950">
+    <div className={isCatPortfolio ? "min-h-screen bg-[#fff8ef] text-stone-900" : "theme-high-contrast min-h-screen bg-slate-950"}>
       {page}
       <BackToTopButton />
     </div>

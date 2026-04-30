@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { portfolioData } from "@/entities/portfolio/model/portfolioData";
 import AppFooter from "@/widgets/footer/ui/AppFooter";
-import SpotlightCursor from "@/shared/ui/SpotlightCursor";
 
 const pageMeta = {
   education: {
@@ -60,12 +59,7 @@ function PageShell({ type, item, children }) {
     : sectionMeta;
 
   return (
-    <div className="word-keep-all min-h-screen bg-[#090b0f] text-zinc-300 selection:bg-[#c6e478] selection:text-black">
-      <SpotlightCursor />
-      <div className="pointer-events-none fixed inset-0 z-0 flex justify-center">
-        <div className="mt-[-180px] h-[360px] w-[760px] rounded-full bg-[#273043]/30 blur-[120px]" />
-      </div>
-
+    <div className="word-keep-all min-h-screen bg-black text-zinc-300 selection:bg-[#c6e478] selection:text-black">
       <main className="relative z-10 mx-auto max-w-7xl px-3 py-4 sm:px-4 sm:py-6 md:px-6">
         <div className="overflow-hidden rounded-lg border border-zinc-800 bg-[#0d1117] shadow-2xl shadow-black/30">
           <div className="flex h-10 items-center justify-between border-b border-zinc-800 bg-[#111318]">

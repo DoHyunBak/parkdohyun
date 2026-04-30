@@ -37,14 +37,6 @@ export const portfolioData = {
       description:
         "Focusing on software engineering, data management, and enterprise system architectures. Building a foundation in computer science and real-world problem solving through technology.",
     },
-    {
-      id: "e2",
-      period: "203X.03 - 203X.03",
-      title: "OO대학교(미정)",
-      role: "인공지능학과 공학석사",
-      description:
-        "I will prepare because I want to study how to apply AI technologies to enterprise systems, such as intelligent data processing, predictive analytics for business operations, and AI-driven automation in ERP environments.",
-    },
   ],
   projects: [
     {
