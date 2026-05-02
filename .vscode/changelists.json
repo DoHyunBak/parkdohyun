@@ -4,6 +4,7 @@
       "name": "Default",
       "files": [
         "src/entities/portfolio/model/portfolioData.js",
+        ".claude/settings.local.json",
         ".vscode/changelists.json"
       ]
     }

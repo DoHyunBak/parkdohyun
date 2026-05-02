@@ -1,81 +1,58 @@
-import { ArrowRight } from "lucide-react";
-import SectionHeader from "@/shared/ui/SectionHeader";
 import CodeCard from "@/shared/ui/CodeCard";
 
 function toVarName(id = "") {
-  return String(id)
-    .trim()
-    .replace(/-/g, "_");
+  return String(id).trim().replace(/-/g, "_");
 }
 
 export default function SkillsSection({ skills }) {
+  // 3 lines per group (region, array, description) + blank between groups
+  const lineCount = skills.length * 3 + (skills.length - 1);
+  const lineNumbers = Array.from({ length: lineCount }, (_, i) =>
+    String(i + 1).padStart(2, "0")
+  );
+
   return (
     <section id="skills" className="space-y-6 border-t border-zinc-900 pt-6 md:space-y-10 md:pt-8">
-      <SectionHeader
-        title="Skills"
-        description="Technologies I work with."
-        fields={[
-          { type: "String", name: "category" },
-          { type: "String", name: "tech" },
-        ]}
-      />
+      <CodeCard
+        fileName="Skills.java"
+        topRight="package portfolio"
+        lineNumbers={lineNumbers}
+      >
+        <div className="space-y-1 text-[13px] sm:text-sm">
+          {skills.map((skill, i) => {
+            const varName = toVarName(skill.id);
+            const techNames = (skill.techList ?? []).map((t) => t.name);
+            const techLabels = (skill.techList ?? []).map((t) => t.label).join(" · ");
 
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-        {skills.map((skill) => {
-          const varName = toVarName(skill.id);
-          return (
-            <CodeCard
-              key={skill.id}
-              fileName={`skill-${skill.id}.java`}
-              topRight={skill.category}
-              lineNumbers={["01", "02", "03", "04"]}
-            >
-              <a
-                href={`#/skills/${skill.id}`}
-                className="group block transition-colors hover:text-white"
-                aria-label={`${skill.category} 자세히 보기`}
-              >
-                <div className="space-y-3">
-                  <div className="space-y-1 text-[13px] text-zinc-400 sm:text-sm">
-                    <div>
-                      <span className="text-[#c792ea]">Skill</span>{" "}
-                      <span className="text-white">{varName}</span>{" "}
-                      <span className="text-zinc-500">=</span>{" "}
-                      <span className="text-[#c792ea]">new</span>{" "}
-                      <span className="text-white">Skill</span>
-                      <span className="text-zinc-500">();</span>
-                    </div>
-                    <div>
-                      <span className="text-[#82aaff]">{varName}</span>
-                      <span className="text-zinc-500">.</span>
-                      <span className="text-[#82aaff]">category</span>{" "}
-                      <span className="text-zinc-500">=</span>{" "}
-                      <span className="text-[#ecc48d]">"{skill.category}"</span>
-                      <span className="text-zinc-500">;</span>
-                    </div>
-                    <div>
-                      <span className="text-[#82aaff]">{varName}</span>
-                      <span className="text-zinc-500">.</span>
-                      <span className="text-[#82aaff]">tech</span>{" "}
-                      <span className="text-zinc-500">=</span>{" "}
-                      <span className="text-[#ecc48d]">"{skill.tech}"</span>
-                      <span className="text-zinc-500">;</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs leading-relaxed text-zinc-600">
-                      {"// "}
-                      {skill.description}
-                    </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:translate-x-1 group-hover:text-white" />
-                  </div>
+            return (
+              <div key={skill.id} className={i > 0 ? "pt-3" : ""}>
+                {/* Region separator */}
+                <div className="text-[#6fb6d8]">
+                  {"// ===== "}{skill.category}{" ====="}
                 </div>
-              </a>
-            </CodeCard>
-          );
-        })}
-      </div>
+
+                {/* Array literal with tech names as string literals */}
+                <div>
+                  <span className="text-[#c792ea]">String</span>
+                  <span className="text-zinc-500">[]</span>{" "}
+                  <span className="text-[#82aaff]">{varName}</span>{" "}
+                  <span className="text-zinc-500">= {"{ "}</span>
+                  {techNames.map((name, j) => (
+                    <span key={j}>
+                      {j > 0 && <span className="text-zinc-500">, </span>}
+                      <span className="text-[#ecc48d]">"{name}"</span>
+                    </span>
+                  ))}
+                  <span className="text-zinc-500">{" };"}</span>
+                </div>
+
+                {/* Korean labels as description comment */}
+                <div className="text-zinc-500">{"// "}{techLabels}</div>
+              </div>
+            );
+          })}
+        </div>
+      </CodeCard>
     </section>
   );
 }

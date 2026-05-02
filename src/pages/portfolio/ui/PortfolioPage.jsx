@@ -191,7 +191,7 @@ export default function PortfolioPage() {
               <div className="developer-toolbar truncate border-b px-3 py-2 text-xs text-zinc-500 font-mono md:px-4">
                 /src/pages/portfolio/ui/PortfolioPage.jsx
               </div>
-              <div className="space-y-14 px-3 py-6 sm:space-y-16 sm:px-4 md:space-y-24 md:px-8 md:py-8 lg:px-10">
+              <div className="space-y-10 px-3 py-6 sm:space-y-12 sm:px-4 md:space-y-16 md:px-8 md:py-8 lg:px-10">
                 <RevealOnScroll delay={0}>
                   <HeroSection profile={portfolioData.profile} kpis={portfolioData.kpis} />
                 </RevealOnScroll>
