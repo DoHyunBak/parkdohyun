@@ -29,26 +29,26 @@ const TECH_LOGOS = [
 const ABOUT_ROWS = [
   {
     key: "domain",
-    label: "Domain",
-    value: "Enterprise systems, ERP/SAP context, operational data flow",
+    label: "도메인",
+    value: "엔터프라이즈 시스템, ERP/SAP 환경, 비즈니스 운영 데이터 흐름",
   },
   {
     key: "backend",
-    label: "Backend",
-    value: "Java, Spring Boot, JPA, transaction-aware API design",
+    label: "백엔드",
+    value: "Java, Spring Boot, JPA, 트랜잭션을 고려한 API 설계",
   },
   {
     key: "infra",
-    label: "Infra",
-    value: "MySQL, Docker, AWS, Flyway-based database migration",
+    label: "인프라",
+    value: "MySQL, Docker, AWS, Flyway를 이용한 데이터베이스 마이그레이션",
   },
 ];
 
 const ENGINEERING_NOTES = [
-  "Design APIs around business rules, not only screens.",
-  "Keep transaction boundaries explicit and testable.",
-  "Prefer readable service logic over clever abstraction.",
-  "Treat database schema and migration history as product code.",
+  "화면이 아닌 비즈니스 규칙을 중심으로 API를 설계합니다.",
+  "트랜잭션 경계를 명확하게 하고 테스트 가능한 구조를 유지합니다.",
+  "복잡한 추상화보다 읽기 좋은 서비스 로직을 선호합니다.",
+  "데이터베이스 스키마와 마이그레이션 이력을 제품 코드의 일부로 관리합니다.",
 ];
 
 export default function ModernAboutSection() {
@@ -67,7 +67,7 @@ export default function ModernAboutSection() {
             gradient={["#ffffff", "#dbeafe", "#c4b5fd"]}
             className="block h-auto max-w-full"
           >
-            About Me
+            소개
           </FuzzyText>
         </h2>
 
@@ -89,19 +89,19 @@ export default function ModernAboutSection() {
                 <p>
                   <span className="text-[#fc9867]">role</span>
                   <span className="text-[#a0a0a0]"> = </span>
-                  <span className="text-[#ffd866]">"Enterprise Backend Developer"</span>
+                  <span className="text-[#ffd866]">"엔터프라이즈 백엔드 개발자"</span>
                   <span className="text-[#a0a0a0]">;</span>
                 </p>
                 <p>
                   <span className="text-[#fc9867]">focus</span>
                   <span className="text-[#a0a0a0]"> = </span>
-                  <span className="text-[#ffd866]">"Reliable APIs, data consistency, system operations"</span>
+                  <span className="text-[#ffd866]">"신뢰할 수 있는 API, 데이터 일관성, 시스템 운영"</span>
                   <span className="text-[#a0a0a0]">;</span>
                 </p>
                 <p>
                   <span className="text-[#fc9867]">current</span>
                   <span className="text-[#a0a0a0]"> = </span>
-                  <span className="text-[#ffd866]">"3rd-year CS / IT student building production-minded projects"</span>
+                  <span className="text-[#ffd866]">"현업 지향 프로젝트를 개발 중인 컴퓨터공학 전공생"</span>
                   <span className="text-[#a0a0a0]">;</span>
                 </p>
               </div>
@@ -109,10 +109,7 @@ export default function ModernAboutSection() {
             </div>
 
             <p className="max-w-3xl text-base font-light leading-8 text-[#cbd5e1]">
-              I focus on backend systems that support real business operations: data ownership,
-              transaction safety, API contracts, and infrastructure that can be maintained after
-              deployment. My portfolio is organized around enterprise backend work rather than
-              decorative UI claims.
+              실제 비즈니스 운영을 지원하는 백엔드 시스템에 집중합니다. 데이터 소유권, 트랜잭션 안정성, API 규약, 배포 후 유지보수가 가능한 인프라를 중요하게 생각합니다. 단순히 화려한 UI보다는 엔터프라이즈 백엔드 관점에서의 완성도에 가치를 둡니다.
             </p>
 
             <div className="grid gap-3">

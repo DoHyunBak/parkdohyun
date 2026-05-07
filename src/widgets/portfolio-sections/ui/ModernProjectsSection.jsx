@@ -213,7 +213,7 @@ export default function ModernProjectsSection({ projects }) {
               gradient={["#ffffff", "#dbeafe", "#c4b5fd"]}
               className="block h-auto max-w-full"
             >
-              Project
+              프로젝트
             </FuzzyText>
           </h2>
 

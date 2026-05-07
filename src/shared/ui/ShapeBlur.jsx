@@ -118,7 +118,7 @@ void main() {
 export default function ShapeBlur({
   className = "",
   variation = 0,
-  pixelRatioProp = 2,
+  pixelRatioProp = 1.5,
   shapeSize = 1.2,
   roundness = 0.4,
   borderSize = 0.05,
@@ -126,6 +126,22 @@ export default function ShapeBlur({
   circleEdge = 0.5,
 }) {
   const mountRef = useRef(null);
+  const isVisibleRef = useRef(false);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(mount);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -144,7 +160,11 @@ export default function ShapeBlur({
     const camera = new THREE.OrthographicCamera();
     camera.position.z = 1;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    const renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: false,
+      powerPreference: "high-performance" 
+    });
     renderer.setClearColor(0x000000, 0);
     renderer.domElement.className = "shape-blur-canvas";
     mount.appendChild(renderer.domElement);
@@ -202,12 +222,17 @@ export default function ShapeBlur({
     const update = () => {
       if (!active) return;
 
+      if (!isVisibleRef.current) {
+        animationFrameId = window.requestAnimationFrame(update);
+        return;
+      }
+
       const time = performance.now() * 0.001;
       const dt = time - lastTime;
       lastTime = time;
 
       vMouseDamp.x = THREE.MathUtils.damp(vMouseDamp.x, vMouse.x, 8, dt);
-      vMouseDamp.y = THREE.MathUtils.damp(vMouseDamp.y, vMouse.y, 8, dt);
+      vMouseDamp.y = THREE.MathUtils.damp(vMouseDamp.y, vMouse.y, 0, dt);
 
       renderer.render(scene, camera);
 

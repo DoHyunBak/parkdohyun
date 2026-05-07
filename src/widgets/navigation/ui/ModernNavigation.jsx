@@ -2,10 +2,10 @@ import useScrolled from "@/shared/hooks/useScrolled";
 import FuzzyText from "@/shared/ui/FuzzyText";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Project", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "홈", href: "#" },
+  { label: "소개", href: "#about" },
+  { label: "프로젝트", href: "#projects" },
+  { label: "연락처", href: "#contact" },
 ];
 
 function NavFuzzyText({ children }) {

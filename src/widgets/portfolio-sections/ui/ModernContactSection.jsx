@@ -42,7 +42,7 @@ export default function ModernContactSection({ profile }) {
             gradient={["#ffffff", "#dbeafe", "#c4b5fd"]}
             className="mx-auto block h-auto max-w-full"
           >
-            Contact Me
+            연락처
           </FuzzyText>
         </h2>
 
@@ -58,7 +58,7 @@ export default function ModernContactSection({ profile }) {
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <p className="text-[#a0a0a0] font-light">Or reach out directly at</p>
+          <p className="text-[#a0a0a0] font-light">또는 아래 이메일로 연락주세요</p>
           <a href={profile.email} className="text-2xl font-semibold text-white hover:text-accent transition-colors">
             {profile.email.replace("mailto:", "")}
           </a>
