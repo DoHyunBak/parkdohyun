@@ -4,6 +4,9 @@ export const catPortfolioData = {
     ownerCredit: "Made with love by yewon.cc",
     ownerSite: "https://yewon.cc",
     ownerSiteLabel: "yewon.cc",
+    ownerTistory: "https://parkdohyun.tistory.com/",
+    ownerYoutube: "https://www.youtube.com/@Mr.Share_Man",
+    ownerLinkedin: "https://linkedin.com/in/dohyunbak",
     dedication: "This website is dedicated to my lovely cat.",
   },
   profile: {

@@ -11,6 +11,7 @@ export const portfolioData = {
     tistory: "https://parkdohyun.tistory.com/",
     github: "https://github.com/DoHyunBak",
     linkedin: "https://linkedin.com/in/dohyunbak",
+    youtube: "https://www.youtube.com/@Mr.Share_Man",
     resumeLink: "/resume_park.pdf",
   },
   kpis: [

@@ -1,343 +1,75 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #000;
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #1a1a1a;
+  --color-bg-tertiary: #2a2a2a;
+  --color-accent-primary: #FF3D52; /* Coral Red */
+  --color-accent-secondary: #4D5FFF; /* Cyan Blue */
+  --color-project-bg: #5B4DFF; /* Deep Blue */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #e0e0e0;
+  --color-text-tertiary: #a0a0a0;
+  --color-metal-silver: #e2e2e2;
+  --color-metal-chrome: #f5f5f7;
+  --color-metal-steel: #8e8e93;
+
+  font-family: "Poppins", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 html {
   scroll-behavior: smooth;
-  background: #000;
+  background: var(--color-bg-primary);
 }
 
 body {
-  background: #000;
-}
-
-.theme-high-contrast {
-  color-scheme: dark;
-  background: #020617;
-}
-
-.theme-high-contrast ::selection {
-  background: #facc15;
-  color: #020617;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 @layer components {
-  .developer-canvas {
-    position: relative;
-    isolation: isolate;
-    overflow-x: hidden;
-    background: #000;
+  /* New Design System Components */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 font-semibold uppercase tracking-wider transition-all duration-300 border-2 rounded-sm;
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    background: transparent;
   }
 
-  .developer-app-shell,
-  .developer-card {
-    border: 1px solid rgba(148, 163, 184, 0.14);
-    background: rgba(15, 23, 42, 0.72);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(16px);
+  .btn-primary:hover {
+    background: var(--color-accent-primary);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 61, 82, 0.5);
   }
 
-  .developer-app-shell {
-    position: relative;
-    overflow: visible;
+  .text-accent {
+    color: var(--color-accent-primary);
   }
 
-  .developer-toolbar {
-    background: rgba(2, 6, 23, 0.74);
-    border-color: rgba(148, 163, 184, 0.12);
-    backdrop-filter: blur(12px);
+  .underline-accent {
+    @apply relative inline-block;
   }
 
-  .developer-explorer-panel {
-    position: sticky;
-    top: 1rem;
-    z-index: 10;
-    display: flex;
-    align-self: start;
-    height: calc(100vh - 2rem);
-    flex-direction: column;
-    overflow: hidden;
-    border-right: 1px solid rgba(148, 163, 184, 0.18);
-    background: rgba(2, 6, 23, 0.86);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(18px);
-  }
-
-  .developer-explorer-header {
-    display: flex;
-    min-height: 2rem;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
-    background:
-      linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(2, 6, 23, 0.66)),
-      rgba(2, 6, 23, 0.8);
-    padding: 0 1rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  }
-
-  .developer-explorer-scroll {
-    background:
-      linear-gradient(90deg, rgba(148, 163, 184, 0.08), transparent 1px) 2.5rem 0 / 1px 100% no-repeat,
-      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 9rem);
-  }
-
-  .developer-explorer-root {
-    background: rgba(15, 23, 42, 0.58);
-    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08);
-  }
-
-  .developer-explorer-root:hover,
-  .developer-explorer-row:hover,
-  .developer-explorer-file:hover {
-    background: rgba(30, 41, 59, 0.6);
-  }
-
-  .developer-explorer-node {
-    position: relative;
-  }
-
-  .developer-explorer-node::before {
+  .underline-accent::after {
     content: "";
-    position: absolute;
-    left: 0.35rem;
-    top: 1.15rem;
-    width: 0.55rem;
-    border-top: 1px solid rgba(148, 163, 184, 0.18);
+    @apply absolute bottom-[-4px] left-0 h-[4px] w-[110%];
+    background-color: var(--color-accent-primary);
   }
 
-  .developer-explorer-row,
-  .developer-explorer-file {
-    position: relative;
-  }
-
-  .developer-explorer-children {
-    position: relative;
-    border-left: 1px solid rgba(148, 163, 184, 0.16);
-  }
-
-  .developer-explorer-file::before {
-    content: "";
-    position: absolute;
-    left: -1rem;
-    top: 50%;
-    width: 0.75rem;
-    border-top: 1px solid rgba(148, 163, 184, 0.16);
-  }
-
-  .developer-editor-surface {
-    position: relative;
-    overflow: hidden;
-    background:
-      linear-gradient(rgba(148, 163, 184, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(148, 163, 184, 0.025) 1px, transparent 1px),
-      rgba(2, 6, 23, 0.46);
-    background-size: 40px 40px;
-  }
-
-  .developer-editor-surface > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .developer-card {
-    position: relative;
-  }
-
-  .developer-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 42%);
-    opacity: 0.8;
-  }
-
-  .cat-portfolio-canvas {
-    position: relative;
-    isolation: isolate;
-    background:
-      radial-gradient(circle at 18% 12%, rgba(216, 154, 104, 0.28), transparent 30rem),
-      radial-gradient(circle at 84% 18%, rgba(142, 167, 106, 0.18), transparent 28rem),
-      radial-gradient(circle at 50% 82%, rgba(126, 104, 86, 0.14), transparent 34rem),
-      linear-gradient(180deg, #fff8ef 0%, #f7eadb 46%, #efe1d0 100%);
-  }
-
-  .cat-portfolio-canvas::before,
-  .cat-portfolio-canvas::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .cat-portfolio-canvas::before {
-    opacity: 0.46;
-    background-image:
-      linear-gradient(rgba(96, 72, 51, 0.075) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(96, 72, 51, 0.065) 1px, transparent 1px);
-    background-size: 72px 72px;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.16));
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.16));
-  }
-
-  .cat-portfolio-canvas::after {
-    opacity: 0.055;
-    background-image: radial-gradient(rgba(83, 61, 41, 0.85) 0.6px, transparent 0.6px);
-    background-size: 4px 4px;
-    mix-blend-mode: multiply;
-  }
-
-  .cat-card,
-  .cat-photo-card {
-    border: 1px solid rgba(132, 103, 76, 0.16);
-    background: rgba(255, 250, 244, 0.72);
-    box-shadow: 0 24px 70px rgba(97, 70, 45, 0.14);
-    backdrop-filter: blur(18px);
-  }
-
-  .cat-photo-card {
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(255, 248, 238, 0.38)),
-      rgba(255, 250, 244, 0.72);
+  .word-keep-all {
+    word-break: keep-all;
   }
 }
 
-@media (max-width: 767px) {
-  .developer-editor-surface {
-    background-size: 56px 56px;
-  }
-}
-
-.theme-high-contrast .developer-canvas {
-  color: #e2e8f0;
-  background: #000;
-}
-
-.theme-high-contrast .developer-app-shell,
-.theme-high-contrast .developer-card {
-  border-color: rgba(226, 232, 240, 0.28);
-  background: rgba(2, 6, 23, 0.9);
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.58),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.theme-high-contrast .developer-toolbar {
-  border-color: rgba(226, 232, 240, 0.22);
-  background: rgba(2, 6, 23, 0.94);
-}
-
-.theme-high-contrast .developer-editor-surface {
-  background:
-    linear-gradient(rgba(226, 232, 240, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(226, 232, 240, 0.055) 1px, transparent 1px),
-    rgba(2, 6, 23, 0.72);
-}
-
-.theme-high-contrast .developer-card::before {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%);
-}
-
-.theme-high-contrast .text-zinc-700 {
-  color: #94a3b8;
-}
-
-.theme-high-contrast .text-zinc-600 {
-  color: #a7b4c5;
-}
-
-.theme-high-contrast .text-zinc-500 {
-  color: #b6c2d1;
-}
-
-.theme-high-contrast .text-zinc-400 {
-  color: #cbd5e1;
-}
-
-.theme-high-contrast .text-zinc-300 {
-  color: #e2e8f0;
-}
-
-.theme-high-contrast .text-zinc-200,
-.theme-high-contrast .text-zinc-100,
-.theme-high-contrast .text-white {
-  color: #f8fafc;
-}
-
-.theme-high-contrast .border-zinc-900,
-.theme-high-contrast .border-zinc-800,
-.theme-high-contrast .border-zinc-700,
-.theme-high-contrast .border-slate-400\/10,
-.theme-high-contrast .border-slate-400\/15 {
-  border-color: rgba(226, 232, 240, 0.24);
-}
-
-.theme-high-contrast .bg-zinc-800,
-.theme-high-contrast [class*="bg-[#090b0f]"],
-.theme-high-contrast [class*="bg-[#0b0f14]"],
-.theme-high-contrast [class*="bg-[#0d1117]"] {
-  background-color: rgba(2, 6, 23, 0.94);
-}
-
-.theme-high-contrast [class*="bg-[#111318]"],
-.theme-high-contrast [class*="bg-[#151922]"],
-.theme-high-contrast [class*="bg-[#1b2130]"] {
-  background-color: rgba(15, 23, 42, 0.96);
-}
-
-.theme-high-contrast [class*="text-[#6fb6d8]"],
-.theme-high-contrast [class*="text-[#82aaff]"] {
-  color: #7dd3fc;
-}
-
-.theme-high-contrast [class*="text-[#c792ea]"] {
-  color: #e9d5ff;
-}
-
-.theme-high-contrast [class*="text-[#ecc48d]"] {
-  color: #fde68a;
-}
-
-.theme-high-contrast [class*="text-[#d6b56d]"] {
-  color: #facc15;
-}
-
-.theme-high-contrast a:focus-visible,
-.theme-high-contrast button:focus-visible {
-  outline: 2px solid rgba(103, 232, 249, 0.9);
-  outline-offset: 2px;
-}
-
-.word-keep-all {
-  word-break: keep-all;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 480ms ease, transform 480ms ease;
-}
-
-.reveal--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal--visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+/* Custom Utilities or overrides */
+::selection {
+  background: var(--color-accent-primary);
+  color: white;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CatPortfolioPage from "@/pages/cat-portfolio/ui/CatPortfolioPage";
 import DetailPage from "@/pages/detail/ui/DetailPage";
-import PortfolioPage from "@/pages/portfolio/ui/PortfolioPage";
+import ModernPortfolioPage from "@/pages/portfolio/ui/ModernPortfolioPage";
 import BackToTopButton from "@/shared/ui/BackToTopButton";
 
 const detailRoutes = new Set(["education", "skills", "language", "certifications"]);
@@ -38,11 +38,11 @@ export default function App() {
   ) : detailRoutes.has(route.type) ? (
     <DetailPage type={route.type} itemId={route.itemId} />
   ) : (
-    <PortfolioPage />
+    <ModernPortfolioPage />
   );
 
   return (
-    <div className={isCatPortfolio ? "min-h-screen bg-[#fff8ef] text-stone-900" : "theme-high-contrast min-h-screen bg-slate-950"}>
+    <div className={isCatPortfolio ? "min-h-screen bg-[#fff8ef] text-stone-900" : "min-h-screen bg-[#0a0a0a]"}>
       {page}
       <BackToTopButton />
     </div>

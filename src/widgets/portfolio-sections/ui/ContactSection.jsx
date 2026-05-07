@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, Mail } from "lucide-react";
+import { ArrowRight, ExternalLink, Mail, Youtube } from "lucide-react";
 import { TistoryIcon } from "@/shared/ui/TistoryIcon";
 import CodeCard from "@/shared/ui/CodeCard";
 
@@ -73,6 +73,7 @@ export default function ContactSection({ profile }) {
             <ContactLink href={profile.tistory} label="Tistory" varName="blog" icon={TistoryIcon} external />
             <ContactLink href={profile.github} label="GitHub" varName="github" icon={ExternalLink} external />
             <ContactLink href={profile.linkedin} label="LinkedIn" varName="linkedin" icon={ExternalLink} external />
+            <ContactLink href={profile.youtube} label="YouTube" varName="youtube" icon={Youtube} external />
           </div>
         </div>
       </CodeCard>
