@@ -89,7 +89,7 @@ function ProjectCard({ project, index }) {
   const topTags = view.tags?.slice(0, 8) ?? [];
 
   return (
-    <article className="group relative min-w-0 overflow-hidden border border-white/10 bg-[#0a0a0a]/80">
+    <article className="group relative min-w-0 shrink-0 w-[85vw] md:w-[75vw] lg:w-[850px] overflow-hidden border border-white/10 bg-[#0a0a0a]/80 snap-start">
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:24px_24px] opacity-80" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[#ff6188] via-[#fc9867] to-[#ffd866] opacity-70" />
 
@@ -219,7 +219,7 @@ export default function ModernProjectsSection({ projects }) {
 
         </div>
 
-        <div className="grid gap-6">
+        <div className="flex gap-8 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
