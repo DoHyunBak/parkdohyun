@@ -6,6 +6,7 @@ import ModernProjectsSection from "@/widgets/portfolio-sections/ui/ModernProject
 import ModernContactSection from "@/widgets/portfolio-sections/ui/ModernContactSection";
 import ModernFooter from "@/widgets/footer/ui/ModernFooter";
 import BorderGlow from "@/shared/ui/BorderGlow";
+import DHBot from "@/shared/ui/DHBot";
 
 export default function ModernPortfolioPage() {
   return (
@@ -58,6 +59,9 @@ export default function ModernPortfolioPage() {
       </main>
 
       <ModernFooter name={portfolioData.profile.name} />
+
+      {/* DH Bot — Floating Chatbot */}
+      <DHBot />
     </div>
   );
 }

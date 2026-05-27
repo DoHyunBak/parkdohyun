@@ -1,0 +1,475 @@
+/* ───────────────────────────────────────────
+   DH Bot — Floating Chatbot Widget
+─────────────────────────────────────────── */
+
+.dhbot-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF3D52 0%, #4D5FFF 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(255, 61, 82, 0.45), 0 0 0 0 rgba(255, 61, 82, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: dhbot-pulse 3s ease-in-out infinite;
+}
+
+.dhbot-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 32px rgba(255, 61, 82, 0.6), 0 0 0 0 rgba(255, 61, 82, 0);
+  animation: none;
+}
+
+.dhbot-fab svg {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.dhbot-fab.open svg {
+  transform: rotate(45deg) scale(0.9);
+}
+
+@keyframes dhbot-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 24px rgba(255, 61, 82, 0.45), 0 0 0 0 rgba(255, 61, 82, 0.25);
+  }
+  50% {
+    box-shadow: 0 4px 24px rgba(255, 61, 82, 0.45), 0 0 0 10px rgba(255, 61, 82, 0);
+  }
+}
+
+/* ── Badge ── */
+.dhbot-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffd866;
+  border: 2px solid #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: #0a0a0a;
+  animation: dhbot-badge-pop 0.3s ease;
+}
+
+@keyframes dhbot-badge-pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ── Chat Window ── */
+.dhbot-window {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  z-index: 9999;
+  width: 360px;
+  max-height: 560px;
+  border-radius: 16px;
+  background: #111116;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 61, 82, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  animation: dhbot-window-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dhbot-window-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 440px) {
+  .dhbot-window {
+    width: calc(100vw - 32px);
+    right: 16px;
+    bottom: 88px;
+  }
+  .dhbot-fab {
+    bottom: 20px;
+    right: 16px;
+  }
+}
+
+/* ── Header ── */
+.dhbot-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, rgba(255, 61, 82, 0.12) 0%, rgba(77, 95, 255, 0.08) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.dhbot-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF3D52, #4D5FFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.dhbot-avatar::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2px solid #111116;
+}
+
+.dhbot-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dhbot-header-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.dhbot-header-status {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 1px;
+}
+
+.dhbot-header-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.dhbot-header-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Messages ── */
+.dhbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.dhbot-messages::-webkit-scrollbar {
+  width: 4px;
+}
+.dhbot-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dhbot-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* ── Message Bubbles ── */
+.dhbot-msg {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  animation: dhbot-msg-in 0.2s ease;
+}
+
+@keyframes dhbot-msg-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dhbot-msg.user {
+  flex-direction: row-reverse;
+}
+
+.dhbot-msg-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF3D52, #4D5FFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.dhbot-msg-bubble {
+  max-width: 78%;
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.dhbot-msg.bot .dhbot-msg-bubble {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  border-bottom-left-radius: 4px;
+}
+
+.dhbot-msg.user .dhbot-msg-bubble {
+  background: linear-gradient(135deg, #FF3D52 0%, #cc2d3f 100%);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.dhbot-msg-time {
+  font-size: 10px;
+  color: #4b5563;
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+.dhbot-msg.user .dhbot-msg-time {
+  text-align: right;
+}
+
+/* ── Typing Indicator ── */
+.dhbot-typing {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.dhbot-typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+}
+
+.dhbot-typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6b7280;
+  animation: dhbot-dot 1.2s ease-in-out infinite;
+}
+
+.dhbot-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.dhbot-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dhbot-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Quick Replies ── */
+.dhbot-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 0 8px;
+}
+
+.dhbot-quick-btn {
+  background: rgba(77, 95, 255, 0.12);
+  border: 1px solid rgba(77, 95, 255, 0.3);
+  color: #a5b4fc;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.dhbot-quick-btn:hover {
+  background: rgba(77, 95, 255, 0.25);
+  border-color: rgba(77, 95, 255, 0.6);
+  color: #c7d2fe;
+  transform: translateY(-1px);
+}
+
+/* ── Input Area ── */
+.dhbot-input-area {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 12px 14px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dhbot-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 9px 12px;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: inherit;
+  resize: none;
+  min-height: 38px;
+  max-height: 100px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.dhbot-input::placeholder {
+  color: #4b5563;
+}
+
+.dhbot-input:focus {
+  border-color: rgba(255, 61, 82, 0.4);
+}
+
+/* 글자 수 초과 경고 스타일 */
+.dhbot-input--overlimit {
+  border-color: rgba(239, 68, 68, 0.7) !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+  animation: dhbot-shake 0.25s ease;
+}
+
+@keyframes dhbot-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+.dhbot-send-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #FF3D52, #cc2d3f);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.dhbot-send-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(255, 61, 82, 0.4);
+}
+
+.dhbot-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.dhbot-send-btn svg {
+  width: 16px;
+  height: 16px;
+  color: #ffffff;
+}
+
+/* ── Light Mode ── */
+.light-mode .dhbot-window {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 61, 82, 0.08);
+}
+
+.light-mode .dhbot-header {
+  background: linear-gradient(90deg, rgba(255, 61, 82, 0.06) 0%, rgba(77, 95, 255, 0.04) 100%);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.light-mode .dhbot-avatar::after {
+  border-color: #ffffff;
+}
+
+.light-mode .dhbot-header-name {
+  color: #111111;
+}
+
+.light-mode .dhbot-header-status {
+  color: #9ca3af;
+}
+
+.light-mode .dhbot-header-close:hover {
+  color: #111111;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.light-mode .dhbot-msg.bot .dhbot-msg-bubble {
+  background: #f3f4f6;
+  border-color: rgba(0, 0, 0, 0.06);
+  color: #1f2937;
+}
+
+.light-mode .dhbot-typing-dots {
+  background: #f3f4f6;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.light-mode .dhbot-input-area {
+  background: rgba(0, 0, 0, 0.02);
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+.light-mode .dhbot-input {
+  background: #f9fafb;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #111111;
+}
+
+.light-mode .dhbot-input:focus {
+  border-color: rgba(255, 61, 82, 0.35);
+}
+
+.light-mode .dhbot-badge {
+  border-color: #ffffff;
+}
