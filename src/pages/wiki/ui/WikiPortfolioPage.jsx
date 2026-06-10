@@ -104,7 +104,7 @@ export default function WikiPortfolioPage() {
           {/* 광고 배너 (패러디) */}
           <div className="namu-adbanner">
             <span className="namu-ad-label">광고</span>
-            <img src="/logo.png" alt="ad" style={{ width: '100%', height: 'auto', maxHeight: '100px', objectFit: 'contain', padding: '10px' }} />
+            <img src={wikiData.ads[0].img} alt="ad" style={{ width: '100%', height: 'auto', maxHeight: '120px', objectFit: 'contain' }} />
           </div>
 
           {/* 분류 */}
@@ -120,7 +120,7 @@ export default function WikiPortfolioPage() {
           </div>
 
           {/* 관련 문서 틀 (중앙 배치) */}
-          <div className="namu-navbox" style={{ maxWidth: '650px', margin: '20px auto' }}>
+          <div className="namu-navbox" style={{ maxWidth: '700px', margin: '20px auto' }}>
             <div className="namu-navbox-head" style={{ justifyContent: 'center', gap: '15px' }}>
               <img className="namu-navbox-logo" src="/logo.png" alt="" />
               <div style={{ textAlign: 'center' }}>
@@ -184,7 +184,7 @@ export default function WikiPortfolioPage() {
 
           <div className="namu-body">
             {/* 목차 */}
-            <nav className="namu-toc" id="namu-toc" style={{ fontSize: '11.5px', minWidth: '180px' }}>
+            <nav className="namu-toc" id="namu-toc">
               <div className="namu-toc-title">목차</div>
               <ol>
                 <li><span className="namu-toc-num">1.</span><a href="#s-overview">개요</a></li>
@@ -579,15 +579,15 @@ export default function WikiPortfolioPage() {
 
           <div className="namu-rail-sticky">
             {/* 광고 1 */}
-            <a className="namu-railad" href={wikiData.ads[0].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent' }}>
+            <a className="namu-railad" href={wikiData.ads[1].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent' }}>
               <span className="namu-ad-label" style={{ position: 'static', marginBottom: '5px' }}>광고</span>
-              <img src="/logo.png" alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
+              <img src={wikiData.ads[1].img} alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
             </a>
 
             {/* 광고 2 */}
-            <a className="namu-railad" href={wikiData.ads[1].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent', marginTop: '15px' }}>
+            <a className="namu-railad" href={wikiData.ads[2].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent', marginTop: '15px' }}>
               <span className="namu-ad-label" style={{ position: 'static', marginBottom: '5px' }}>광고</span>
-              <img src="/logo.png" alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
+              <img src={wikiData.ads[2].img} alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
             </a>
           </div>
         </aside>

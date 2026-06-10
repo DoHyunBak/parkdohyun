@@ -12,7 +12,7 @@ export const wikiData = {
   disambiguation: "개발자",
   romaja: "Park Do-hyun",
   lastEdited: new Date().toISOString().replace('T', ' ').substring(0, 19), 
-  editCount: 684,
+  editCount: 712,
   image: "/profile.jpg",
 
   notice:
@@ -68,7 +68,7 @@ export const wikiData = {
   timeline: [
     { year: "2002. 03. 23.", event: "서울특별시 출생" },
     { year: "유년기", event: "당곡초등학교 → 성보중학교 → 세화고등학교 졸업" },
-    { year: "고교 시절", event: "원래 초등교사를 지망하여 교대 입시를 준비했으나, 저출산 문제로 인한 임용 절벽에 절망하고 진로를 컴퓨터공학으로 선회" },
+    { year: "고교 시절", event: "원래 초등교사를 지망하여 교대 입시를 준비했으나, 저출산 문제로 인한 임용 절벽 현상에 절망하고 진로를 컴퓨터공학으로 선회" },
     { year: "2021. 03.", event: "한양대학교 소프트웨어융합대학 입학 (컴퓨터 교사가 될 수 있다는 차선책을 염두에 둠)" },
     { year: "2022 - 2024", event: "제31보병사단 95여단 병장 만기전역 (2022.08.09 ~ 2024.02.08)" },
     { year: "2025. 07.", event: "산학협력 프로젝트 'U-sto' 백엔드 아키텍처 설계 및 구축 주도" },
@@ -253,20 +253,19 @@ export const wikiData = {
 
   ads: [
     {
-      id: "hire",
-      title: "백엔드 개발자 박도현",
-      body: "안정적인 데이터 흐름을 설계합니다.",
-      cta: "지금 연락하기",
-      href: "mailto:badberg2002@gmail.com",
-      img: "/logo.png"
+      id: "top",
+      img: "/top_ad.png",
+      href: "https://github.com/DoHyunBak",
     },
     {
-      id: "github",
-      title: "GitHub 저장소 방문",
-      body: "342번의 커밋, 끊임없는 성장.",
-      cta: "저장소 보기",
-      href: "https://github.com/DoHyunBak",
-      img: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      id: "right1",
+      img: "/right_ad_1.png",
+      href: "https://github.com/DoHyunBak/parkdohyun",
+    },
+    {
+      id: "right2",
+      img: "/right_ad_2.png",
+      href: "mailto:badberg2002@gmail.com",
     },
   ],
 
@@ -287,7 +286,6 @@ export const wikiData = {
     "MIPS: Maximum Inner Product Search의 약자로, 벡터 공간에서 가장 유사도가 높고 빠른 검색을 가능케 하는 기술.",
     "Encoder: 데이터를 임베딩(숫자 벡터) 공간의 좌표로 변환하는 장치.",
     "Generator: RAG 파이프라인에서 검색된 정보와 질문을 결합하여 최종 답변 문장을 생성하는 LLM 단계.",
-    "Moore’s Law for Space: 우주 발사 비용이 급격히 감소하며 접근성이 높아지는 현상을 무어의 법칙에 비유한 개념.",
     "Successful Failure: 실패하더라도 그 과정에서 얻은 교훈이 미래의 성공을 위한 자산이 된다는 긍정적 실패관 (Apollo 13 사례).",
     "저출산 문제와 임용 절벽: 교대 지망생들의 꿈을 꺾게 만든 대한민국 사회의 거시적 변수.",
     "Staging Table: 대량의 외부 데이터를 본 테이블에 반영하기 전 임시로 적재하여 가공하거나 검증하는 중간 테이블.",
