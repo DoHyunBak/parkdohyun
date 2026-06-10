@@ -508,8 +508,8 @@ export default function WikiPortfolioPage() {
               <span className="namu-secnum">15.</span>둘러보기<Edit />
             </h2>
             <ul>
-              {wikiData.infobox.find(i => i.type === "links")?.value.map((l, i) => (
-                <li key={l.label}><Ext href={l.href}>[{i + 1}] {l.label}</Ext></li>
+              {wikiData.infobox.find(i => i.type === "links")?.value.map((l) => (
+                <li key={l.label}><Ext href={l.href} blue>{l.label}</Ext></li>
               ))}
             </ul>
           </div>
