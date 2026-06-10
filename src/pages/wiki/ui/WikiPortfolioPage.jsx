@@ -494,9 +494,9 @@ export default function WikiPortfolioPage() {
             <ul>
               {wikiData.trivia.map((t, i) => (
                 <li key={i}>
-                  {t.includes("Tistory") ? <>{t.split("(Tistory)")[0]}<Ext href="https://parkdohyun.tistory.com/" blue>Tistory</Ext>{t.split("(Tistory)")[1]}</> : 
-                   t.includes("'Park Brain'") ? <>{t.split("'Park Brain'")[0]}<Ext href="https://github.com/DoHyunBak/Park_Brain" blue>'Park Brain'</Ext>{t.split("'Park Brain'")[1]}</> :
-                   t.includes("'임자'") ? <>{t.split("'임자'")[0]}<Ext href="https://seoimja.vercel.app/" blue>'임자'</Ext>{t.split("'임자'")[1]}</> : t}
+                  {t.includes("Tistory") ? <>{t.split("Tistory")[0]}<Ext href="https://parkdohyun.tistory.com/" blue>Tistory</Ext>{t.split("Tistory")[1]}</> : 
+                   t.includes("Park Brain") ? <>{t.split("Park Brain")[0]}<Ext href="https://github.com/DoHyunBak/Park_Brain" blue>Park Brain</Ext>{t.split("Park Brain")[1]}</> :
+                   t.includes("똑똑한 형님들") ? <>{t}</> : t}
                 </li>
               ))}
             </ul>
@@ -506,8 +506,8 @@ export default function WikiPortfolioPage() {
               <span className="namu-secnum">15.</span>둘러보기<Edit />
             </h2>
             <ul>
-              {wikiData.infobox.find(i => i.type === "links")?.value.map((l) => (
-                <li key={l.label}><Ext href={l.href} blue>{l.label}</Ext></li>
+              {wikiData.infobox.find(i => i.type === "links")?.value.map((l, i) => (
+                <li key={l.label}><Ext href={l.href} blue>[{i + 1}] {l.label}</Ext></li>
               ))}
             </ul>
           </div>

@@ -12,7 +12,7 @@ export const wikiData = {
   disambiguation: "개발자",
   romaja: "Park Do-hyun",
   lastEdited: new Date().toISOString().replace('T', ' ').substring(0, 19), 
-  editCount: 658,
+  editCount: 684,
   image: "/profile.jpg",
 
   notice:
@@ -39,7 +39,7 @@ export const wikiData = {
     { label: "데뷔", type: "debut", value: <><a href="https://namu.wiki/w/2025년" target="_blank" rel="noreferrer">2025년</a> 산학캡스톤디자인</>, sub: `(데뷔일로부터 +${diffDays}일)` },
     { label: "분야", value: <><a href="https://namu.wiki/w/B2B" target="_blank" rel="noreferrer">B2B</a> · <a href="https://namu.wiki/w/전사적 자원 관리" target="_blank" rel="noreferrer">ERP/SAP</a> · <a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">엔터프라이즈 백엔드</a></> },
     { label: "주력 스택", value: <><a href="https://namu.wiki/w/Java" target="_blank" rel="noreferrer">Java</a> · <a href="https://namu.wiki/w/Spring(프레임워크)" target="_blank" rel="noreferrer">Spring Boot</a> · <a href="https://namu.wiki/w/MySQL" target="_blank" rel="noreferrer">MySQL</a> · AI/RAG</> },
-    { label: "MBTI", value: "기록 없음" }, 
+    { label: "MBTI", value: "ENTP와 ISTJ가 번갈아 나와 신뢰하지 않음 (T는 확실)" }, 
     { label: "소속", value: <a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> },
     {
       label: "링크",
@@ -104,7 +104,7 @@ export const wikiData = {
       id: "usto",
       name: "대학물품관리시스템 (U-sto)",
       domain: "B2B · 대학 자산 관리 (EAM) · 공공데이터",
-      role: "백엔드 총괄 · DB 아키트트",
+      role: "백엔드 총괄 · DB 아키텍트",
       desc: "조달청 G2B OpenAPI를 연동하여 대학 내 수만 건의 자산을 관리하는 시스템. AI 예측 API 연동 시 발생한 DTO 구조 불일치(422 Error)를 '외부 전송 전용 DTO 분리' 전략으로 해결했다. Sync History 패턴을 도입하여 동기화 이력을 완벽히 추적한다.",
       status: "완료",
       links: [
@@ -231,7 +231,7 @@ export const wikiData = {
     "기술 블로그(Tistory)를 통해 실제 삽질의 기록을 공유한다.",
     "로컬에 'Park Brain'이라는 Obsidian 기반 지식 저장소가 매일 자동 동기화되고 있다.",
     "백엔드 개발의 완성도를 높이기 위한 도구로서 AX와 RAG를 탐구한다.",
-    "반려묘 '임자'를 위한 전용 웹 포트폴리오를 구상 중인 집사다."
+    "똑똑한 형님들이 구상하고 만든 것을 재배치해서 내 것으로 만드는 것을 모토로 삼는다."
   ],
 
   realtimeSearch: [
@@ -258,7 +258,7 @@ export const wikiData = {
       body: "안정적인 데이터 흐름을 설계합니다.",
       cta: "지금 연락하기",
       href: "mailto:badberg2002@gmail.com",
-      img: "/profile.jpg"
+      img: "/logo.png"
     },
     {
       id: "github",
@@ -287,6 +287,7 @@ export const wikiData = {
     "MIPS: Maximum Inner Product Search의 약자로, 벡터 공간에서 가장 유사도가 높고 빠른 검색을 가능케 하는 기술.",
     "Encoder: 데이터를 임베딩(숫자 벡터) 공간의 좌표로 변환하는 장치.",
     "Generator: RAG 파이프라인에서 검색된 정보와 질문을 결합하여 최종 답변 문장을 생성하는 LLM 단계.",
+    "Moore’s Law for Space: 우주 발사 비용이 급격히 감소하며 접근성이 높아지는 현상을 무어의 법칙에 비유한 개념.",
     "Successful Failure: 실패하더라도 그 과정에서 얻은 교훈이 미래의 성공을 위한 자산이 된다는 긍정적 실패관 (Apollo 13 사례).",
     "저출산 문제와 임용 절벽: 교대 지망생들의 꿈을 꺾게 만든 대한민국 사회의 거시적 변수.",
     "Staging Table: 대량의 외부 데이터를 본 테이블에 반영하기 전 임시로 적재하여 가공하거나 검증하는 중간 테이블.",

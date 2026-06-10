@@ -166,7 +166,7 @@
 /* ===== 인포박스 (우측 플로팅) ===== */
 .namu-infobox {
   float: right;
-  width: 320px;
+  width: 380px; /* 요청에 따라 380px로 확대 */
   margin-left: 20px;
   margin-bottom: 20px;
   border: 2px solid var(--namu-accent);
@@ -176,15 +176,16 @@
   background: var(--namu-accent);
   color: #fff;
   text-align: center;
-  padding: 8px;
+  padding: 12px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 .namu-infobox-head .namu-romaja {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: normal;
   opacity: 0.9;
+  margin-top: 2px;
 }
 .namu-infobox-img {
   width: 100%;
@@ -193,19 +194,23 @@
 .namu-infobox table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 14px;
 }
 .namu-infobox th {
   background: var(--namu-accent);
   color: #fff;
-  width: 80px;
-  padding: 6px;
+  width: 90px;
+  padding: 8px;
   text-align: center;
   border: 1px solid #fff;
+  font-weight: bold;
 }
 .namu-infobox td {
-  padding: 6px 10px;
+  padding: 8px 12px;
   border-bottom: 1px solid var(--namu-line);
+}
+.namu-infobox a {
+  color: var(--namu-link) !import; /* 인포박스 내 링크는 무조건 파란색 */
 }
 
 /* ===== 목차 ===== */
@@ -213,21 +218,21 @@
   display: inline-block;
   background: var(--namu-box-bg);
   border: 1px solid var(--namu-border);
-  padding: 15px;
-  margin-bottom: 20px;
-  min-width: 200px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  min-width: 170px;
 }
 .namu-toc-title {
   font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 13px;
+  margin-bottom: 6px;
   text-align: center;
 }
 .namu-toc ol {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 13.5px;
+  font-size: 12.5px;
 }
 .namu-toc ol ol {
   padding-left: 15px;
