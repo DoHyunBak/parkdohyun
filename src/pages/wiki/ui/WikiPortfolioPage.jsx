@@ -15,7 +15,7 @@ function Fn({ n }) {
 }
 
 /* 외부 링크 */
-function Ext({ href, children, blue = false }) {
+function Ext({ href, children, blue = true }) {
   return (
     <a 
       href={href} 
@@ -101,10 +101,12 @@ export default function WikiPortfolioPage() {
             </span>
           </div>
 
-          {/* 광고 배너 (패러디) */}
-          <div className="namu-adbanner">
+          {/* 광고 배너 (패러디) - top_ad 공백 제거 버전 */}
+          <div className="namu-adbanner" style={{ border: 'none', background: 'transparent', padding: 0, overflow: 'hidden' }}>
             <span className="namu-ad-label">광고</span>
-            <img src={wikiData.ads[0].img} alt="ad" style={{ width: '100%', height: 'auto', maxHeight: '120px', objectFit: 'contain' }} />
+            <a href={wikiData.ads[0].href} target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%' }}>
+              <img src={wikiData.ads[0].img} alt="top ad" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
+            </a>
           </div>
 
           {/* 분류 */}
@@ -112,11 +114,11 @@ export default function WikiPortfolioPage() {
             <b>분류</b>
             {wikiData.categories.map((c, i) => (
               <span key={c}>
-                <a href="#none" onClick={(e) => e.preventDefault()}>{c}</a>
+                <a href="#none" onClick={(e) => e.preventDefault()} style={{ color: 'var(--namu-link)' }}>{c}</a>
                 {i < wikiData.categories.length - 1 ? " · " : ""}
               </span>
             ))}{" "}
-            <a href="#none" onClick={(e) => e.preventDefault()}>[더 보기]</a>
+            <a href="#none" onClick={(e) => e.preventDefault()} style={{ color: 'var(--namu-link)' }}>[더 보기]</a>
           </div>
 
           {/* 관련 문서 틀 (중앙 배치) */}
@@ -130,15 +132,15 @@ export default function WikiPortfolioPage() {
             </div>
             <div className="namu-navbox-body">
               <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '15px 30px' }}>
-                <a href="#s-projects">메인 프로젝트</a>
-                <a href="#s-vibe-labs">Vibe Coding Labs</a>
-                <a href="#s-stack">주력 기술 스택</a>
-                <a href="#s-academic">학술 활동</a>
-                <a href="#s-knowledge">지식 창고</a>
+                <a href="#s-projects" style={{ color: 'var(--namu-link)' }}>메인 프로젝트</a>
+                <a href="#s-vibe-labs" style={{ color: 'var(--namu-link)' }}>Vibe Coding Labs</a>
+                <a href="#s-stack" style={{ color: 'var(--namu-link)' }}>주력 기술 스택</a>
+                <a href="#s-academic" style={{ color: 'var(--namu-link)' }}>학술 활동</a>
+                <a href="#s-knowledge" style={{ color: 'var(--namu-link)' }}>지식 창고</a>
               </div>
               <div style={{ borderTop: '1px solid #ebebeb', margin: '10px 0', paddingTop: '10px', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '15px 30px' }}>
                 {wikiData.infobox.find(i => i.type === "links")?.value.map((l) => (
-                  <Ext key={l.label} href={l.href} blue>{l.label}</Ext>
+                  <Ext key={l.label} href={l.href}>{l.label}</Ext>
                 ))}
               </div>
             </div>
@@ -160,12 +162,12 @@ export default function WikiPortfolioPage() {
                       {row.type === "links" ? (
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 12px' }}>
                           {row.value.map(l => (
-                            <Ext key={l.label} href={l.href} blue>{l.label}</Ext>
+                            <Ext key={l.label} href={l.href}>{l.label}</Ext>
                           ))}
                         </div>
                       ) : row.type === "debut" ? (
                         <div>
-                          <div>{row.value}</div>
+                          <div style={{ color: 'var(--namu-link)' }}>{row.value}</div>
                           <div style={{ fontSize: "0.85em", color: "var(--namu-muted)", marginTop: "3px" }}>{row.sub}</div>
                         </div>
                       ) : row.value === "TODO" ? (
@@ -173,7 +175,7 @@ export default function WikiPortfolioPage() {
                       ) : Array.isArray(row.value) ? (
                         row.value.map((v, i) => <div key={i}>{v}</div>)
                       ) : (
-                        row.value
+                        <div className="namu-infobox-cell">{row.value}</div>
                       )}
                     </td>
                   </tr>
@@ -356,7 +358,7 @@ export default function WikiPortfolioPage() {
                       <td>
                         {p.links.length > 0 ? p.links.map((l, li) => (
                           <span key={l.label}>
-                            <Ext href={l.href} blue>{l.label}</Ext>
+                            <Ext href={l.href}>{l.label}</Ext>
                             {li < p.links.length - 1 ? " · " : ""}
                           </span>
                         )) : "기록 없음"}
@@ -383,7 +385,7 @@ export default function WikiPortfolioPage() {
                   </div>
                   <p style={{ fontSize: '0.88em', margin: '5px 0' }}>{v.desc}</p>
                   <div style={{ marginTop: '8px' }}>
-                    {v.links.map(l => <Ext key={l.label} href={l.href} blue><span style={{ fontSize: '0.82em' }}>[{l.label}]</span></Ext>)}
+                    {v.links.map(l => <Ext key={l.label} href={l.href}><span style={{ fontSize: '0.82em' }}>[{l.label}]</span></Ext>)}
                   </div>
                 </div>
               ))}
@@ -494,8 +496,8 @@ export default function WikiPortfolioPage() {
             <ul>
               {wikiData.trivia.map((t, i) => (
                 <li key={i}>
-                  {t.includes("Tistory") ? <>{t.split("Tistory")[0]}<Ext href="https://parkdohyun.tistory.com/" blue>Tistory</Ext>{t.split("Tistory")[1]}</> : 
-                   t.includes("Park Brain") ? <>{t.split("Park Brain")[0]}<Ext href="https://github.com/DoHyunBak/Park_Brain" blue>Park Brain</Ext>{t.split("Park Brain")[1]}</> :
+                  {t.includes("Tistory") ? <>{t.split("Tistory")[0]}<Ext href="https://parkdohyun.tistory.com/">Tistory</Ext>{t.split("Tistory")[1]}</> : 
+                   t.includes("Park Brain") ? <>{t.split("Park Brain")[0]}<Ext href="https://github.com/DoHyunBak/Park_Brain">Park Brain</Ext>{t.split("Park Brain")[1]}</> :
                    t.includes("똑똑한 형님들") ? <>{t}</> : t}
                 </li>
               ))}
@@ -507,7 +509,7 @@ export default function WikiPortfolioPage() {
             </h2>
             <ul>
               {wikiData.infobox.find(i => i.type === "links")?.value.map((l, i) => (
-                <li key={l.label}><Ext href={l.href} blue>[{i + 1}] {l.label}</Ext></li>
+                <li key={l.label}><Ext href={l.href}>[{i + 1}] {l.label}</Ext></li>
               ))}
             </ul>
           </div>
@@ -517,7 +519,7 @@ export default function WikiPortfolioPage() {
             <ol>
               {wikiData.footnotes.map((f, i) => (
                 <li key={i} id={`fn-${i + 1}`}>
-                  <a href={`#fnref-${i + 1}`}>↑</a> {f}
+                  <a href={`#fnref-${i + 1}`}>[{i + 1}]</a> {f}
                 </li>
               ))}
             </ol>
@@ -579,9 +581,9 @@ export default function WikiPortfolioPage() {
 
           <div className="namu-rail-sticky">
             {/* 광고 1 */}
-            <a className="namu-railad" href={wikiData.ads[1].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent' }}>
+            <a className="namu-railad" href={wikiData.ads[0].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent' }}>
               <span className="namu-ad-label" style={{ position: 'static', marginBottom: '5px' }}>광고</span>
-              <img src={wikiData.ads[1].img} alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
+              <img src={wikiData.ads[0].img} alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
             </a>
 
             {/* 광고 2 */}
