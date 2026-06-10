@@ -581,9 +581,9 @@ export default function WikiPortfolioPage() {
 
           <div className="namu-rail-sticky">
             {/* 광고 1 */}
-            <a className="namu-railad" href={wikiData.ads[0].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent' }}>
+            <a className="namu-railad" href={wikiData.ads[1].href} target="_blank" rel="noreferrer" style={{ display: 'block', padding: 0, border: 'none', background: 'transparent' }}>
               <span className="namu-ad-label" style={{ position: 'static', marginBottom: '5px' }}>광고</span>
-              <img src={wikiData.ads[0].img} alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
+              <img src={wikiData.ads[1].img} alt="ad" style={{ width: '100%', borderRadius: '4px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '10px', background: '#fff' }} />
             </a>
 
             {/* 광고 2 */}

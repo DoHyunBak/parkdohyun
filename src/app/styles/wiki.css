@@ -209,8 +209,12 @@
   padding: 8px 12px;
   border-bottom: 1px solid var(--namu-line);
 }
-.namu-infobox a {
-  color: var(--namu-link) !import; /* 인포박스 내 링크는 무조건 파란색 */
+.namu-infobox td a {
+  color: var(--namu-link) !important;
+  text-decoration: none;
+}
+.namu-infobox td a:hover {
+  text-decoration: underline;
 }
 
 /* ===== 목차 ===== */
