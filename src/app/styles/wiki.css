@@ -21,448 +21,23 @@
   font-size: 15px;
   line-height: 1.7;
   word-break: keep-all;
+  zoom: 1.1;
 }
 
-/* ===== 상단 유틸 바 ===== */
-.namu-utilbar {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  border-bottom: 1px solid var(--namu-border);
-  background: #fafafa;
-  padding: 0 20px;
-  height: 44px;
-  font-size: 13px;
-}
-.namu-utilbar .namu-brand {
-  font-weight: 800;
-  color: var(--namu-accent);
-  letter-spacing: -0.5px;
-}
-.namu-utilbar a {
-  color: var(--namu-muted);
-  text-decoration: none;
-}
-.namu-utilbar a:hover {
-  color: var(--namu-text);
-}
-.namu-search {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-.namu-search input {
-  width: 200px;
-  max-width: 42vw;
-  border: 1px solid #d0d0d0;
-  border-radius: 2px;
-  padding: 5px 10px;
-  font-size: 13px;
-  background: #fff;
-  color: var(--namu-text);
-  outline: none;
-}
-.namu-search input:focus {
-  border-color: var(--namu-accent);
-}
-
-/* ===== 본문 컨테이너 ===== */
-.namu-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 18px 20px 60px;
-}
-
-/* ===== 제목 영역 ===== */
-.namu-title {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin: 6px 0 2px;
-}
-.namu-title .namu-disambig {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--namu-muted);
-}
-.namu-titlemeta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  color: var(--namu-muted);
-  font-size: 12.5px;
-  border-bottom: 2px solid var(--namu-text);
-  padding-bottom: 10px;
-}
-.namu-tabs {
-  margin-left: auto;
-  display: flex;
-  gap: 6px;
-}
-.namu-tabs button {
-  border: 1px solid #d4d4d4;
-  background: #f4f4f4;
-  color: var(--namu-text);
-  font-size: 12.5px;
-  padding: 4px 12px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.namu-tabs button:hover {
-  background: #e9e9e9;
-}
-.namu-editbadge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 22px;
-  height: 20px;
-  padding: 0 6px;
-  border-radius: 10px;
-  background: var(--namu-accent);
-  color: #fff;
-  font-weight: 700;
-  font-size: 11px;
-}
-
-/* ===== 분류 ===== */
-.namu-category {
-  margin: 12px 0;
-  font-size: 13px;
-  color: var(--namu-muted);
-}
-.namu-category b {
-  color: var(--namu-text);
-  margin-right: 6px;
-}
-.namu-category a {
-  color: var(--namu-link);
-  text-decoration: none;
-}
-.namu-category a:hover {
-  text-decoration: underline;
-}
-
-/* ===== 경고/안내 틀 ===== */
-.namu-notice {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  background: var(--namu-notice-bg);
-  border: 1px solid var(--namu-notice-border);
-  border-radius: 4px;
-  padding: 12px 14px;
-  margin: 14px 0 20px;
-  font-size: 13.5px;
-}
-.namu-notice .namu-notice-icon {
-  flex-shrink: 0;
-  font-size: 16px;
-  line-height: 1.4;
-}
-
-/* ===== 인포박스 ===== */
-.namu-infobox {
-  float: right;
-  width: 330px;
-  max-width: 100%;
-  margin: 0 0 18px 22px;
-  border: 2px solid var(--namu-accent);
-  border-radius: 4px;
-  overflow: hidden;
-  background: #fff;
-  font-size: 13px;
-}
-.namu-infobox-head {
-  background: var(--namu-accent);
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  font-weight: 800;
-  font-size: 17px;
-}
-.namu-infobox-head .namu-romaja {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  opacity: 0.9;
-  margin-top: 2px;
-}
-.namu-infobox-img {
-  display: block;
-  width: 130px;
-  height: 130px;
-  object-fit: contain;
-  margin: 16px auto;
-  background: #f3f3f3;
-  border-radius: 6px;
-  padding: 10px;
-}
-.namu-infobox table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.namu-infobox th,
-.namu-infobox td {
-  border-top: 1px solid var(--namu-line);
-  padding: 7px 10px;
-  vertical-align: top;
-  text-align: left;
-}
-.namu-infobox th {
-  background: var(--namu-accent);
-  color: #fff;
-  width: 92px;
-  font-weight: 700;
-  white-space: nowrap;
-  text-align: center;
-  border-top: 1px solid #ffffff;
-}
-.namu-infobox td {
-  color: var(--namu-link);
-}
-.namu-infobox td a {
-  color: var(--namu-link);
-  text-decoration: none;
-}
-.namu-infobox td a:hover {
-  text-decoration: underline;
-}
-.namu-infobox .namu-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 12px;
-  padding: 10px;
-  border-top: 1px solid var(--namu-line);
-}
-.namu-todo {
-  color: var(--namu-redlink);
-  font-weight: 700;
-}
-
-/* ===== 목차 ===== */
-.namu-toc {
-  display: inline-block;
-  min-width: 240px;
-  background: var(--namu-box-bg);
-  border: 1px solid var(--namu-border);
-  border-radius: 3px;
-  padding: 10px 16px;
-  margin: 6px 0 24px;
-  font-size: 13.5px;
-}
-.namu-toc-title {
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.namu-toc ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  counter-reset: toc;
-}
-.namu-toc ol ol {
-  padding-left: 18px;
-}
-.namu-toc li {
-  margin: 2px 0;
-}
-.namu-toc a {
-  color: var(--namu-link);
-  text-decoration: none;
-}
-.namu-toc a:hover {
-  text-decoration: underline;
-}
-.namu-toc .namu-toc-num {
-  color: var(--namu-muted);
-  margin-right: 6px;
-}
-
-/* ===== 섹션 / 제목 ===== */
-.namu-h2,
-.namu-h3 {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  border-bottom: 1px solid #d6d6d6;
-  padding-bottom: 5px;
-  margin: 34px 0 14px;
-  scroll-margin-top: 16px;
-}
-.namu-h2 {
-  font-size: 22px;
-  font-weight: 800;
-}
-.namu-h3 {
-  font-size: 18px;
-  font-weight: 700;
-}
-.namu-h2 .namu-secnum,
-.namu-h3 .namu-secnum {
-  color: var(--namu-muted);
-  font-weight: 700;
-}
-.namu-edit {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--namu-muted);
-  text-decoration: none;
-  cursor: pointer;
-}
-.namu-edit:hover {
-  text-decoration: underline;
-}
-
-/* ===== 본문 요소 ===== */
-.namu-body p {
-  margin: 10px 0;
-}
-.namu-body a {
-  color: var(--namu-link);
-  text-decoration: none;
-}
-.namu-body a:hover {
-  text-decoration: underline;
-}
-.namu-body ul {
-  margin: 10px 0;
-  padding-left: 22px;
-  list-style: disc;
-}
-.namu-body li {
-  margin: 4px 0;
-}
-
-/* 각주 위첨자 */
-.namu-fn {
-  font-size: 0.78em;
-  vertical-align: super;
-  line-height: 0;
-}
-.namu-fn a {
-  color: var(--namu-link);
-  text-decoration: none;
-}
-
-/* 인용문 */
-.namu-quote {
-  border: 1px solid var(--namu-border);
-  border-left: 4px solid var(--namu-accent);
-  background: #fbfbfb;
-  padding: 12px 16px;
-  margin: 14px 0;
-  border-radius: 0 4px 4px 0;
-}
-.namu-quote .namu-quote-text {
-  font-size: 15px;
-}
-.namu-quote .namu-quote-src {
-  display: block;
-  margin-top: 6px;
-  text-align: right;
-  color: var(--namu-muted);
-  font-size: 12.5px;
-}
-
-/* 표 (위키 테이블) */
-.namu-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 12px 0;
-  font-size: 13.5px;
-}
-.namu-table th,
-.namu-table td {
-  border: 1px solid var(--namu-border);
-  padding: 8px 10px;
-  text-align: left;
-  vertical-align: top;
-}
-.namu-table th {
-  background: var(--namu-th-bg);
-  white-space: nowrap;
-}
-.namu-tag {
-  display: inline-block;
-  font-size: 12px;
-  padding: 1px 7px;
-  border-radius: 3px;
-  background: #eef0f2;
-  color: #495057;
-  margin: 1px 2px;
-}
-.namu-status {
-  font-size: 12px;
-  font-weight: 700;
-}
-.namu-status.done {
-  color: var(--namu-accent);
-}
-.namu-status.wip {
-  color: #d08700;
-}
-
-/* ===== 각주 목록 ===== */
-.namu-footnotes {
-  margin-top: 36px;
-  border-top: 1px solid var(--namu-border);
-  padding-top: 14px;
-  font-size: 13px;
-  color: #444;
-}
-.namu-footnotes ol {
-  padding-left: 26px;
-  margin: 0;
-}
-.namu-footnotes li {
-  margin: 4px 0;
-}
-.namu-footnotes li:target {
-  background: #fff3cd;
-}
-.namu-footnotes a {
-  color: var(--namu-link);
-  text-decoration: none;
-}
-
-/* ===== 라이선스 / 푸터 ===== */
-.namu-license {
-  margin-top: 40px;
-  border-top: 1px solid var(--namu-border);
-  padding-top: 18px;
-  font-size: 12.5px;
-  color: var(--namu-muted);
-}
-.namu-license p {
-  margin: 6px 0;
-}
-.namu-footer {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 12px;
-  color: #adb5bd;
-  line-height: 1.9;
-}
-.namu-footer .namu-engine {
-  color: var(--namu-accent);
-  font-weight: 600;
-}
-
-/* ===== 상단 검은 네비바 (최신 나무위키) ===== */
+/* ===== 상단 네비바 (라이트모드 고정) ===== */
 .namu-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   align-items: center;
   gap: 22px;
   height: 50px;
   padding: 0 16px;
-  background: #23272e;
-  color: #e9ecef;
+  background: var(--namu-accent);
+  color: #ffffff;
   font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 .namu-nav .namu-logo {
   display: flex;
@@ -471,16 +46,17 @@
   font-weight: 800;
   font-size: 17px;
   color: #fff;
-  letter-spacing: -0.5px;
+  text-decoration: none;
 }
-.namu-nav .namu-logo span.mark {
-  font-size: 18px;
+.namu-nav .namu-logo img {
+  height: 28px;
+  width: auto;
 }
 .namu-nav .namu-navlink {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #ced4da;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-weight: 600;
 }
@@ -496,8 +72,8 @@
 .namu-nav-search {
   display: flex;
   align-items: center;
-  background: #15171b;
-  border: 1px solid #3a3f46;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   padding: 0 8px;
   height: 34px;
@@ -508,11 +84,11 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #e9ecef;
+  color: #fff;
   font-size: 13.5px;
 }
 .namu-nav-search input::placeholder {
-  color: #868e96;
+  color: rgba(255, 255, 255, 0.6);
 }
 .namu-nav-icon {
   display: inline-flex;
@@ -521,345 +97,407 @@
   width: 34px;
   height: 34px;
   border-radius: 6px;
-  background: #15171b;
-  border: 1px solid #3a3f46;
-  color: #ced4da;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
 }
 .namu-nav-icon:hover {
   color: #fff;
+  background: rgba(0, 0, 0, 0.25);
 }
 
-/* ===== 2단 셸 (본문 + 우측 사이드바) ===== */
+/* ===== 메인 컨테이너 레이아웃 ===== */
 .namu-shell {
   display: flex;
-  align-items: flex-start;
-  gap: 22px;
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 16px 18px 64px;
+  padding: 20px;
+  gap: 20px;
 }
 .namu-main {
   flex: 1;
-  min-width: 0;
-}
-.namu-rail {
-  width: 316px;
-  flex-shrink: 0;
-}
-
-/* 제목 영역 탭을 아이콘 버튼처럼 */
-.namu-tabs button {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* ===== 광고 (패러디) ===== */
-.namu-adbanner {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
-  border: 1px solid #e0e0e0;
-  background: linear-gradient(135deg, #fafbff, #f3f6ff);
-  border-radius: 6px;
-  padding: 16px 18px;
-  margin: 6px 0 16px;
-}
-.namu-adbanner .namu-ad-text {
-  flex: 1;
-  min-width: 200px;
-}
-.namu-adbanner .namu-ad-title {
-  font-weight: 800;
-  font-size: 15px;
-  color: #212529;
-}
-.namu-adbanner .namu-ad-body {
-  font-size: 13px;
-  color: #5c636a;
-  margin-top: 2px;
-}
-.namu-adbanner .namu-ad-cta {
-  flex-shrink: 0;
-  background: var(--namu-accent);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 13.5px;
-  padding: 9px 18px;
-  border-radius: 5px;
-  white-space: nowrap;
-}
-.namu-adbanner .namu-ad-cta:hover {
-  filter: brightness(1.08);
-}
-.namu-ad-label {
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  font-size: 10px;
-  color: #adb5bd;
-  border: 1px solid #dee2e6;
-  border-radius: 2px;
-  padding: 0 4px;
+  min-width: 0; 
   background: #fff;
 }
 
-/* ===== 접이식 관련문서 틀 ===== */
-.namu-navbox {
-  border: 1px solid var(--namu-accent);
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 0 0 14px;
+/* ===== 제목 영역 ===== */
+.namu-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  border-bottom: 1px solid var(--namu-border);
+  padding-bottom: 8px;
 }
-.namu-navbox-head {
+.namu-disambig {
+  font-size: 18px;
+  color: var(--namu-muted);
+  margin-left: 8px;
+}
+.namu-titlemeta {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #e4f3f0;
-  padding: 12px 16px;
-}
-.namu-navbox-head .namu-navbox-logo {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
-.namu-navbox-head b {
-  font-size: 15px;
-}
-.namu-navbox-head .namu-navbox-sub {
   font-size: 12px;
   color: var(--namu-muted);
+  margin-bottom: 20px;
 }
-.namu-navbox-toggle {
-  width: 100%;
-  border: none;
-  border-top: 1px solid var(--namu-accent);
+.namu-editbadge {
   background: var(--namu-accent);
   color: #fff;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 7px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.namu-tabs {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+.namu-tabs button {
+  background: #f8f9fa;
+  border: 1px solid var(--namu-border);
+  padding: 3px 10px;
+  font-size: 12px;
+  border-radius: 3px;
   cursor: pointer;
 }
-.namu-navbox-body {
-  padding: 12px 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+
+/* ===== 인포박스 (우측 플로팅) ===== */
+.namu-infobox {
+  float: right;
+  width: 320px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border: 2px solid var(--namu-accent);
+  background: #fff;
+}
+.namu-infobox-head {
+  background: var(--namu-accent);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.namu-infobox-head .namu-romaja {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+  opacity: 0.9;
+}
+.namu-infobox-img {
+  width: 100%;
+  display: block;
+}
+.namu-infobox table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.namu-infobox th {
+  background: var(--namu-accent);
+  color: #fff;
+  width: 80px;
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #fff;
+}
+.namu-infobox td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--namu-line);
+}
+
+/* ===== 목차 ===== */
+.namu-toc {
+  display: inline-block;
+  background: var(--namu-box-bg);
+  border: 1px solid var(--namu-border);
+  padding: 15px;
+  margin-bottom: 20px;
+  min-width: 200px;
+}
+.namu-toc-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.namu-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   font-size: 13.5px;
 }
-.namu-navbox-body a {
-  color: var(--namu-link);
-  text-decoration: none;
+.namu-toc ol ol {
+  padding-left: 15px;
 }
-.namu-navbox-body a:hover {
+.namu-toc .namu-toc-num {
+  color: var(--namu-muted);
+  margin-right: 6px;
+}
+.namu-toc a {
+  text-decoration: none;
+  color: var(--namu-link);
+}
+.namu-toc a:hover {
   text-decoration: underline;
 }
 
-/* ===== 우측 사이드바 박스 ===== */
-.namu-railbox {
-  border: 1px solid var(--namu-border);
-  border-radius: 6px;
-  background: #fff;
-  margin-bottom: 16px;
-  overflow: hidden;
+/* ===== 섹션 스타일 ===== */
+.namu-h2 {
+  font-size: 24px;
+  border-bottom: 1px solid var(--namu-border);
+  margin: 30px 0 15px;
+  padding-bottom: 5px;
+  font-weight: bold;
 }
-.namu-railbox-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 11px 14px;
+.namu-h3 {
+  font-size: 20px;
   border-bottom: 1px solid var(--namu-line);
-  font-weight: 700;
-  font-size: 14px;
+  margin: 25px 0 12px;
+  padding-bottom: 3px;
+  font-weight: bold;
 }
-.namu-railbox-head .namu-railbox-title {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.namu-railbox-head .namu-railbox-more {
+.namu-secnum {
   color: var(--namu-muted);
-  text-decoration: none;
-  font-weight: 400;
+  margin-right: 8px;
+}
+.namu-edit {
+  font-size: 12px;
+  color: var(--namu-muted);
+  margin-left: 8px;
+  font-weight: normal;
+  cursor: pointer;
 }
 
-/* 실시간 검색어 */
+/* ===== 본문 요소 ===== */
+.namu-body p {
+  margin: 12px 0;
+  line-height: 1.8;
+}
+.namu-body a {
+  color: var(--namu-link);
+  text-decoration: none;
+}
+.namu-body a:hover {
+  text-decoration: underline;
+}
+.namu-fn a {
+  font-size: 0.8em;
+  font-weight: bold;
+  vertical-align: super;
+}
+.namu-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 14px;
+}
+.namu-table th {
+  background: var(--namu-th-bg);
+  border: 1px solid var(--namu-border);
+  padding: 6px 12px;
+  width: 120px;
+}
+.namu-table td {
+  border: 1px solid var(--namu-border);
+  padding: 6px 12px;
+}
+.namu-quote {
+  border-left: 3px solid var(--namu-accent);
+  padding: 10px 20px;
+  margin: 20px 0;
+  background: var(--namu-box-bg);
+}
+.namu-quote-text {
+  display: block;
+  font-weight: bold;
+}
+.namu-quote-src {
+  display: block;
+  font-size: 12px;
+  color: var(--namu-muted);
+  margin-top: 4px;
+}
+
+/* ===== 사이드바 레일 ===== */
+.namu-rail {
+  width: 300px;
+  flex-shrink: 0;
+}
+.namu-rail-sticky {
+  position: sticky;
+  top: 70px;
+}
+.namu-railbox {
+  border: 1px solid var(--namu-border);
+  margin-bottom: 20px;
+  background: #fff;
+}
+.namu-railbox-head {
+  background: #f8f9fa;
+  border-bottom: 1px solid var(--namu-border);
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
 .namu-rt {
   list-style: none;
+  padding: 0;
   margin: 0;
-  padding: 6px 0;
 }
 .namu-rt li {
+  padding: 6px 12px;
+  font-size: 13px;
+  display: flex;
+  gap: 10px;
+}
+.namu-rt-rank {
+  color: var(--namu-accent);
+  font-weight: bold;
+  width: 18px;
+}
+.namu-recent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.namu-recent li {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.namu-recent-ago {
+  float: right;
+  color: var(--namu-muted);
+}
+
+/* ===== 광고 및 알림 ===== */
+.namu-adbanner {
+  border: 1px solid var(--namu-border);
+  margin: 15px 0;
+  background: #fff;
+  position: relative;
+  text-align: center;
+}
+.namu-ad-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #eee;
+  font-size: 10px;
+  padding: 1px 4px;
+  color: #888;
+}
+.namu-notice {
+  background: var(--namu-notice-bg);
+  border: 1px solid var(--namu-notice-border);
+  padding: 12px;
+  margin: 20px 0;
+  font-size: 13px;
+  display: flex;
+  gap: 10px;
+}
+.namu-category {
+  border: 1px solid var(--namu-border);
+  padding: 8px 12px;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.namu-navbox {
+  border: 1px solid var(--namu-accent);
+  margin: 20px 0;
+}
+.namu-navbox-head {
+  background: var(--namu-accent);
+  color: #fff;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 7px 14px;
-  font-size: 13.5px;
 }
-.namu-rt li:hover {
-  background: #f7f9fa;
-}
-.namu-rt .namu-rt-rank {
-  font-weight: 800;
-  color: var(--namu-accent);
-  width: 14px;
-  text-align: center;
-}
-.namu-rt .namu-rt-kw {
-  color: var(--namu-link);
-}
-
-/* 최근 변경 */
-.namu-recent {
-  list-style: none;
-  margin: 0;
-  padding: 6px 0;
-}
-.namu-recent li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 6px 14px;
-  font-size: 13px;
-}
-.namu-recent li:hover {
-  background: #f7f9fa;
-}
-.namu-recent .namu-recent-title {
-  color: var(--namu-link);
-  text-decoration: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.namu-recent .namu-recent-ago {
-  color: var(--namu-muted);
-  font-size: 12px;
-  flex-shrink: 0;
-}
-
-/* 세로 광고 */
-.namu-railad {
-  position: relative;
-  display: block;
-  border: 1px solid var(--namu-border);
-  border-radius: 6px;
-  background: linear-gradient(160deg, #0e3a36, #008275);
-  color: #fff;
-  text-decoration: none;
-  padding: 26px 18px;
-  min-height: 260px;
-  margin-bottom: 16px;
-}
-.namu-railad .namu-railad-title {
-  font-size: 17px;
-  font-weight: 800;
-  line-height: 1.45;
-}
-.namu-railad .namu-railad-body {
-  font-size: 13px;
-  opacity: 0.92;
-  margin-top: 10px;
-  line-height: 1.6;
-}
-.namu-railad .namu-railad-cta {
-  display: inline-block;
-  margin-top: 18px;
+.namu-navbox-logo {
+  height: 24px;
+  width: auto;
   background: #fff;
-  color: var(--namu-accent);
-  font-weight: 700;
-  font-size: 13.5px;
-  padding: 8px 16px;
-  border-radius: 5px;
+  border-radius: 3px;
+}
+.namu-navbox-sub {
+  font-size: 11px;
+  opacity: 0.9;
+}
+.namu-navbox-body {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.8;
 }
 
-/* ===== 우하단 플로팅 버튼 ===== */
+/* ===== 하단 푸터 ===== */
+.namu-footer {
+  margin-top: 60px;
+  border-top: 1px solid var(--namu-border);
+  padding: 20px 0;
+  font-size: 12px;
+}
+.namu-engine {
+  color: var(--namu-accent);
+  font-weight: bold;
+}
+
+/* ===== 플로팅 버튼 ===== */
 .namu-floating {
   position: fixed;
-  right: 18px;
-  bottom: 22px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  z-index: 120;
+  gap: 8px;
 }
-.namu-floating .namu-float-btn,
-.namu-floating .namu-float-group {
-  background: #2b2f36;
-  border: 1px solid #3a3f46;
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-}
-.namu-floating .namu-float-btn {
-  width: 44px;
-  height: 44px;
+.namu-float-btn {
+  width: 40px;
+  height: 40px;
+  background: var(--namu-accent);
+  color: #fff;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ced4da;
   cursor: pointer;
-  font-size: 17px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-.namu-floating .namu-float-group {
+.namu-float-group {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--namu-border);
+  border-radius: 4px;
 }
-.namu-floating .namu-float-group button {
-  width: 44px;
-  height: 44px;
+.namu-float-group button {
   border: none;
-  background: transparent;
-  color: #ced4da;
+  background: none;
+  padding: 8px;
   cursor: pointer;
-  font-size: 17px;
+  border-bottom: 1px solid #eee;
 }
-.namu-floating .namu-float-group button:first-child {
-  border-bottom: 1px solid #3a3f46;
-}
-.namu-floating button:hover,
-.namu-floating .namu-float-btn:hover {
-  color: #fff;
+.namu-float-group button:last-child {
+  border-bottom: none;
 }
 
-/* ===== 반응형 ===== */
-@media (max-width: 980px) {
+/* 모바일 대응 */
+@media (max-width: 900px) {
   .namu-shell {
     flex-direction: column;
   }
   .namu-rail {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 16px;
   }
-  .namu-railad {
-    grid-column: 1 / -1;
-    min-height: 0;
-  }
-}
-@media (max-width: 720px) {
   .namu-infobox {
     float: none;
     width: 100%;
-    margin: 0 0 18px;
-  }
-  .namu-title {
-    font-size: 24px;
-  }
-  .namu-rail {
-    grid-template-columns: 1fr;
-  }
-  .namu-nav {
-    gap: 14px;
-  }
-  .namu-nav .namu-navlink {
-    display: none;
+    margin-left: 0;
   }
 }
