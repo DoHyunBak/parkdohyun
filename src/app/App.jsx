@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CatPortfolioPage from "@/pages/cat-portfolio/ui/CatPortfolioPage";
 import DetailPage from "@/pages/detail/ui/DetailPage";
-import ModernPortfolioPage from "@/pages/portfolio/ui/ModernPortfolioPage";
+import WikiPortfolioPage from "@/pages/wiki/ui/WikiPortfolioPage";
 import BackToTopButton from "@/shared/ui/BackToTopButton";
 
 const detailRoutes = new Set(["education", "skills", "language", "certifications"]);
@@ -33,18 +33,25 @@ export default function App() {
   }, [route.type, route.itemId]);
 
   const isCatPortfolio = route.type === "cat";
+  const isDetail = detailRoutes.has(route.type);
+  const isWiki = !isCatPortfolio && !isDetail;
+
   const page = isCatPortfolio ? (
     <CatPortfolioPage />
-  ) : detailRoutes.has(route.type) ? (
+  ) : isDetail ? (
     <DetailPage type={route.type} itemId={route.itemId} />
   ) : (
-    <ModernPortfolioPage />
+    <WikiPortfolioPage />
   );
 
+  let wrapperClass = "min-h-screen bg-[#0a0a0a]";
+  if (isCatPortfolio) wrapperClass = "min-h-screen bg-[#fff8ef] text-stone-900";
+  else if (isWiki) wrapperClass = "min-h-screen bg-white text-[#212529]";
+
   return (
-    <div className={isCatPortfolio ? "min-h-screen bg-[#fff8ef] text-stone-900" : "min-h-screen bg-[#0a0a0a]"}>
+    <div className={wrapperClass}>
       {page}
-      <BackToTopButton />
+      {!isWiki && <BackToTopButton />}
     </div>
   );
 }

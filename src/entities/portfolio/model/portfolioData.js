@@ -5,8 +5,6 @@ export const portfolioData = {
     headline: "Portfolio of DoHyun Park",
     subHeadline:
       "Focusing on how technology supports real business operations. \nI am a backend engineer dedicated to enterprise system management, \nencompassing data flows and business processes.",
-    subHeadlineKo:
-      "ERP·SAP 도메인에 특화된 백엔드 개발자입니다.\n기업 시스템의 데이터 흐름과 비즈니스 프로세스를 코드로 구현합니다.",
     email: "mailto:badberg2002@gmail.com",
     tistory: "https://parkdohyun.tistory.com/",
     github: "https://github.com/DoHyunBak",
@@ -48,7 +46,7 @@ export const portfolioData = {
       summary: "학내 비품·물품의 신청·배부를 디지털화한 대학 자산관리 시스템. ITCEN Global과 산학협력으로 진행.",
       roleKo: "백엔드 개발 · DB 설계 · AWS 인프라 구축",
       achievement: "EAM 아키텍처 도입으로 자산 추적 체계화 및 업무 처리 시간 단축",
-      status: "active",
+      status: "완료",
       tags: ["Java", "Spring Boot", "AWS", "MySQL", "RDS", "Docker", "Flyway", "Hexagonal Architecture", "Open API"],
       problem:
         "Managing large-scale organizational assets across departments lacks centralized ownership and lifecycle tracking, similar to enterprise challenges.",
@@ -59,7 +57,6 @@ export const portfolioData = {
       role: "Backend Development(Spring) & Database Administration (DBA) & Cloud Engineering(AWS)",
       links: {
         github: "https://github.com/U-sto/U-sto_BE",
-        docs: "https://u-sto-fe.vercel.app/",
       },
       architecture: [
         "Client Application",
@@ -67,26 +64,6 @@ export const portfolioData = {
         "JPA / Hibernate",
         "MySQL Database",
       ],
-    },
-    {
-      id: "smockOut",
-      title: "금연쉼터",
-      summary: "금연에 도전하는 사람들이 서로 응원하고 소통하는 모바일 커뮤니티 앱.",
-      roleKo: "Flutter 앱 개발 · 백엔드 개발 · AWS 인프라",
-      achievement: "지속적 사회적 상호작용으로 금연 목표 유지 지원 환경 구축",
-      status: "active",
-      tags: ["Flutter", "Community App", "Mobile", "Spring Boot", "MySQL", "AWS", "Docker", "Flyway"],
-      problem:
-        "People trying to quit smoking often struggle to maintain motivation when they attempt alone without consistent peer support.",
-      solution:
-        "Built a mobile community app where users share progress, encourage each other, and communicate through quit-smoking focused content.",
-      result:
-        "Created a support-centered communication space that helps users sustain quit-smoking goals through continuous social interaction.",
-      role: "Frontend Development(Flutter) , Backend Development(Spring) & Database Administration (DBA) & Cloud Engineering(AWS)",
-      links: {
-        github: "https://github.com/DoHyunBak/SO_FE",
-        docs: "https://smockout.vercel.app/",
-      },
     },
     {
       id: "kids-friends",

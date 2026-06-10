@@ -14,30 +14,20 @@ const PROJECT_COPY = {
     problem: "부서별 물품 관리가 흩어져 있어 소유자, 상태, 이력을 추적하기 어려웠습니다.",
     solution: "물품 신청, 배부, 자산 정보를 REST API와 관계형 DB 기준으로 정리했습니다.",
     result: "자산 흐름을 한 시스템에서 확인할 수 있는 관리 기반을 만들었습니다.",
-  },
-  smockOut: {
-    code: "PRJ-002",
-    title: "금연쉼터",
-    domain: "모바일 커뮤니티",
-    summary: "금연 도전자가 진행 상황을 공유하고 서로 응원하는 커뮤니티 앱입니다.",
-    role: "Flutter 앱, Spring 백엔드, MySQL, AWS 배포",
-    impact: "혼자 포기하지 않도록 사용자 간 응원 흐름을 만들었습니다.",
-    architecture: ["Flutter", "Spring API", "MySQL", "Docker", "AWS"],
-    problem: "금연을 혼자 진행하면 동기 유지가 어렵고 중간 이탈 가능성이 높았습니다.",
-    solution: "사용자가 진행 상황을 공유하고 서로 피드백하는 커뮤니티 구조를 만들었습니다.",
-    result: "금연 목표를 계속 확인하고 응원받을 수 있는 사용 흐름을 구성했습니다.",
+    deployNote: "현재 배포 방식 재검토 중",
   },
   "kids-friends": {
-    code: "PRJ-003",
+    code: "PRJ-002",
     title: "키즈카페 로봇",
     domain: "로봇 서비스 자동화",
     summary: "Temi 로봇과 AI 챗봇을 연동해 키즈카페 고객 응대를 자동화한 프로젝트입니다.",
     role: "백엔드 API, 데이터 연동, 로봇 서비스 흐름 설계",
     impact: "로봇, 센서, 서비스 데이터를 하나의 흐름으로 연결했습니다.",
     architecture: ["Temi", "Spring API", "MySQL", "Sensor", "AI Chatbot"],
-    problem: "로봇, 센서, 서비스 데이터가 분리되면 고객 응대 흐름이 끊기기 쉽습니다.",
-    solution: "Temi 로봇과 백엔드 API를 연결하고 응답 흐름을 표준화했습니다.",
-    result: "키즈카페 환경에서 고객 안내와 데이터 연동을 자동화할 수 있게 했습니다.",
+    erd: "https://www.erdcloud.com/d/sbZJS3cvn8wwFdr9H",
+    problem: "직원이 여러 아이를 동시에 돌보다 보면 한 명 한 명에게 집중하기 어려웠습니다.",
+    solution: "Temi 로봇이 안내와 기본 응대를 보조해 직원이 아이 케어에 더 집중할 수 있게 했습니다.",
+    result: "로봇이 단순 응대를 분담하면서 직원의 응대 부담을 덜어줬습니다.",
   },
 };
 
@@ -185,10 +175,12 @@ function ProjectCard({ project, index }) {
                 ERD 준비중
               </ProjectPlaceholderButton>
             )}
-            <span className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.02] px-3 py-2 font-mono text-xs text-[#a0a0a0]">
-              <Database className="h-4 w-4" />
-              {view.tags?.includes("MySQL") ? "관계형 DB" : "시스템 연동"}
-            </span>
+            {view.deployNote && (
+              <ProjectPlaceholderButton>
+                <Server className="h-4 w-4" />
+                {view.deployNote}
+              </ProjectPlaceholderButton>
+            )}
           </div>
         </div>
       </div>
