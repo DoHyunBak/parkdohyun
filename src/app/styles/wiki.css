@@ -496,7 +496,14 @@
   border-bottom: none;
 }
 
-/* 모바일 대응 */
+/* Vibe Labs 카드 그리드 (반응형) */
+.namu-vibe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 15px;
+}
+
+/* ===== 태블릿: 레일/인포박스 1단으로 ===== */
 @media (max-width: 900px) {
   .namu-shell {
     flex-direction: column;
@@ -508,5 +515,93 @@
     float: none;
     width: 100%;
     margin-left: 0;
+  }
+  .namu-rail-sticky {
+    position: static;
+  }
+}
+
+/* ===== 모바일: 네비바 축소 + 가로 오버플로우 제거 ===== */
+@media (max-width: 768px) {
+  /* zoom 1.1은 모바일에서 가로폭을 잡아먹어 오버플로우를 유발 → 1로 */
+  .namu {
+    zoom: 1;
+  }
+
+  /* 네비바: 텍스트 링크/보조 아이콘 숨기고 검색창을 신축으로 */
+  .namu-nav {
+    gap: 8px;
+    padding: 0 10px;
+  }
+  .namu-nav .namu-navlink {
+    display: none;
+  }
+  .namu-nav .namu-logo {
+    font-size: 15px;
+  }
+  .namu-nav .namu-logo img {
+    height: 24px;
+  }
+  .namu-nav-right {
+    flex: 1;
+    gap: 6px;
+    min-width: 0;
+  }
+  .namu-nav-search {
+    flex: 1;
+    min-width: 0;
+  }
+  .namu-nav-search input {
+    width: 100%;
+    max-width: none;
+  }
+  /* 무작위 문서(⤫) · 이동(→) 아이콘은 좁은 화면에서 숨김 (검색 + 로그인만 유지) */
+  .namu-nav-icon[title="무작위 문서"],
+  .namu-nav-icon[title="이동"] {
+    display: none;
+  }
+
+  /* 본문 여백 축소로 가용 폭 확보 */
+  .namu-shell {
+    padding: 12px;
+    gap: 14px;
+  }
+
+  /* 제목 메타: 탭이 줄바꿈되도록 */
+  .namu-titlemeta {
+    flex-wrap: wrap;
+  }
+  .namu-tabs {
+    margin-left: 0;
+  }
+
+  /* 긴 단어/링크가 박스를 밀어내지 않도록 */
+  .namu-body,
+  .namu-infobox td,
+  .namu-table td {
+    overflow-wrap: anywhere;
+  }
+
+  /* 표가 넘칠 경우 가로 스크롤 허용 */
+  .namu-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ===== 초소형 화면 미세 조정 ===== */
+@media (max-width: 480px) {
+  .namu-title {
+    font-size: 26px;
+  }
+  .namu-disambig {
+    font-size: 15px;
+  }
+  .namu-h2 {
+    font-size: 21px;
+  }
+  .namu-h3 {
+    font-size: 18px;
   }
 }

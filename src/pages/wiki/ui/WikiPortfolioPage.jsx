@@ -377,7 +377,7 @@ export default function WikiPortfolioPage() {
             <p>
               프론트엔드 구현 한계를 확인하고 빠르게 완성도를 높이는 <b>'바이브 코딩'</b> 스타일을 테스트한 실험적 작업들이다.<Fn n={2} />
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px' }}>
+            <div className="namu-vibe-grid">
               {wikiData.vibeLabs.map((v, i) => (
                 <div key={v.id} id={`s-vibe-${v.id}`} style={{ border: '1px solid #ddd', padding: '12px', borderRadius: '4px', background: '#fcfcfc' }}>
                   <div style={{ fontWeight: 'bold', fontSize: '1em', marginBottom: '6px' }}>
