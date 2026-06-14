@@ -184,6 +184,28 @@ body.theseed-dark-mode {
   padding: 0 40px !important; /* 모서리에 너무 안 붙게 약간의 여백 추가 */
 }
 
+/* 네비게이션 바 내부 둥근 네모(검색창) 가로 길이 최대화 */
+.JsU9KkSn {
+  flex: 1 !important;
+  max-width: 600px !important; /* 원하는 최대 길이로 조정 가능 */
+}
+.iZiZhDwX,
+.QNR190Eo,
+.OvCBP6kZ {
+  width: 100% !important;
+}
+.FkbRMf6C {
+  width: 100% !important;
+  flex: 1 !important;
+}
+
+/* 모든 로고 이미지를 둥글게 (원형) 변경 */
+._7g6jxNtv img,
+.namu-navbox-logo {
+  border-radius: 50% !important;
+  object-fit: cover;
+}
+
 .namu-main {
   flex: 1;
   min-width: 0; 
