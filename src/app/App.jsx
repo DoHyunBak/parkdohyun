@@ -46,7 +46,7 @@ export default function App() {
 
   let wrapperClass = "min-h-screen bg-[#0a0a0a]";
   if (isCatPortfolio) wrapperClass = "min-h-screen bg-[#fff8ef] text-stone-900";
-  else if (isWiki) wrapperClass = "min-h-screen bg-white text-[#212529]";
+  else if (isWiki) wrapperClass = "min-h-screen text-[#212529]";
 
   return (
     <div className={wrapperClass}>

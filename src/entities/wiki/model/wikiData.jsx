@@ -32,7 +32,7 @@ export const wikiData = {
         <><a href="https://namu.wiki/w/서울당곡초등학교" target="_blank" rel="noreferrer">당곡초등학교</a> (졸업)</>,
         <><a href="https://namu.wiki/w/성보중학교" target="_blank" rel="noreferrer">성보중학교</a> (졸업)</>,
         <><a href="https://namu.wiki/w/세화고등학교(서울)" target="_blank" rel="noreferrer">세화고등학교</a> (졸업)</>,
-        <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a><br /><span style={{ fontSize: '0.82em', color: '#666' }}>(ICT융합학부 21 / 공학사)</span></>
+        <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a><br /><span style={{ fontSize: '0.82em', color: 'var(--namu-muted)' }}>(ICT융합학부 21 / 공학사)</span></>
       ],
     },
     { label: "직업", value: <><a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">백엔드 개발자</a> (지망)</> },
