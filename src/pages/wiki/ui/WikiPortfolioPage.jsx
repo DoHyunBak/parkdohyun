@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "@/app/styles/namuwiki-original.css";
 import NamuwikiShell from "./NamuwikiShell.jsx";
 import "@/app/styles/wiki.css";
-import { wikiData } from "@/entities/wiki/model/wikiData.jsx";
+import { wikiData, scrollToAnchor } from "@/entities/wiki/model/wikiData.jsx";
 
 const EDIT_JOKE =
   "비로그인 사용자는 이 문서를 편집할 수 없습니다. (애초에 진짜 나무위키가 아닙니다)";
@@ -11,7 +11,9 @@ const EDIT_JOKE =
 function Fn({ n }) {
   return (
     <sup className="namu-fn" id={`fnref-${n}`}>
-      <a href={`#fn-${n}`}>[{n}]</a>
+      <a href={`#fn-${n}`} onClick={(e) => scrollToAnchor(e, `fn-${n}`)}>
+        [{n}]
+      </a>
     </sup>
   );
 }
@@ -382,10 +384,6 @@ export default function WikiPortfolioPage() {
                 <span className="namu-toc-num">14.</span>
                 <a href="#s-trivia">여담</a>
               </li>
-              <li>
-                <span className="namu-toc-num">15.</span>
-                <a href="#s-links">둘러보기</a>
-              </li>
             </ol>
           </nav>
 
@@ -430,6 +428,26 @@ export default function WikiPortfolioPage() {
             를 통한 업무 자동화(AX) 등은 백엔드 개발자로서의 생산성을 높이고
             서비스의 가치를 더하기 위한 보조 기술로 탐구하고 있다.
           </p>
+          <p>
+            스스로를 "전체 데이터 흐름을 설계하고 운영해 본, 끝까지 책임지는
+            백엔드 개발자"로 정의한다. 단순 CRUD가 아니라 외부 연동·트랜잭션
+            경계·배포 운영까지 직접 다루는 것에 보람을 느끼며, 협업에서는 구두
+            합의의 모호함을 극도로 경계하고 <b>정의서</b>(센서 이벤트 정의서·스키마
+            정의서·API 명세)로 오해의 여지 없는 기준을 먼저 합의한 뒤 개발을
+            시작한다.
+            <Fn n={30} />
+          </p>
+          <p>
+            기술을 "도구 세트"로 보고 <b>"무엇을 쓸지보다 무엇을 믿고 무엇을 버릴지"</b>를
+            판단하는 능력을 중시한다. 요약·숏폼 문화가 읽고 이해하는 힘을
+            퇴화시킨다고 보아, 긴 글을 끝까지 읽고 자기 언어로 바꾸는
+            능력(Reading Capacity)
+            <Fn n={33} />을 진짜 실력으로 여기며 회고와 글쓰기로 사고를 정리하는
+            습관을 갖고 있다. 같은 맥락에서 기술을 단순히 시간을 아껴주는 도구가
+            아니라 "사람이 정보를 받아들이고 판단하는 방식 자체를 바꾸는 것"으로
+            바라보며, 그래서 무엇을 자동화하고 무엇을 직접 사고할지를 의식적으로
+            구분한다.
+          </p>
 
                       </div>
           </details>
@@ -465,6 +483,17 @@ export default function WikiPortfolioPage() {
             <Fn n={1} /> 과정에서 공공데이터 아키텍처 설계의 복잡성을 직접
             경험하며 전문가로서의 눈높이를 갖추게 되었다.
           </p>
+          <p>
+            학교 밖에서는 '두리안 스무디의 블로그'(Tistory)에 개발 회고와 기술
+            인식을 기록하고, 자기계발을 주제로 한 유튜브 채널 'Mr. Share_Man'을
+            운영한다. 동시에 매일 자동으로 개발 일지를 수집·동기화하는 'Park
+            Brain'
+            <Fn n={31} /> 지식 저장소를 직접 구축해 학습과 프로젝트 경험을
+            재사용 가능한 개념 단위로 축적하고 있다. 커리어 방향은 실무형
+            백엔드에서 ERP/SAP 전문가로 잡고 있으며, 2027년 SSAFY·SAP CODE
+            부트캠프 진입과 SI·공공·중견·대기업 백엔드 직무를 목표로
+            정보처리기사·빅데이터분석기사·전산회계 2급을 함께 준비하고 있다.
+          </p>
           <table className="namu-table">
             <tbody>
               {wikiData.timeline.map((t) => (
@@ -491,16 +520,24 @@ export default function WikiPortfolioPage() {
 
           <div className="namu-quote">
             <span className="namu-quote-text">
-              화면보다 회사가 어떻게 돌아가는지가 더 궁금하다.
+              결국 좋은 해결책은 멋있는 기능보다 문제정의에서 시작된다는 점을 더
+              분명하게 보게 됐다.
             </span>
-            <span className="namu-quote-src">본인 피셜</span>
+            <span className="namu-quote-src">
+              <Ext href="https://parkdohyun.tistory.com/35">
+                블로그 「리빙랩 수업을 공부하며 정리한 생각」
+              </Ext>
+            </span>
           </div>
           <p>
             <b>"정의서로 소통하고 코드로 증명한다."</b>
             <br />
             협업 시 구두 합의의 모호함을 극도로 경계한다. '센서 이벤트 정의서'나
             '스키마 정의서'를 가장 먼저 확정하여 팀 간의 인터페이스를 명확히
-            함으로써 커뮤니케이션 비용을 절감한다.
+            함으로써 커뮤니케이션 비용을 절감한다. 이는 "멋있는 기능보다
+            문제정의에서 시작한다"는 본인의 일관된 관점과 맞닿아 있다 — 무엇을
+            만들지보다 <b>무엇이 진짜 문제인지</b>를 먼저 정의하는 것이 설계의
+            출발점이다.
           </p>
           <p>
             백엔드 설계 시에는 <b>데이터의 정합성과 안정성</b>을 최우선으로
@@ -509,6 +546,22 @@ export default function WikiPortfolioPage() {
             <Fn n={7} />을 적극 도입하며, 트랜잭션 물리적 분리(
             <code>REQUIRES_NEW</code>)<Fn n={8} />를 통해 로그 기록과 비즈니스
             로직의 독립성을 확보한다.
+          </p>
+          <p>
+            디버깅은 추측으로 코드를 고치는 대신 <b>문제 재진술 → 가능 원인
+            2~3개 → 검증 명령 → 최소 수정</b>의 순서로 좁힌다. 예컨대 세션 인증이
+            간헐적으로 풀리는 문제는 쿠키·세션·인증 3단 로그
+            <Fn n={32} />로 원인을 격리한다 — 쿠키가 없으면 프론트 전송, 세션이
+            없으면 서버 저장/만료, 인증이 없으면 SecurityContext 저장, 인증은
+            살아있는데 실패하면 권한이나 DTO 변환 문제다. 외부 시스템의 결과
+            코드는 클라이언트에 그대로 노출하지 않고 내부 코드로 매핑하며,
+            새 기능은 항상 DB 스키마(ERD)부터 잡은 뒤 Flyway로 형상관리한다.
+          </p>
+          <p>
+            AI를 다룰 때도 같은 원칙이 적용된다. AI는 정답 생성기가 아니라
+            <b> 작업 분배 도구</b>이므로 결과를 그대로 믿지 않고 검증하며, 여러
+            모델을 역할별로 나눠 쓰고 맥락을 분리한다. 모르는 사실은 추측하지
+            않고 '확실하지 않음'으로 명시하는 것을 협업의 기본 태도로 삼는다.
           </p>
 
                       </div>
@@ -891,29 +944,58 @@ export default function WikiPortfolioPage() {
                       </div>
           </details>
 
-          <details open className="namu-section">
-            <summary>
-              {/* 15. 둘러보기 */}
-          <h2 id="s-links" className="namu-h2">
-            <span className="namu-secnum">15.</span>둘러보기
-            <Edit />
-          </h2>
-            </summary>
-            <div className="namu-section-body">
-
-          <ul>
-            {wikiData.infobox
-              .find((i) => i.type === "links")
-              ?.value.map((l) => (
-                <li key={l.label}>
-                  <Ext href={l.href} blue>
-                    {l.label}
-                  </Ext>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </details>
+          {/* 하단 컨텍스트 광고 (나무위키 패러디) — 각주 바로 위 */}
+          <div
+            className="namu-ad-cards"
+            style={{
+              margin: "26px 0 8px",
+              border: "1px solid var(--namu-border)",
+              borderRadius: "4px",
+              background: "var(--namu-box-bg)",
+              padding: "10px 12px",
+            }}
+          >
+            <span
+              className="namu-ad-label"
+              style={{ position: "static", display: "inline-block", marginBottom: "8px" }}
+            >
+              광고
+            </span>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <a
+                href="https://parkdohyun.tistory.com/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ textDecoration: "none", display: "block" }}
+              >
+                <div style={{ color: "var(--namu-link)", fontWeight: "bold", fontSize: "0.95em" }}>
+                  두리안 스무디의 블로그
+                </div>
+                <div style={{ color: "#1a7f37", fontSize: "0.8em", margin: "2px 0" }}>
+                  parkdohyun.tistory.com
+                </div>
+                <div style={{ color: "var(--namu-muted)", fontSize: "0.84em", lineHeight: 1.5 }}>
+                  개발 회고와 기술에 대한 생각을 기록하는 블로그. 두리안을 혐오하는 청년의 이야기.
+                </div>
+              </a>
+              <a
+                href="https://www.youtube.com/@Mr.Share_Man"
+                target="_blank"
+                rel="noreferrer"
+                style={{ textDecoration: "none", display: "block" }}
+              >
+                <div style={{ color: "var(--namu-link)", fontWeight: "bold", fontSize: "0.95em" }}>
+                  Mr. Share_Man · 유튜브 채널
+                </div>
+                <div style={{ color: "#1a7f37", fontSize: "0.8em", margin: "2px 0" }}>
+                  youtube.com/@Mr.Share_Man
+                </div>
+                <div style={{ color: "var(--namu-muted)", fontSize: "0.84em", lineHeight: 1.5 }}>
+                  자기계발과 배운 것을 나누는 박도현의 유튜브 채널. 함께 성장하실 분을 기다립니다.
+                </div>
+              </a>
+            </div>
+          </div>
     </div>
 
           {/* 각주 */}
@@ -921,7 +1003,13 @@ export default function WikiPortfolioPage() {
           <ol>
             {wikiData.footnotes.map((f, i) => (
               <li key={i} id={`fn-${i + 1}`}>
-                <a href={`#fnref-${i + 1}`}>[{i + 1}]</a> {f}
+                <a
+                  href={`#fnref-${i + 1}`}
+                  onClick={(e) => scrollToAnchor(e, `fnref-${i + 1}`)}
+                >
+                  [{i + 1}]
+                </a>{" "}
+                {f}
               </li>
             ))}
           </ol>
