@@ -29,7 +29,7 @@ const TECH_LOGOS = [
 const PROFILE_INFO = [
   { label: "이름", value: "박도현 (DoHyun Park)" },
   { label: "나이", value: "2002년생" },
-  { label: "학력", value: "한양대학교 ICT융합학부 (2021.03 ~ 2027.03 예정)" },
+  { label: "학력", value: "한양대학교 (졸업예정) ICT융합학부 (2021.03 ~ 2027.03 예정)" },
   { label: "거주지", value: "서울시 관악구" },
 ];
 

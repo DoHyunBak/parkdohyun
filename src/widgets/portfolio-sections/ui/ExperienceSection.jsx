@@ -17,7 +17,7 @@ export default function ExperienceSection({ experience }) {
             <div className="text-zinc-600">{"/**"}</div>
             <div>
               <span className="text-zinc-600">&nbsp;{"*"}&nbsp;</span>
-              <span className="font-semibold text-zinc-200">한양대학교 (ERICA)</span>
+              <span className="font-semibold text-zinc-200">한양대학교 (ERICA) (졸업예정)</span>
             </div>
             <div>
               <span className="text-zinc-600">&nbsp;{"*"}&nbsp;</span>
@@ -47,7 +47,7 @@ export default function ExperienceSection({ experience }) {
               <span className="text-zinc-500">.</span>
               <span className="text-[#82aaff]">school</span>{" "}
               <span className="text-zinc-500">=</span>{" "}
-              <span className="text-[#ecc48d]">"한양대학교"</span>
+              <span className="text-[#ecc48d]">"한양대학교 (졸업예정)"</span>
               <span className="text-zinc-500">;</span>
             </div>
             <div>

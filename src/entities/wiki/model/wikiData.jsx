@@ -32,23 +32,23 @@ export const wikiData = {
         <><a href="https://namu.wiki/w/서울당곡초등학교" target="_blank" rel="noreferrer">당곡초등학교</a> (졸업)</>,
         <><a href="https://namu.wiki/w/성보중학교" target="_blank" rel="noreferrer">성보중학교</a> (졸업)</>,
         <><a href="https://namu.wiki/w/세화고등학교(서울)" target="_blank" rel="noreferrer">세화고등학교</a> (졸업)</>,
-        <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a><br /><span style={{ fontSize: '0.82em', color: 'var(--namu-muted)' }}>(ICT융합학부 21 / 공학사)</span></>
+        <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> (졸업예정)<br /><span style={{ fontSize: '0.82em', color: 'var(--namu-muted)' }}>(ICT융합학부 21 / 공학사)</span></>
       ],
     },
     { label: "직업", value: <><a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">백엔드 개발자</a> (지망)</> },
     { label: "데뷔", type: "debut", value: <><a href="https://namu.wiki/w/2025년" target="_blank" rel="noreferrer">2025년</a> 산학캡스톤디자인</>, sub: `(데뷔일로부터 +${diffDays}일)` },
     { label: "분야", value: <><a href="https://namu.wiki/w/B2B" target="_blank" rel="noreferrer">B2B</a> · <a href="https://namu.wiki/w/전사적 자원 관리" target="_blank" rel="noreferrer">ERP/SAP</a> · <a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">엔터프라이즈 백엔드</a></> },
     { label: "주력 스택", value: <><a href="https://namu.wiki/w/Java" target="_blank" rel="noreferrer">Java</a> · <a href="https://namu.wiki/w/Spring(프레임워크)" target="_blank" rel="noreferrer">Spring Boot</a> · <a href="https://namu.wiki/w/MySQL" target="_blank" rel="noreferrer">MySQL</a> · AI/RAG</> },
-    { label: "MBTI", value: "ENTP와 ISTJ가 번갈아 나와 신뢰하지 않음 (T는 확실)" }, 
-    { label: "소속", value: <a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> },
+    { label: "MBTI", value: "신뢰하지 않는 편이지만 T는 확실함" }, 
+    { label: "소속", value: <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> (졸업예정)</> },
     {
       label: "링크",
       type: "links",
       value: [
-        { label: "GitHub", href: "https://github.com/DoHyunBak" },
-        { label: "Tistory", href: "https://parkdohyun.tistory.com/" },
-        { label: "LinkedIn", href: "https://linkedin.com/in/dohyunbak" },
-        { label: "YouTube", href: "https://www.youtube.com/@Mr.Share_Man" },
+        { label: "GitHub", href: "https://github.com/DoHyunBak", icon: "github" },
+        { label: "Tistory", href: "https://parkdohyun.tistory.com/", icon: "tistory" },
+        { label: "LinkedIn", href: "https://linkedin.com/in/dohyunbak", icon: "linkedin" },
+        { label: "YouTube", href: "https://www.youtube.com/@Mr.Share_Man", icon: "youtube" },
       ],
     },
   ],
@@ -67,13 +67,14 @@ export const wikiData = {
 
   timeline: [
     { year: "2002. 03. 23.", event: "서울특별시 출생" },
-    { year: "유년기", event: "당곡초등학교 → 성보중학교 → 세화고등학교 졸업" },
-    { year: "고교 시절", event: "원래 초등교사를 지망하여 교대 입시를 준비했으나, 저출산 문제로 인한 임용 절벽 현상에 절망하고 진로를 컴퓨터공학으로 선회" },
-    { year: "2021. 03.", event: "한양대학교 소프트웨어융합대학 입학 (컴퓨터 교사가 될 수 있다는 차선책을 염두에 둠)" },
-    { year: "2022 - 2024", event: "제31보병사단 95여단 병장 만기전역 (2022.08.09 ~ 2024.02.08)" },
-    { year: "2025. 07.", event: "산학협력 프로젝트 'U-sto' 백엔드 아키텍처 설계 및 구축 주도" },
-    { year: "현재", event: "ERP/SAP 도메인 심화 및 효율적 백엔드 아키텍처 연구 중 (AI/RAG는 보조 수단으로 활용)" },
-    { year: "2027. 03.", event: "졸업 예정" },
+    { year: "2015. 02.", event: "당곡초등학교 졸업" },
+    { year: "2018. 02.", event: "성보중학교 졸업" },
+    { year: "2021. 02.", event: "세화고등학교 졸업" },
+    { year: "2021. 03.", event: "한양대학교 소프트웨어융합대학 입학" },
+    { year: <>2022. 08.<br />- 2024. 02.</>, event: "제31보병사단 95여단 병장 만기전역 (2022.08.09 ~ 2024.02.08)" },
+    { year: <>2025. 07.<br />- 2026. 06.</>, event: "산학협력 캡스톤 프로젝트 'U-sto' 백엔드 아키텍처 설계 및 인프라 구축 주도" },
+    { year: <>2026. 06.<br />- 현재</>, event: "Quantum Edu Solution Solution Development 인턴" },
+    { year: "2027. 03.", event: "한양대학교 소프트웨어융합대학 졸업" },
   ],
 
   signatureStack: [
@@ -167,16 +168,34 @@ export const wikiData = {
 
   academic: [
     {
-      id: "mobile-robot",
-      name: "모바일 로봇의 이해",
-      topic: "Physical AI (Sensing → Algorithm → Actuation)",
-      desc: "Temi SDK와 Android Studio를 기반으로 로봇 제어 앱을 개발했다. 실시간 센서 융합과 Firebase 연동을 통해 현실 환경과 상호작용하는 물리적 지능 시스템의 구조를 학습했다.",
+      id: "database",
+      name: "데이터베이스 (Database)",
+      topic: "정규화된 관계형 데이터 모델링 및 트랜잭션 최적화",
+      desc: "단순한 SQL 작성을 넘어, B2B 도메인에 최적화된 DB 스키마 설계 역량을 쌓았다. 인덱스 튜닝을 통한 조회 성능 개선과 원자성 보장을 위한 트랜잭션 격리 수준을 깊게 탐구하며, '무결한 데이터가 좋은 백엔드의 시작'임을 깨달은 과정이었다.",
     },
     {
-      id: "linear-algebra",
-      name: "선형대수학 (Linear Algebra)",
-      topic: "수학적 동형적 사고와 문제 풀이 원칙",
-      desc: "가우스 소거법, 행렬식, 벡터공간 공리를 마스터했다. 서로 다른 문제를 같은 수학적 구조로 치환하여 해결하는 '동형적 사고'의 가치를 익혔다. 이는 복잡한 데이터를 구조화하는 백엔드 역량의 근간이 되었다.",
+      id: "algorithm",
+      name: "컴퓨터 알고리즘 (Algorithm)",
+      topic: "복잡도 최적화 및 효율적 비즈니스 로직 설계",
+      desc: "현실의 비즈니스 문제를 전산학적 사고로 추상화하는 기법을 학습했다. 다양한 정렬 및 탐색 알고리즘을 Java로 직접 구현하며 시간/공간 복잡도를 최소화하는 습관을 들였다. 이는 대규모 트래픽 환경에서도 안정적인 로직을 설계하는 밑거름이 되었다.",
+    },
+    {
+      id: "capstone",
+      name: "소프트웨어융합캡스톤1",
+      topic: "실무급 백엔드 아키텍처 설계 및 API 라이프사이클 관리",
+      desc: "산학협력 수준의 실무 프로젝트를 수행하며 전체 시스템의 척추인 백엔드를 총괄했다. 단순 기능 구현에 그치지 않고 외부 연동 안정성, 에러 핸들링 전략, API 정의서 기반의 효율적 협업 체계를 구축하며 엔지니어로서 한 단계 도약하는 계기가 되었다.",
+    },
+    {
+      id: "java-intro",
+      name: "자바 프로그래밍 (Java)",
+      topic: "객체지향 패러다임과 엔터프라이즈 개발의 기초",
+      desc: "클린 코드와 객체지향 원칙(SOLID)을 체득했다. Spring Boot로 넘어가기 전, JVM 구조와 컬렉션 프레임워크를 심도 있게 다루며 견고한 코드 설계의 중요성을 익혔다. '유지보수하기 좋은 코드가 살아남는 코드'라는 철학을 확립한 수업이었다.",
+    },
+    {
+      id: "smart-sensor",
+      name: "스마트센서와 액츄에이터",
+      topic: "Physical AI 환경에서의 실시간 데이터 파이프라인",
+      desc: "하드웨어 센서에서 발생하는 원시 데이터를 서버로 실시간 수집하고 가공하는 기술을 익혔다. '키즈카페 로봇' 프로젝트의 기술적 모태가 되었으며, 비정형 데이터의 정형화 및 실시간 메시징(MQTT) 처리 능력을 비약적으로 향상시켰다.",
     }
   ],
 

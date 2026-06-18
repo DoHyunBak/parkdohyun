@@ -3,28 +3,46 @@ import "@/app/styles/namuwiki-original.css";
 import NamuwikiShell from "./NamuwikiShell.jsx";
 import "@/app/styles/wiki.css";
 import { wikiData } from "@/entities/wiki/model/wikiData.jsx";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { TistoryIcon } from "@/shared/ui/TistoryIcon";
 
 const EDIT_JOKE =
   "비로그인 사용자는 이 문서를 편집할 수 없습니다. (애초에 진짜 나무위키가 아닙니다)";
 
+/* 아이콘 맵핑 */
+const LINK_ICONS = {
+  github: <FaGithub style={{ verticalAlign: 'middle', marginRight: '4px' }} />,
+  linkedin: <FaLinkedin style={{ verticalAlign: 'middle', marginRight: '4px', color: '#0A66C2' }} />,
+  youtube: <FaYoutube style={{ verticalAlign: 'middle', marginRight: '4px', color: '#FF0000' }} />,
+  tistory: <TistoryIcon style={{ width: '14px', height: '14px', verticalAlign: 'middle', marginRight: '4px' }} />,
+};
+
 /* 각주 위첨자 */
-function Fn({ n }) {
+function Fn({ n, onHover, onLeave }) {
   return (
-    <sup className="namu-fn" id={`fnref-${n}`}>
+    <sup
+      className="namu-fn"
+      id={`fnref-${n}`}
+      onMouseEnter={(e) => onHover(e, n)}
+      onMouseLeave={onLeave}
+    >
       <a href={`#fn-${n}`}>[{n}]</a>
     </sup>
   );
 }
 
 /* 외부 링크 */
-function Ext({ href, children, blue = true }) {
+function Ext({ href, children, blue = true, icon }) {
+  const IconComp = icon ? LINK_ICONS[icon] : null;
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
-      style={blue ? { color: "var(--namu-link)", textDecoration: "none" } : {}}
+      style={blue ? { color: "var(--namu-link)", textDecoration: "none", display: 'inline-flex', alignItems: 'center' } : { display: 'inline-flex', alignItems: 'center' }}
     >
+      {IconComp}
       {children}
     </a>
   );
@@ -45,6 +63,7 @@ function scrollToToc() {
 export default function WikiPortfolioPage() {
   const [toast, setToast] = useState(null);
   const [isDark, setIsDark] = useState(false);
+  const [tooltip, setTooltip] = useState({ show: false, text: "", x: 0, y: 0 });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -69,6 +88,25 @@ export default function WikiPortfolioPage() {
     window.clearTimeout(fireEdit._t);
     fireEdit._t = window.setTimeout(() => setToast(null), 2600);
   };
+
+  const handleFnHover = (e, n) => {
+    const text = wikiData.footnotes[n - 1];
+    const rect = e.currentTarget.getBoundingClientRect();
+    setTooltip({
+      show: true,
+      text: text,
+      x: rect.left + window.scrollX,
+      y: rect.top + window.scrollY - 10,
+    });
+  };
+
+  const handleFnLeave = () => {
+    setTooltip((prev) => ({ ...prev, show: false }));
+  };
+
+  const FnWithProps = ({ n }) => (
+    <Fn n={n} onHover={handleFnHover} onLeave={handleFnLeave} />
+  );
 
   const Edit = () => (
     <span className="namu-edit" role="button" onClick={fireEdit}>
@@ -213,7 +251,7 @@ export default function WikiPortfolioPage() {
               {wikiData.infobox
                 .find((i) => i.type === "links")
                 ?.value.map((l) => (
-                  <Ext key={l.label} href={l.href}>
+                  <Ext key={l.label} href={l.href} icon={l.icon}>
                     {l.label}
                   </Ext>
                 ))}
@@ -247,7 +285,7 @@ export default function WikiPortfolioPage() {
                         }}
                       >
                         {row.value.map((l) => (
-                          <Ext key={l.label} href={l.href}>
+                          <Ext key={l.label} href={l.href} icon={l.icon}>
                             {l.label}
                           </Ext>
                         ))}
@@ -408,7 +446,7 @@ export default function WikiPortfolioPage() {
             서울특별시 관악구에서 태어났다. 현재 한양대학교 소프트웨어융합대학에
             재학 중이며, B2B와 ERP/SAP로 대표되는 엔터프라이즈급 백엔드 시스템
             도메인을 전문 분야로 삼고 있다.
-            <Fn n={3} />
+            <FnWithProps n={3} />
           </p>
           <p>
             단순한 '기능 구현'을 넘어 비즈니스 시스템의 안정성과 데이터 정합성을
@@ -419,7 +457,7 @@ export default function WikiPortfolioPage() {
             </Ext>{" "}
             기반의 <b>Park Brain</b>이라는 지식 저장소를 직접 구축하여 운영
             중이다.
-            <Fn n={5} />
+            <FnWithProps n={5} />
           </p>
           <p>
             주력 기술 스택은 Java와 Spring Boot이며, 관계형 데이터베이스(MySQL)
@@ -445,14 +483,7 @@ export default function WikiPortfolioPage() {
             <div className="namu-section-body">
 
           <p>
-            서울특별시에서 태어나 초·중·고 교육 과정을 마쳤다. 고등학교 시절에는
-            원래 초등교사를 지망하여 교대 입시를 준비했으나, 급격한{" "}
-            <b>저출산 문제</b>로 인한 임용 절벽 현상에 절망하고 진로를
-            컴퓨터공학으로 선회했다.
-            <Fn n={19} />
-            2021년 한양대학교 소프트웨어융합대학에 입학하면서도 "컴퓨터 교사가
-            될 수 있다"는 차선책을 염두에 두었을 만큼 교육 분야에 대한 관심도
-            높았다.
+            서울특별시에서 태어나 당곡초등학교, 성보중학교, 세화고등학교를 졸업하고 2021년 한양대학교 소프트웨어융합대학에 입학했다.
           </p>
           <p>
             2022년 8월 9일부터 2024년 2월 8일까지{" "}
@@ -462,8 +493,11 @@ export default function WikiPortfolioPage() {
             에서 복무하며 병장으로 만기 전역했다. 복학 이후에는 실무형
             프로젝트인 'U-sto'와 'Kids-Friends'를 통해 엔지니어링 역량을
             비약적으로 성장시켰다. 특히 ITCEN Global과의 산학협력
-            <Fn n={1} /> 과정에서 공공데이터 아키텍처 설계의 복잡성을 직접
+            <FnWithProps n={1} /> 과정에서 공공데이터 아키텍처 설계의 복잡성을 직접
             경험하며 전문가로서의 눈높이를 갖추게 되었다.
+          </p>
+          <p>
+            이러한 실무 경험을 바탕으로 2026년 6월부터 <b>Quantum Edu Solution</b>의 <b>Solution Development Team</b>에서 인턴으로 합류하여, 백엔드 시스템에 대한 전문성을 더욱 고도화하고 있다.
           </p>
           <table className="namu-table">
             <tbody>
@@ -506,8 +540,8 @@ export default function WikiPortfolioPage() {
             백엔드 설계 시에는 <b>데이터의 정합성과 안정성</b>을 최우선으로
             한다. 외부 API 연동 시 발생할 수 있는 네트워크 불안정성과 스키마
             변화에 대응하기 위해 <b>Sync History 패턴</b>
-            <Fn n={7} />을 적극 도입하며, 트랜잭션 물리적 분리(
-            <code>REQUIRES_NEW</code>)<Fn n={8} />를 통해 로그 기록과 비즈니스
+            <FnWithProps n={7} />을 적극 도입하며, 트랜잭션 물리적 분리(
+            <code>REQUIRES_NEW</code>)<FnWithProps n={8} />를 통해 로그 기록과 비즈니스
             로직의 독립성을 확보한다.
           </p>
 
@@ -558,7 +592,7 @@ export default function WikiPortfolioPage() {
               <h3 id={`s-proj-${p.id}`} className="namu-h3">
                 <span className="namu-secnum">5.{i + 1}.</span>
                 {p.name}
-                {p.id === "usto" ? <Fn n={1} /> : null}
+                {p.id === "usto" ? <FnWithProps n={1} /> : null}
                 <Edit />
               </h3>
               <table className="namu-table">
@@ -616,7 +650,7 @@ export default function WikiPortfolioPage() {
           <p>
             프론트엔드 구현 한계를 확인하고 빠르게 완성도를 높이는{" "}
             <b>'바이브 코딩'</b> 스타일을 테스트한 실험적 작업들이다.
-            <Fn n={2} />
+            <FnWithProps n={2} />
           </p>
           <div className="namu-vibe-grid">
             {wikiData.vibeLabs.map((v, i) => (
@@ -760,7 +794,7 @@ export default function WikiPortfolioPage() {
                     {c.name === "SAP Certified Associate - ABAP Cloud" ? (
                       <>
                         {c.name}
-                        <Fn n={4} />
+                        <FnWithProps n={4} />
                       </>
                     ) : (
                       c.name
@@ -906,7 +940,7 @@ export default function WikiPortfolioPage() {
               .find((i) => i.type === "links")
               ?.value.map((l) => (
                 <li key={l.label}>
-                  <Ext href={l.href} blue>
+                  <Ext href={l.href} blue icon={l.icon}>
                     {l.label}
                   </Ext>
                 </li>
@@ -921,7 +955,10 @@ export default function WikiPortfolioPage() {
           <ol>
             {wikiData.footnotes.map((f, i) => (
               <li key={i} id={`fn-${i + 1}`}>
-                <a href={`#fnref-${i + 1}`}>[{i + 1}]</a> {f}
+                <a href={`#fnref-${i + 1}`} style={{ color: "var(--namu-link)", textDecoration: "none" }}>
+                  [{i + 1}]
+                </a>{" "}
+                {f}
               </li>
             ))}
           </ol>
@@ -1166,6 +1203,29 @@ export default function WikiPortfolioPage() {
           }}
         >
           {toast}
+        </div>
+      )}
+      {tooltip.show && (
+        <div
+          style={{
+            position: "fixed",
+            left: tooltip.x,
+            top: tooltip.y,
+            transform: "translate(-50%, -100%)",
+            background: "var(--namu-bg)",
+            color: "var(--namu-text)",
+            border: "1px solid var(--namu-border)",
+            padding: "8px 12px",
+            borderRadius: "4px",
+            fontSize: "13px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            zIndex: 1100,
+            pointerEvents: "none",
+            whiteSpace: "nowrap",
+            marginTop: "-8px",
+          }}
+        >
+          {tooltip.text}
         </div>
       )}
     </>
