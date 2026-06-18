@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import "@/app/styles/namuwiki-original.css";
 import NamuwikiShell from "./NamuwikiShell.jsx";
 import "@/app/styles/wiki.css";
-<<<<<<< HEAD
 import { wikiData } from "@/entities/wiki/model/wikiData.jsx";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { TistoryIcon } from "@/shared/ui/TistoryIcon";
-=======
-import { wikiData, scrollToAnchor } from "@/entities/wiki/model/wikiData.jsx";
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
 
 const EDIT_JOKE =
   "비로그인 사용자는 이 문서를 편집할 수 없습니다. (애초에 진짜 나무위키가 아닙니다)";
@@ -24,7 +20,6 @@ const LINK_ICONS = {
 /* 각주 위첨자 */
 function Fn({ n, onHover, onLeave }) {
   return (
-<<<<<<< HEAD
     <sup
       className="namu-fn"
       id={`fnref-${n}`}
@@ -32,12 +27,6 @@ function Fn({ n, onHover, onLeave }) {
       onMouseLeave={onLeave}
     >
       <a href={`#fn-${n}`}>[{n}]</a>
-=======
-    <sup className="namu-fn" id={`fnref-${n}`}>
-      <a href={`#fn-${n}`} onClick={(e) => scrollToAnchor(e, `fn-${n}`)}>
-        [{n}]
-      </a>
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
     </sup>
   );
 }
@@ -524,19 +513,7 @@ export default function WikiPortfolioPage() {
             경험하며 전문가로서의 눈높이를 갖추게 되었다.
           </p>
           <p>
-<<<<<<< HEAD
             이러한 실무 경험을 바탕으로 2026년 6월부터 <b>Quantum Edu Solution</b>의 <b>Solution Development Team</b>에서 인턴으로 합류하여, 백엔드 시스템에 대한 전문성을 더욱 고도화하고 있다.
-=======
-            학교 밖에서는 '두리안 스무디의 블로그'(Tistory)에 개발 회고와 기술
-            인식을 기록하고, 자기계발을 주제로 한 유튜브 채널 'Mr. Share_Man'을
-            운영한다. 동시에 매일 자동으로 개발 일지를 수집·동기화하는 'Park
-            Brain'
-            <Fn n={31} /> 지식 저장소를 직접 구축해 학습과 프로젝트 경험을
-            재사용 가능한 개념 단위로 축적하고 있다. 커리어 방향은 실무형
-            백엔드에서 ERP/SAP 전문가로 잡고 있으며, 2027년 SSAFY·SAP CODE
-            부트캠프 진입과 SI·공공·중견·대기업 백엔드 직무를 목표로
-            정보처리기사·빅데이터분석기사·전산회계 2급을 함께 준비하고 있다.
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
           </p>
           <table className="namu-table">
             <tbody>
@@ -988,7 +965,6 @@ export default function WikiPortfolioPage() {
                       </div>
           </details>
 
-<<<<<<< HEAD
           <details open className="namu-section">
             <summary>
               {/* 15. 둘러보기 */}
@@ -1012,60 +988,6 @@ export default function WikiPortfolioPage() {
           </ul>
         </div>
       </details>
-=======
-          {/* 하단 컨텍스트 광고 (나무위키 패러디) — 각주 바로 위 */}
-          <div
-            className="namu-ad-cards"
-            style={{
-              margin: "26px 0 8px",
-              border: "1px solid var(--namu-border)",
-              borderRadius: "4px",
-              background: "var(--namu-box-bg)",
-              padding: "10px 12px",
-            }}
-          >
-            <span
-              className="namu-ad-label"
-              style={{ position: "static", display: "inline-block", marginBottom: "8px" }}
-            >
-              광고
-            </span>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <a
-                href="https://parkdohyun.tistory.com/"
-                target="_blank"
-                rel="noreferrer"
-                style={{ textDecoration: "none", display: "block" }}
-              >
-                <div style={{ color: "var(--namu-link)", fontWeight: "bold", fontSize: "0.95em" }}>
-                  두리안 스무디의 블로그
-                </div>
-                <div style={{ color: "#1a7f37", fontSize: "0.8em", margin: "2px 0" }}>
-                  parkdohyun.tistory.com
-                </div>
-                <div style={{ color: "var(--namu-muted)", fontSize: "0.84em", lineHeight: 1.5 }}>
-                  개발 회고와 기술에 대한 생각을 기록하는 블로그. 두리안을 혐오하는 청년의 이야기.
-                </div>
-              </a>
-              <a
-                href="https://www.youtube.com/@Mr.Share_Man"
-                target="_blank"
-                rel="noreferrer"
-                style={{ textDecoration: "none", display: "block" }}
-              >
-                <div style={{ color: "var(--namu-link)", fontWeight: "bold", fontSize: "0.95em" }}>
-                  Mr. Share_Man · 유튜브 채널
-                </div>
-                <div style={{ color: "#1a7f37", fontSize: "0.8em", margin: "2px 0" }}>
-                  youtube.com/@Mr.Share_Man
-                </div>
-                <div style={{ color: "var(--namu-muted)", fontSize: "0.84em", lineHeight: 1.5 }}>
-                  자기계발과 배운 것을 나누는 박도현의 유튜브 채널. 함께 성장하실 분을 기다립니다.
-                </div>
-              </a>
-            </div>
-          </div>
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
     </div>
 
           {/* 각주 */}
@@ -1073,14 +995,7 @@ export default function WikiPortfolioPage() {
           <ol>
             {wikiData.footnotes.map((f, i) => (
               <li key={i} id={`fn-${i + 1}`}>
-<<<<<<< HEAD
                 <a href={`#fnref-${i + 1}`} style={{ color: "var(--namu-link)", textDecoration: "none" }}>
-=======
-                <a
-                  href={`#fnref-${i + 1}`}
-                  onClick={(e) => scrollToAnchor(e, `fnref-${i + 1}`)}
-                >
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
                   [{i + 1}]
                 </a>{" "}
                 {f}

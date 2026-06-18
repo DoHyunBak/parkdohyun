@@ -48,24 +48,15 @@ export const wikiData = {
         <><a href="https://namu.wiki/w/서울당곡초등학교" target="_blank" rel="noreferrer">당곡초등학교</a> (졸업)</>,
         <><a href="https://namu.wiki/w/성보중학교" target="_blank" rel="noreferrer">성보중학교</a> (졸업)</>,
         <><a href="https://namu.wiki/w/세화고등학교(서울)" target="_blank" rel="noreferrer">세화고등학교</a> (졸업)</>,
-<<<<<<< HEAD
         <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> (졸업예정)<br /><span style={{ fontSize: '0.82em', color: 'var(--namu-muted)' }}>(ICT융합학부 21 / 공학사)</span></>
-=======
-        <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a><br /><span style={{ fontSize: '0.82em', color: 'var(--namu-muted)' }}>(ICT융합학부 미디어테크놀로지 21 / 공학사)</span></>
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
       ],
     },
     { label: "직업", value: <><a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">백엔드 개발자</a> (지망)</> },
     { label: "데뷔", type: "debut", value: <><a href="https://namu.wiki/w/2025년" target="_blank" rel="noreferrer">2025년</a> 산학캡스톤디자인</>, sub: `(데뷔일로부터 +${diffDays}일)` },
     { label: "분야", value: <><a href="https://namu.wiki/w/B2B" target="_blank" rel="noreferrer">B2B</a> · <a href="https://namu.wiki/w/전사적 자원 관리" target="_blank" rel="noreferrer">ERP/SAP</a> · <a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">엔터프라이즈 백엔드</a></> },
     { label: "주력 스택", value: <><a href="https://namu.wiki/w/Java" target="_blank" rel="noreferrer">Java</a> · <a href="https://namu.wiki/w/Spring(프레임워크)" target="_blank" rel="noreferrer">Spring Boot</a> · <a href="https://namu.wiki/w/MySQL" target="_blank" rel="noreferrer">MySQL</a> · AI/RAG</> },
-<<<<<<< HEAD
     { label: "MBTI", value: "신뢰하지 않는 편이지만 T는 확실함" }, 
     { label: "소속", value: <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> (졸업예정)</> },
-=======
-    { label: "MBTI", value: "ENTP와 ISTJ가 번갈아 나와 신뢰하지 않음 (T는 확실)" },
-    { label: "소속", value: <a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> },
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
     {
       label: "링크",
       type: "links",
@@ -93,7 +84,6 @@ export const wikiData = {
   ],
 
   timeline: [
-<<<<<<< HEAD
     { year: "2002. 03. 23.", event: "서울특별시 출생" },
     { year: "2015. 02.", event: "당곡초등학교 졸업" },
     { year: "2018. 02.", event: "성보중학교 졸업" },
@@ -103,20 +93,6 @@ export const wikiData = {
     { year: <>2025. 07.<br />- 2026. 06.</>, event: "산학협력 캡스톤 프로젝트 'U-sto' 백엔드 아키텍처 설계 및 인프라 구축 주도" },
     { year: <>2026. 06.<br />- 현재</>, event: "Quantum Edu Solution Solution Development 인턴" },
     { year: "2027. 03.", event: "한양대학교 소프트웨어융합대학 졸업" },
-=======
-    { year: "2002. 03. 23.", event: "서울특별시 관악구 출생" },
-    { year: "유년기", event: "당곡초등학교 → 성보중학교 → 세화고등학교 졸업" },
-    { year: "고교 시절", event: "원래 초등교사를 지망하여 교대 입시를 준비했으나, 저출산 문제로 인한 임용 절벽 현상에 절망하고 진로를 컴퓨터공학으로 선회" },
-    { year: "2021. 03.", event: "한양대학교 소프트웨어융합대학 ICT융합학부 입학 (컴퓨터 교사가 될 수 있다는 차선책을 염두에 둠)" },
-    { year: "2022 - 2024", event: "제31보병사단 95여단 병장 만기전역 (2022.08.09 ~ 2024.02.08)" },
-    { year: "2024 - 2025", event: "복학 후 설계방법론·모바일로봇·웹애플리케이션개발 등 실무형 교과에서 프로젝트 다수 수행 (리빙랩, Temi 로봇, 키오스크)" },
-    { year: "2025. 07.", event: "ITCEN Global 산학협력 프로젝트 'U-sto' 백엔드 아키텍처 설계 및 구축 주도 (백엔드 데뷔)" },
-    { year: "2026 상반기", event: "U-sto에 조달청 G2B OpenAPI·AI 예측 연동 고도화. 'Park Brain' 지식 자동화 시스템 구축·운영 시작" },
-    { year: "현재", event: "ERP/SAP 도메인 심화 및 효율적 백엔드 아키텍처 연구 중. 2026 여름 현장실습 지원, AI/RAG는 보조 수단으로 활용" },
-    { year: "2027 (계획)", event: "SSAFY / SAP CODE 부트캠프 진입 목표 — 실무형 백엔드 → ERP/SAP 전문가 트랙" },
-    { year: "2027. 03.", event: "졸업 예정" },
-    { year: "졸업 이후 (의향)", event: "취업 후 직장과 병행하는 야간대학원 진학 의향 — 백엔드·ERP 도메인 심화" },
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
   ],
 
   signatureStack: [
@@ -226,7 +202,6 @@ export const wikiData = {
 
   academic: [
     {
-<<<<<<< HEAD
       id: "database",
       name: "데이터베이스 (Database)",
       topic: "정규화된 관계형 데이터 모델링 및 트랜잭션 최적화",
@@ -255,42 +230,6 @@ export const wikiData = {
       name: "스마트센서와 액츄에이터",
       topic: "Physical AI 환경에서의 실시간 데이터 파이프라인",
       desc: "하드웨어 센서에서 발생하는 원시 데이터를 서버로 실시간 수집하고 가공하는 기술을 익혔다. '키즈카페 로봇' 프로젝트의 기술적 모태가 되었으며, 비정형 데이터의 정형화 및 실시간 메시징(MQTT) 처리 능력을 비약적으로 향상시켰다.",
-=======
-      id: "mobile-robot",
-      name: "모바일 로봇의 이해",
-      topic: "Physical AI (Sensing → Algorithm → Actuation)",
-      desc: <>Temi SDK(goTo·speak·follow·telepresence)와 Android Studio 기반으로 로봇 제어 앱을 개발했다. ESP32/Arduino 호출 버튼, Firebase 로그, LLM(의도 분류·응답) + VLM(공간 인식){fn(48)}을 연결하며 현실 환경과 상호작용하는 물리적 지능 시스템의 구조를 학습했다. UX/UI를 넘어 대상 환경과 물리 시스템의 역할(EX/EI)까지 보는 관점을 익혔다.</>,
-    },
-    {
-      id: "linear-algebra",
-      name: "선형대수학 (Linear Algebra)",
-      topic: "수학적 동형적 사고와 문제 풀이 원칙",
-      desc: "가우스 소거법(REF/RREF), 행렬식, 벡터공간 공리를 학습했다. 서로 다른 문제를 같은 수학적 구조로 치환해 해결하는 '동형적 사고'의 가치를 익혔고, 이는 복잡한 데이터를 구조화하는 백엔드 모델링 역량의 근간이 되었다.",
-    },
-    {
-      id: "design-thinking",
-      name: "설계방법론 · 리빙랩과 디자인싱킹",
-      topic: "사용자 참여형 문제 해결 방법론",
-      desc: <>리빙랩(사용자가 문제 발굴~프로토타입 평가까지 참여하는 '살아있는 실험실')과 디자인싱킹(문제 정의 → 아이디어 도출 → 리빙랩 실증 → 솔루션 검증)을 다뤘다. 페르소나·경험 여정 맵으로 페인포인트를 도출하고, 기술을 중립적 도구가 아니라 사용자 생활·이해관계 속에서 의미가 결정되는 것으로 보는 구성주의{fn(49)} 관점(기술 결정론/도구주의의 한계)을 학습했다. 전동킥보드 주차질서 리빙랩과 올타임 기숙사 앱이 그 산물이다.</>,
-    },
-    {
-      id: "space-exploration",
-      name: "현대우주탐사 및 추진시스템기초",
-      topic: "추진 시스템과 'Successful Failure'",
-      desc: "우주 추진 시스템의 기초와 함께, 실패하더라도 그 과정의 교훈이 미래 성공의 자산이 된다는 긍정적 실패관(Apollo 13의 'Successful Failure')을 인상 깊게 정리했다. 시험 후에는 준비 과정을 회고 글로 남기는 학습 습관을 적용했다.",
-    },
-    {
-      id: "big-data",
-      name: "빅데이터분석기사 학습",
-      topic: "데이터 분석 전 과정의 키워드 구조화",
-      desc: <>필기 4과목(기획/플랫폼/법 · 전처리/통계 · 모델링/알고리즘 · 평가/진단)을 트리 구조로 압축한 키워드맵을 직접 만들었다. DIKW{fn(50)}·SECI·3V부터 결측값(MCAR/MAR/NMAR)·PCA·앙상블(RF/GBM/XGBoost)·혼동행렬·ROC/AUC·교차검증까지, 용어를 한 기준으로 계층화해 '머릿속에 싹 넣는' 학습법을 적용했다.</>,
-    },
-    {
-      id: "web-app",
-      name: "웹애플리케이션개발",
-      topic: "정보 전달형 키오스크 UI/UX",
-      desc: <>기획 → Figma → HTML/CSS → React + Babel Standalone{fn(51)} → 상태관리 → 키오스크 로직 → 발표로 이어지는 흐름을 익혔다. 개발자 편의가 아니라 실제 사용자 시나리오에서 출발해 화면을 설계하고, 사용자 테스트로 검증하는 관점을 체화했다.</>,
->>>>>>> e030d6b7b2867fe06319fcdb31f51bc2d112f703
     }
   ],
 
