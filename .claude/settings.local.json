@@ -9,7 +9,9 @@
       "Bash(git commit -m '@ *)",
       "Bash(git commit --amend -m 'fix: optimize wiki page for mobile and remove horizontal overflow' -m '- Collapse top nav on mobile \\(hide text links/extra icons, flex search\\) *)",
       "Bash(git push *)",
-      "WebFetch(domain:parkdohyun.tistory.com)"
+      "WebFetch(domain:parkdohyun.tistory.com)",
+      "PowerShell(npm run *)",
+      "Bash(node *)"
     ]
   }
 }

@@ -1,18 +1,21 @@
-/* 나무위키(the seed) 스킨 패러디 — 라이트모드 고정 */
+/* 모던 개발자 Docs (Digital Garden) 테마 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 .namu {
-  --namu-bg: #ffffff;
-  --namu-text: #212529;
-  --namu-muted: #6c757d;
-  --namu-border: #e4e4e4;
-  --namu-line: #ebebeb;
-  --namu-link: #0275d8;
-  --namu-redlink: #d81920;
-  --namu-box-bg: #f7f7f7;
-  --namu-th-bg: #ececec;
-  --namu-accent: #6db33f; /* Spring green */
-  --namu-notice-bg: #fff8e1;
-  --namu-notice-border: #ffe082;
+  /* Modern Docs — light */
+  --namu-bg: #ffffff;        /* primary bg */
+  --namu-text: #1f2023;      /* normal text */
+  --namu-muted: #6b7280;     /* faint text */
+  --namu-border: #e8e8ea;    /* hair-thin */
+  --namu-line: #f1f1f3;      /* fainter divider */
+  --namu-link: #2563eb;      /* accent blue link */
+  --namu-redlink: #475569;   /* secondary */
+  --namu-box-bg: #f7f8fa;    /* secondary region */
+  --namu-th-bg: #f0f1f4;     /* table header region */
+  --namu-accent: #3b82f6;    /* single accent (modern blue) */
+  --namu-notice-bg: #eff6ff; /* callout bg */
+  --namu-notice-border: #dbeafe;
 
   min-height: 100vh;
   background: var(--namu-bg);
@@ -21,11 +24,10 @@
   font-size: 15px;
   line-height: 1.7;
   word-break: keep-all;
-  zoom: 1.1;
 }
 
 html, body {
-  background-color: #ffffff;
+  background-color: #0a0a0a;
   transition: background-color 0.2s ease;
   margin: 0;
   padding: 0;
@@ -35,22 +37,23 @@ html, body {
 
 html:has(body.theseed-dark-mode),
 body.theseed-dark-mode {
-  background-color: #000000 !important;
+  background-color: #0a0a0a !important;
 }
 
 .theseed-dark-mode .namu {
-  --namu-bg: #1c1d1f;
-  --namu-text: #e0e0e0;
-  --namu-muted: #adb5bd;
-  --namu-border: #383b40;
-  --namu-line: #2d2f34;
-  --namu-link: #ffa94d;
-  --namu-redlink: #ff6b6b;
-  --namu-box-bg: #232527;
-  --namu-th-bg: #2d2f34;
-  --namu-accent: #6db33f; /* Spring green */
-  --namu-notice-bg: #332b10;
-  --namu-notice-border: #524722;
+  /* Modern Docs — dark (deep black, 계층감) */
+  --namu-bg: #0a0a0a;                       /* primary bg (deep black) */
+  --namu-text: #e4e4e7;                     /* normal text */
+  --namu-muted: #8b8b90;                    /* faint text */
+  --namu-border: rgba(255, 255, 255, 0.08); /* 얇고 투명한 테두리 */
+  --namu-line: rgba(255, 255, 255, 0.05);   /* 더 옅은 구분선 */
+  --namu-link: #60a5fa;                     /* accent blue link */
+  --namu-redlink: #a1a1aa;                  /* secondary */
+  --namu-box-bg: #1a1a1a;                   /* 컴포넌트 배경 (계층) */
+  --namu-th-bg: #161616;                    /* table header region */
+  --namu-accent: #3b82f6;                   /* single accent (modern blue) */
+  --namu-notice-bg: #11203a;                /* callout bg */
+  --namu-notice-border: rgba(59, 130, 246, 0.3);
 }
 
 .theseed-dark-mode .namu-main,
@@ -70,10 +73,12 @@ body.theseed-dark-mode {
   display: flex;
   justify-content: center;
   height: 50px;
-  background: var(--namu-accent);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--namu-bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  color: var(--namu-text);
   font-size: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--namu-border);
 }
 .namu-nav-inner {
   display: flex;
@@ -259,7 +264,8 @@ body.theseed-dark-mode {
   gap: 4px;
 }
 .namu-tabs button {
-  background: #f8f9fa;
+  background: var(--namu-box-bg);
+  color: var(--namu-text);
   border: 1px solid var(--namu-border);
   padding: 3px 10px;
   font-size: 12px;
@@ -273,8 +279,10 @@ body.theseed-dark-mode {
   width: 380px; /* 요청에 따라 380px로 확대 */
   margin-left: 20px;
   margin-bottom: 20px;
-  border: 2px solid var(--namu-accent);
-  background: var(--namu-bg);
+  border: 1px solid var(--namu-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--namu-box-bg);
 }
 .namu-infobox-head {
   background: var(--namu-accent);
@@ -624,10 +632,10 @@ details.namu-section[open] > summary::before {
   position: absolute;
   top: 0;
   left: 0;
-  background: #eee;
+  background: var(--namu-th-bg);
   font-size: 10px;
   padding: 1px 4px;
-  color: #888;
+  color: var(--namu-muted);
 }
 .namu-notice {
   background: var(--namu-notice-bg);
@@ -645,7 +653,9 @@ details.namu-section[open] > summary::before {
   font-size: 13px;
 }
 .namu-navbox {
-  border: 1px solid var(--namu-accent);
+  border: 1px solid var(--namu-border);
+  border-radius: 8px;
+  overflow: hidden;
   margin: 20px 0;
 }
 .namu-navbox-head {
@@ -836,4 +846,1122 @@ details.namu-section[open] > summary::before {
   .namu-h3 {
     font-size: 18px;
   }
+}
+
+/* =====================================================================
+   Obsidian-style rework — minimal borders, region by bg lightness.
+   TOC → Notion inline · 각주 → API Reference list · nav → dashboard
+   ===================================================================== */
+
+/* --- 상단바: 나무위키 잔여 UI 정리 (대시보드형) --- */
+.x5ds8SMo,
+.KWlloIs3 {
+  display: none !important;
+}
+.eiqAFsca[title="아무 문서로 이동"],
+.eiqAFsca[title="이동"] {
+  display: none !important;
+}
+.namu .rnbmLmNs,
+.namu .b2xjFe0L,
+.namu .VSkj9Kv6,
+.namu .dFIudcuj {
+  color: var(--namu-muted) !important;
+  fill: currentColor !important;
+}
+.namu .rnbmLmNs:hover {
+  color: var(--namu-text) !important;
+}
+.namu .FkbRMf6C::placeholder {
+  color: var(--namu-muted);
+}
+
+/* --- 목차(TOC): 노션식 인라인, 회색박스/파란링크 제거 --- */
+.namu-toc {
+  display: block;
+  background: transparent;
+  border: none;
+  border-left: 2px solid var(--namu-border);
+  border-radius: 0;
+  padding: 2px 0 2px 16px;
+  margin: 8px 0 28px;
+  min-width: 0;
+}
+.namu-toc-title {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--namu-muted);
+  margin-bottom: 8px;
+}
+.namu-toc ol {
+  font-size: 13.5px;
+  line-height: 1.9;
+}
+.namu-toc-num {
+  color: var(--namu-muted);
+  margin-right: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.namu-toc a {
+  color: var(--namu-text);
+  text-decoration: none;
+}
+.namu-toc a:hover {
+  color: var(--namu-accent);
+  text-decoration: none;
+}
+
+/* --- References: API 문서 Reference 섹션 스타일 --- */
+.namu-footnotes {
+  margin-top: 48px;
+}
+.namu-ref-head {
+  font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--namu-text);
+  border-bottom: 1px solid var(--namu-border);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.namu-reflist {
+  margin: 0;
+}
+.namu-ref-item {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 10px;
+  padding: 9px 4px;
+  border-bottom: 1px solid var(--namu-line);
+  font-size: 13.5px;
+}
+.namu-ref-item dt {
+  margin: 0;
+}
+.namu-ref-anchor {
+  font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+  font-size: 12px;
+  color: var(--namu-accent);
+  text-decoration: none;
+}
+.namu-ref-item dd {
+  margin: 0;
+  color: var(--namu-text);
+  line-height: 1.7;
+}
+
+/* 본문 각주 위첨자: 차분하게 */
+.namu-fn a {
+  color: var(--namu-muted);
+}
+.namu-fn a:hover {
+  color: var(--namu-accent);
+}
+
+/* --- 구역 구분을 테두리 대신 배경 명도차로 --- */
+.namu-quote {
+  border-left: 3px solid var(--namu-accent);
+  border-radius: 6px;
+  background: var(--namu-box-bg);
+}
+.namu-railbox,
+.namu-category,
+.namu-adbanner {
+  border-radius: 8px;
+  border-color: var(--namu-border);
+}
+.namu-h2,
+.namu-h3 {
+  border-bottom-color: var(--namu-line);
+}
+
+/* 코드 인라인: Obsidian 느낌 */
+.namu-body code {
+  background: var(--namu-box-bg);
+  border: 1px solid var(--namu-border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.88em;
+}
+
+/* =====================================================================
+   목차 → 디렉토리/클래스 트리 (IDE Project view 스타일)
+   ===================================================================== */
+.namu-tree {
+  font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+  font-size: 13px;
+  background: var(--namu-box-bg);
+  border: 1px solid var(--namu-border);
+  border-radius: 10px;
+  margin: 10px 0 30px;
+  overflow: hidden;
+}
+.namu-tree-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  background: var(--namu-th-bg);
+  border-bottom: 1px solid var(--namu-border);
+  font-size: 12px;
+  color: var(--namu-muted);
+}
+.namu-tree-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.namu-tree-dot.r { background: #ff5f57; }
+.namu-tree-dot.y { background: #febc2e; }
+.namu-tree-dot.g { background: #28c840; }
+.namu-tree-tab {
+  margin-left: 8px;
+  letter-spacing: 0.02em;
+}
+
+.namu-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.namu-tree-root {
+  padding: 8px 10px 12px;
+}
+/* 중첩 단계마다 들여쓰기 + IDE식 세로 가이드라인 */
+.namu-tree-root ul {
+  margin-left: 9px;
+  padding-left: 12px;
+  position: relative;
+}
+.namu-tree-root ul::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 6px;
+  border-left: 1px solid var(--namu-border);
+}
+.t-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 8px;
+  margin: 1px 0;
+  color: var(--namu-text);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 5px;
+  line-height: 1.6;
+}
+a.t-row:hover {
+  background: var(--namu-line);
+  color: var(--namu-accent);
+  text-decoration: none;
+}
+.t-pkg,
+.t-dir {
+  font-weight: 600;
+}
+.t-ico {
+  width: 16px;
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: 12px;
+}
+/* =====================================================================
+   스플래시 (PixelCard) — 클릭하면 입장
+   ===================================================================== */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  cursor: pointer;
+  animation: splash-in 0.3s ease;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+.splash.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes splash-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* PixelCard를 전체 화면으로 (.pixel-card 기본 크기보다 특이도 높게) */
+.splash .pixel-card.splash-card {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  aspect-ratio: auto;
+  border: none;
+  border-radius: 0;
+}
+.splash-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+  color: #00ff41;
+}
+.splash-prompt {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.splash-name {
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+}
+.splash-cta {
+  margin-top: 18px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  animation: term-blink 1.4s steps(1) infinite;
+}
+.splash-cursor {
+  margin-left: 4px;
+  animation: term-blink 1.05s steps(1) infinite;
+}
+
+/* =====================================================================
+   입장 애니메이션 — 컴포넌트 빠르게 빌드되듯 등장
+   ===================================================================== */
+/* 픽셀이 모여 조립되는 느낌: blur+scale 해제를 steps()로 끊어서 */
+@keyframes build-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+.site-enter .docs-left {
+  animation: build-in 0.7s steps(8, end) 0.15s both;
+}
+.site-enter .docs-right {
+  animation: build-in 0.7s steps(8, end) 0.5s both;
+}
+.site-enter .doc-container {
+  animation: build-in 0.8s steps(9, end) 0.3s both;
+}
+/* 본문 섹션 stagger (~2초까지 퍼짐) */
+.site-enter .doc-container .doc-tags,
+.site-enter .doc-container .profile-card,
+.site-enter .doc-container .namu-section {
+  animation: build-in 0.55s steps(7, end) both;
+}
+.site-enter .doc-container .profile-card { animation-delay: 0.5s; }
+.site-enter .doc-container .doc-tags { animation-delay: 0.6s; }
+.site-enter .doc-container .namu-section:nth-of-type(1) { animation-delay: 0.75s; }
+.site-enter .doc-container .namu-section:nth-of-type(2) { animation-delay: 0.85s; }
+.site-enter .doc-container .namu-section:nth-of-type(3) { animation-delay: 0.95s; }
+.site-enter .doc-container .namu-section:nth-of-type(4) { animation-delay: 1.05s; }
+.site-enter .doc-container .namu-section:nth-of-type(5) { animation-delay: 1.15s; }
+.site-enter .doc-container .namu-section:nth-of-type(6) { animation-delay: 1.25s; }
+.site-enter .doc-container .namu-section:nth-of-type(7) { animation-delay: 1.35s; }
+.site-enter .doc-container .namu-section:nth-of-type(8) { animation-delay: 1.45s; }
+.site-enter .doc-container .namu-section:nth-of-type(n + 9) { animation-delay: 1.55s; }
+/* 좌측 트리 행이 한 줄씩 찍히는 느낌 */
+.site-enter .ide-row {
+  animation: build-in 0.4s steps(5, end) both;
+}
+.site-enter .ide-folder .ide-row { animation-delay: 0.3s; }
+.site-enter .ide-children .ide-row { animation-delay: 0.45s; }
+.site-enter .ide-children .ide-children .ide-row { animation-delay: 0.6s; }
+/* 커밋 로그 행 stagger */
+.site-enter .commit-item {
+  animation: build-in 0.45s steps(6, end) both;
+}
+.site-enter .commit-item:nth-child(1) { animation-delay: 0.6s; }
+.site-enter .commit-item:nth-child(2) { animation-delay: 0.72s; }
+.site-enter .commit-item:nth-child(3) { animation-delay: 0.84s; }
+.site-enter .commit-item:nth-child(4) { animation-delay: 0.96s; }
+.site-enter .commit-item:nth-child(5) { animation-delay: 1.08s; }
+.site-enter .commit-item:nth-child(n + 6) { animation-delay: 1.2s; }
+
+/* =====================================================================
+   LetterGlitch 배경 + 가독성용 50% 검정 오버레이
+   ===================================================================== */
+.glitch-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.glitch-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+/* 콘텐츠는 배경 위로, 본문 영역 배경은 투명 처리해 글리치가 비치게 */
+.docs-shell {
+  position: relative;
+  z-index: 1;
+}
+.theseed-dark-mode .namu,
+.theseed-dark-mode .namu-main {
+  background: transparent;
+}
+
+/* =====================================================================
+   타이포그래피: 본문 Pretendard / 코드·기술스택·날짜 JetBrains Mono
+   ===================================================================== */
+.namu {
+  font-family: "Pretendard Variable", "Pretendard", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+}
+.mono,
+.font-mono,
+.namu .mono,
+.namu-tree,
+.ide-tree,
+.docs-toc-title,
+.namu-ref-head,
+.namu-ref-anchor,
+.namu-body code,
+.namu-recent-ago,
+.namu-editbadge,
+.profile-card-romaja {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    "Cascadia Code", monospace;
+}
+/* 유틸리티 폰트 클래스 */
+.font-sans {
+  font-family: "Pretendard Variable", "Pretendard", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+}
+
+/* =====================================================================
+   Step 2: 모던 Docs 3-컬럼 레이아웃
+   ===================================================================== */
+.docs-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 250px;
+  gap: 40px;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 32px 36px 96px;
+  align-items: start;
+}
+.docs-col {
+  min-width: 0;
+}
+/* 좌·우 사이드바 sticky + 자체 스크롤 */
+.docs-left,
+.docs-right {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.docs-left::-webkit-scrollbar,
+.docs-right::-webkit-scrollbar {
+  width: 7px;
+}
+.docs-left::-webkit-scrollbar-thumb,
+.docs-right::-webkit-scrollbar-thumb {
+  background: var(--namu-border);
+  border-radius: 4px;
+}
+.docs-left-inner .namu-tree {
+  margin: 0;
+}
+.docs-right-inner .namu-railbox {
+  margin-top: 22px;
+  border-radius: 12px;
+}
+
+/* 우측 On-this-page TOC (scrollspy) */
+.docs-toc-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--namu-muted);
+  margin-bottom: 10px;
+}
+.docs-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--namu-border);
+}
+.docs-toc li a {
+  display: block;
+  padding: 5px 0 5px 14px;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--namu-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color 0.12s, border-color 0.12s;
+}
+.docs-toc li a:hover {
+  color: var(--namu-text);
+}
+.docs-toc li.active a {
+  color: var(--namu-accent);
+  border-left-color: var(--namu-accent);
+  font-weight: 500;
+}
+
+/* 플로팅 버튼 (위/아래) */
+.docs-floating {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.docs-floating button {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  border: 1px solid var(--namu-border);
+  background: var(--namu-box-bg);
+  color: var(--namu-text);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+}
+.docs-floating button:hover {
+  color: var(--namu-accent);
+  border-color: var(--namu-accent);
+}
+
+/* =====================================================================
+   Step 3: 모던 프로필 카드
+   ===================================================================== */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--namu-box-bg);
+  border: 1px solid var(--namu-border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 8px 0 36px;
+}
+.profile-card-media {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 18px 0;
+}
+.profile-card-media img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+.profile-card-body {
+  flex: 1;
+  min-width: 0;
+  padding: 20px 22px;
+}
+.profile-card-name {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+.profile-card-romaja {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--namu-muted);
+}
+.profile-meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.profile-meta-row {
+  display: contents;
+}
+.profile-meta dt {
+  color: var(--namu-muted);
+  white-space: nowrap;
+}
+.profile-meta dd {
+  margin: 0;
+  color: var(--namu-text);
+  overflow-wrap: anywhere;
+}
+.profile-meta dd a {
+  color: var(--namu-link);
+  text-decoration: none;
+}
+.profile-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--namu-border);
+}
+.profile-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--namu-border);
+  background: var(--namu-bg);
+  color: var(--namu-text);
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.12s, border-color 0.12s;
+}
+.profile-social:hover {
+  color: var(--namu-accent);
+  border-color: var(--namu-accent);
+}
+.profile-social svg {
+  width: 17px !important;
+  height: 17px !important;
+  margin: 0 !important;
+}
+
+/* 반응형: 우측 → 좌측 순으로 접기, 카드 세로 전환 */
+@media (max-width: 1180px) {
+  .docs-shell {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+  .docs-right {
+    display: none;
+  }
+}
+@media (max-width: 880px) {
+  .docs-shell {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 16px 80px;
+    gap: 20px;
+  }
+  .docs-left {
+    display: none;
+  }
+  .profile-card-media img {
+    max-height: 360px;
+  }
+}
+
+/* =====================================================================
+   IDE 파일 탐색기 (VS Code / IntelliJ 스타일)
+   ===================================================================== */
+.ide-tree {
+  background: var(--namu-box-bg);
+  border: 1px solid var(--namu-border);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 13px;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.ide-tree-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  background: var(--namu-th-bg);
+  border-bottom: 1px solid var(--namu-border);
+}
+.ide-tree-tab {
+  font-size: 12px;
+  color: var(--namu-muted);
+}
+.ide-tree-body {
+  padding: 6px 4px 10px;
+}
+
+/* 트리 한 줄 (폴더/파일 공통) */
+.ide-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2px 8px;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  color: var(--namu-muted);
+  line-height: 1.65;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+.ide-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--namu-text);
+}
+.theseed-light-mode .ide-row:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+/* 파일: chevron 폭만큼 들여써서 폴더 아이콘과 정렬 */
+.ide-file {
+  padding-left: 29px;
+}
+.ide-file.active {
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.05);
+}
+.theseed-light-mode .ide-file.active {
+  color: var(--namu-text);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.ide-chevron {
+  flex: 0 0 auto;
+  color: var(--namu-muted);
+  opacity: 0.8;
+}
+.ide-ico {
+  flex: 0 0 auto;
+  opacity: 0.85;
+}
+.ide-ico-folder {
+  color: #8aa9d6;
+}
+.ide-file .ide-ico {
+  color: var(--namu-muted);
+}
+/* 라벨 말줄임 */
+.ide-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 들여쓰기 + IDE 트리 가이드라인 (세로줄) */
+.ide-children {
+  margin-left: 15px;
+  border-left: 1px solid var(--namu-border);
+}
+
+/* =====================================================================
+   Recent Commits — GitHub 스타일 타임라인 로그
+   ===================================================================== */
+.commitlog {
+  background: var(--namu-box-bg);
+  border: 1px solid var(--namu-border);
+  border-radius: 12px;
+  padding: 14px 16px 16px;
+}
+.docs-right-inner .commitlog {
+  margin-top: 0;
+}
+.commitlog-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--namu-text);
+  margin-bottom: 16px;
+}
+.commitlog-head svg {
+  color: var(--namu-muted);
+}
+.commitlog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 5px;
+}
+.commit-item {
+  position: relative;
+  padding: 0 0 16px 16px;
+  border-left: 2px solid var(--namu-border);
+}
+.commit-item:last-child {
+  padding-bottom: 0;
+}
+.commit-dot {
+  position: absolute;
+  left: -6px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--namu-muted);
+  border: 2px solid var(--namu-box-bg);
+  box-sizing: content-box;
+}
+.commit-hash {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: var(--namu-muted);
+  display: inline-block;
+  margin-bottom: 3px;
+}
+.commit-msg {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--namu-text);
+  overflow-wrap: anywhere;
+}
+.commit-type {
+  font-weight: 600;
+}
+.type-feat { color: #3fb950; }
+.type-fix { color: #f85149; }
+.type-refactor { color: #58a6ff; }
+.type-docs { color: #a371f7; }
+.commit-scope {
+  color: var(--namu-muted);
+}
+.commit-colon {
+  color: var(--namu-muted);
+}
+.commit-ago {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 5px;
+}
+
+/* =====================================================================
+   본문 Glassmorphism 컨테이너 (반투명 다크 + 블러)
+   ===================================================================== */
+.doc-container {
+  background: rgba(17, 17, 17, 0.82);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid var(--namu-border);
+  border-radius: 18px;
+  padding: 40px 44px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+.theseed-light-mode .doc-container {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 880px) {
+  .doc-container {
+    padding: 24px 18px;
+    border-radius: 14px;
+  }
+}
+
+/* =====================================================================
+   중앙 본문: 해커 CRT 터미널 콘솔 테마 (.doc-container 스코프)
+   ===================================================================== */
+.doc-container {
+  --term-fg: #d6ffe0;   /* 옅은 회록 본문 */
+  --term-neon: #00ff41; /* 매트릭스 네온 그린 */
+  --term-dim: rgba(0, 255, 65, 0.45);
+  color: var(--term-fg);
+}
+
+/* Step 1: 기본 텍스트 회록 / 강조·링크·뱃지 네온 그린 */
+.doc-container .namu-body,
+.doc-container p,
+.doc-container li,
+.doc-container dt,
+.doc-container dd,
+.doc-container td,
+.doc-container .namu-titlemeta,
+.doc-container .profile-meta dd {
+  color: var(--term-fg);
+}
+.doc-container a,
+.doc-container .namu-body a,
+.doc-container .profile-meta dd a {
+  color: var(--term-neon) !important;
+  text-decoration: none;
+  transition: text-shadow 0.15s;
+}
+.doc-container a:hover {
+  text-shadow: 0 0 7px rgba(0, 255, 65, 0.7);
+}
+.doc-container b,
+.doc-container strong {
+  color: var(--term-neon);
+}
+.doc-container code {
+  color: #b9ffd0;
+  background: rgba(0, 255, 65, 0.08);
+  border-color: var(--term-dim);
+}
+/* 태그/뱃지 → 네온 그린 */
+.doc-container .doc-tag {
+  color: var(--term-neon);
+  background: rgba(0, 255, 65, 0.06);
+  border-color: var(--term-dim);
+}
+.doc-container .doc-tag:hover {
+  border-color: var(--term-neon);
+  color: #6dffa0;
+}
+.doc-container .namu-editbadge {
+  background: transparent;
+  color: var(--term-neon);
+  border: 1px solid var(--term-dim);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.doc-container .namu-fn a {
+  color: var(--term-neon);
+}
+
+/* Step 2: 제목 → 터미널 명령어 (mono + 프롬프트 + 네온 글로우) */
+.doc-container .namu-title,
+.doc-container .namu-h2,
+.doc-container .namu-h3 {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--term-neon);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+  border-bottom-color: rgba(0, 255, 65, 0.22);
+}
+/* 위키식 섹션 번호 숨기고 프롬프트 기호로 대체 */
+.doc-container .namu-secnum {
+  display: none;
+}
+.doc-container .namu-h2::before,
+.doc-container .namu-h3::before {
+  content: ">_ ";
+  color: var(--term-neon);
+  opacity: 0.85;
+}
+.doc-container .namu-title::before {
+  content: "root@park-brain:~# ";
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-bottom: 4px;
+  text-shadow: none;
+}
+.doc-container .namu-edit {
+  color: var(--term-dim);
+}
+
+/* Step 4: 깜빡이는 터미널 커서 */
+@keyframes term-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.doc-container .namu-title::after {
+  content: "█";
+  margin-left: 8px;
+  color: var(--term-neon);
+  animation: term-blink 1.05s steps(1) infinite;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+/* Step 3: 표 → 네온 격자 (배경 제거) */
+.doc-container .namu-table,
+.doc-container .namu-table th,
+.doc-container .namu-table td {
+  background: transparent !important;
+  border-color: rgba(0, 255, 65, 0.3) !important;
+  color: var(--term-fg);
+}
+.doc-container .namu-table th {
+  color: var(--term-neon);
+}
+
+/* Step 3: 인용구 → 사이버펑크 */
+.doc-container .namu-quote {
+  border-left: 4px solid var(--term-neon);
+  background: rgba(0, 255, 65, 0.08);
+  border-radius: 0 6px 6px 0;
+}
+.doc-container .namu-quote-text {
+  color: #eafff0;
+}
+.doc-container .namu-quote-src {
+  color: var(--term-dim);
+}
+
+/* References 영역도 터미널 톤 */
+.doc-container .namu-ref-head,
+.doc-container .namu-ref-anchor {
+  color: var(--term-neon);
+}
+
+/* =====================================================================
+   사이드바(파일트리 · 커밋로그)도 동일 터미널 디자인 시스템
+   ===================================================================== */
+/* 파일 탐색기 */
+.ide-tree {
+  color: #d6ffe0;
+  border-color: rgba(0, 255, 65, 0.18);
+}
+.ide-tree-title {
+  border-bottom-color: rgba(0, 255, 65, 0.18);
+}
+.ide-tree-tab {
+  color: #00ff41;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
+}
+.ide-row {
+  color: rgba(214, 255, 224, 0.75);
+}
+.ide-row:hover {
+  background: rgba(0, 255, 65, 0.08);
+  color: #eafff0;
+}
+.ide-chevron {
+  color: rgba(0, 255, 65, 0.6);
+}
+.ide-ico-folder {
+  color: #00ff41;
+}
+.ide-file .ide-ico {
+  color: rgba(0, 255, 65, 0.55);
+}
+.ide-file.active {
+  color: #00ff41;
+  background: rgba(0, 255, 65, 0.1);
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
+}
+.ide-children {
+  border-left-color: rgba(0, 255, 65, 0.2);
+}
+
+/* 커밋 로그 */
+.commitlog {
+  border-color: rgba(0, 255, 65, 0.18);
+}
+.commitlog-head {
+  color: #00ff41;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
+}
+.commitlog-head svg {
+  color: #00ff41;
+}
+.commit-item {
+  border-left-color: rgba(0, 255, 65, 0.25);
+}
+.commit-dot {
+  background: #00ff41;
+  border-color: var(--namu-box-bg);
+  box-shadow: 0 0 6px rgba(0, 255, 65, 0.6);
+}
+.commit-hash {
+  color: rgba(0, 255, 65, 0.7);
+}
+.commit-msg {
+  color: #d6ffe0;
+}
+.commit-type,
+.type-feat,
+.type-fix,
+.type-refactor,
+.type-docs {
+  color: #00ff41;
+}
+.commit-scope,
+.commit-colon {
+  color: rgba(0, 255, 65, 0.5);
+}
+.commit-ago {
+  color: rgba(0, 255, 65, 0.4);
+}
+
+/* 모던 푸터 */
+.doc-footer {
+  margin-top: 64px;
+  padding: 32px 0 12px;
+  border-top: 1px solid var(--namu-border);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--namu-muted);
+}
+.doc-footer p {
+  margin: 0;
+}
+
+/* 태그/뱃지 (위키 [분류] 대체) */
+.doc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 24px;
+}
+.doc-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #cdd0d6;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.doc-tag:hover {
+  color: #f2f3f5;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+/* 라이트 모드 대응 */
+.theseed-light-mode .doc-tag {
+  color: #475569;
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 클래스 마커 (IntelliJ 'C' 배지) */
+.t-ico.t-cls {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--namu-accent);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 700;
 }

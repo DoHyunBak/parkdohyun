@@ -91,7 +91,7 @@ export const wikiData = {
     { year: "2021. 03.", event: "한양대학교 소프트웨어융합대학 입학" },
     { year: <>2022. 08.<br />- 2024. 02.</>, event: "제31보병사단 95여단 병장 만기전역 (2022.08.09 ~ 2024.02.08)" },
     { year: <>2025. 07.<br />- 2026. 06.</>, event: "산학협력 캡스톤 프로젝트 'U-sto' 백엔드 아키텍처 설계 및 인프라 구축 주도" },
-    { year: <>2026. 06.<br />- 현재</>, event: "Quantum Edu Solution Solution Development 인턴" },
+    { year: <>2026. 06.<br />- 현재</>, event: "Quantum Edu Solution에서 Solution Development팀 인턴" },
     { year: "2027. 03.", event: "한양대학교 소프트웨어융합대학 졸업" },
   ],
 

@@ -5,6 +5,75 @@ import "@/app/styles/wiki.css";
 import { wikiData } from "@/entities/wiki/model/wikiData.jsx";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { TistoryIcon } from "@/shared/ui/TistoryIcon";
+import LetterGlitch from "@/shared/ui/LetterGlitch";
+import PixelCard from "@/shared/ui/PixelCard";
+import {
+  Box,
+  Folder,
+  FolderOpen,
+  ChevronRight,
+  ChevronDown,
+  FileText,
+  FileCode2,
+  GitCommit,
+} from "lucide-react";
+
+/* Activity Log — Conventional Commits 더미 */
+const COMMITS = [
+  { hash: "a1b2c3d", type: "feat", scope: "park-brain", msg: "sync daily obsidian logs", ago: "2시간 전" },
+  { hash: "f8e9d0a", type: "refactor", scope: "auth", msg: "separate session config", ago: "5시간 전" },
+  { hash: "7c4b2e1", type: "docs", scope: "profile", msg: "update career timeline & stack", ago: "어제" },
+  { hash: "3d9a6f5", type: "fix", scope: "ui", msg: "resolve layout shift in right sidebar", ago: "어제" },
+  { hash: "b6a1e8c", type: "feat", scope: "rag", msg: "add hybrid retriever w/ rerank", ago: "2일 전" },
+  { hash: "e2f7c90", type: "perf", scope: "db", msg: "add covering index on sync_history", ago: "3일 전" },
+  { hash: "9a0d4b2", type: "fix", scope: "g2b", msg: "handle openapi 503 with backoff", ago: "4일 전" },
+  { hash: "c3d8f15", type: "refactor", scope: "tx", msg: "isolate logging via REQUIRES_NEW", ago: "5일 전" },
+  { hash: "1f5b7a3", type: "chore", scope: "deps", msg: "bump spring-boot to 3.3.x", ago: "1주 전" },
+  { hash: "8e4c2d6", type: "test", scope: "auth", msg: "cover session expiry edge cases", ago: "1주 전" },
+  { hash: "4b9e1f0", type: "feat", scope: "ax", msg: "add agent task dispatcher", ago: "2주 전" },
+  { hash: "d7a3c84", type: "ci", scope: "deploy", msg: "cache gradle build on vercel", ago: "2주 전" },
+];
+
+/* ===== IDE 파일 탐색기 트리 컴포넌트 ===== */
+const TREE_ICON = { size: 15, strokeWidth: 1.6 };
+
+function TreeFolder({ label, defaultOpen = true, root = false, children }) {
+  const [open, setOpen] = useState(defaultOpen);
+  const FolderIco = root ? Box : open ? FolderOpen : Folder;
+  return (
+    <div className="ide-folder">
+      <button
+        type="button"
+        className="ide-row ide-folder-row"
+        onClick={() => setOpen((o) => !o)}
+        title={label}
+      >
+        {open ? (
+          <ChevronDown {...TREE_ICON} className="ide-chevron" />
+        ) : (
+          <ChevronRight {...TREE_ICON} className="ide-chevron" />
+        )}
+        <FolderIco {...TREE_ICON} className="ide-ico ide-ico-folder" />
+        <span className="ide-label">{label}</span>
+      </button>
+      {open && <div className="ide-children">{children}</div>}
+    </div>
+  );
+}
+
+function TreeFile({ href, label, active, code = false }) {
+  const Ico = code ? FileCode2 : FileText;
+  return (
+    <a
+      href={href}
+      className={`ide-row ide-file${active ? " active" : ""}`}
+      title={label}
+    >
+      <Ico size={14} strokeWidth={1.6} className="ide-ico" />
+      <span className="ide-label">{label}</span>
+    </a>
+  );
+}
 
 const EDIT_JOKE =
   "비로그인 사용자는 이 문서를 편집할 수 없습니다. (애초에 진짜 나무위키가 아닙니다)";
@@ -60,28 +129,70 @@ function scrollToToc() {
     ?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+/* 상단 전문 키워드 태그 */
+const TECH_TAGS = [
+  "Backend",
+  "Java / Spring Boot",
+  "ERP / SAP",
+  "B2B Domain",
+  "Data Modeling",
+  "AX / RAG",
+];
+
 export default function WikiPortfolioPage() {
   const [toast, setToast] = useState(null);
-  const [isDark, setIsDark] = useState(false);
   const [tooltip, setTooltip] = useState({ show: false, text: "", x: 0, y: 0 });
+  const [activeId, setActiveId] = useState(null);
+  const [entered, setEntered] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+  const [building, setBuilding] = useState(false);
+  const pixelRef = React.useRef(null);
 
+  const enterSite = () => {
+    if (leaving) return;
+    // 1) 전체화면 픽셀이 모여듦  2) 픽셀이 흩어지며 사이트가 조립됨 (~2초)
+    pixelRef.current?.appear();
+    window.setTimeout(() => {
+      setBuilding(true); // 사이트 컴포넌트 빌드 시작 (스플래시 뒤에서)
+      setLeaving(true); // 스플래시 픽셀 페이드아웃 → 조립되는 사이트가 드러남
+    }, 650);
+    window.setTimeout(() => setEntered(true), 2300); // 스플래시 제거
+  };
+
+  // 다크 모드 강제 고정 (OS/사용자 설정 무시)
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDark(mq.matches);
-    const handler = (e) => setIsDark(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    document.body.classList.add("theseed-dark-mode");
+    document.body.classList.remove("theseed-light-mode");
   }, []);
 
+  // 입장 시 컴포넌트들이 픽셀처럼 조립되는 애니메이션 트리거
   useEffect(() => {
-    if (isDark) {
-      document.body.classList.add("theseed-dark-mode");
-      document.body.classList.remove("theseed-light-mode");
-    } else {
-      document.body.classList.add("theseed-light-mode");
-      document.body.classList.remove("theseed-dark-mode");
-    }
-  }, [isDark]);
+    if (building) document.body.classList.add("site-enter");
+  }, [building]);
+
+  // 좌측 파일트리 active 표시용: 현재 화면에 걸린 섹션 추적
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll('[id^="s-"]'));
+    if (!els.length) return;
+    const onScroll = () => {
+      const off = 120;
+      let cur = els[0].id;
+      for (const el of els) {
+        if (el.getBoundingClientRect().top <= off) cur = el.id;
+      }
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
+        cur = els[els.length - 1].id;
+      }
+      setActiveId(cur);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   const fireEdit = () => {
     setToast(EDIT_JOKE);
@@ -116,9 +227,146 @@ export default function WikiPortfolioPage() {
 
   const titleFull = `${wikiData.title}(${wikiData.disambiguation})`;
 
+  const linksRow = wikiData.infobox.find((i) => i.type === "links");
+
+  const renderInfoVal = (row) => {
+    if (row.type === "debut") {
+      return (
+        <div>
+          <div className="mono">{row.value}</div>
+          <div
+            style={{
+              fontSize: "0.8em",
+              color: "var(--namu-muted)",
+              marginTop: "2px",
+            }}
+          >
+            {row.sub}
+          </div>
+        </div>
+      );
+    }
+    if (row.value === "TODO") return <span className="namu-todo">미정 (TODO)</span>;
+    if (Array.isArray(row.value))
+      return row.value.map((v, i) => <div key={i}>{v}</div>);
+    return <div>{row.value}</div>;
+  };
+
+  /* === Step 3: 모던 프로필 카드 === */
+  const profileCard = (
+    <aside className="profile-card">
+      <div className="profile-card-body">
+        <dl className="profile-meta">
+          {wikiData.infobox
+            .filter((row) => row.type !== "links")
+            .map((row) => (
+              <div className="profile-meta-row" key={row.label}>
+                <dt>{row.label}</dt>
+                <dd>{renderInfoVal(row)}</dd>
+              </div>
+            ))}
+        </dl>
+        {linksRow && (
+          <div className="profile-socials">
+            {linksRow.value.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                title={l.label}
+                aria-label={l.label}
+                className="profile-social"
+              >
+                {LINK_ICONS[l.icon] || l.label[0]}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </aside>
+  );
+
+  /* === 좌측 파일 탐색기 (IDE File Explorer) === */
+  const fileTree = (
+    <nav className="ide-tree">
+      <div className="ide-tree-title">
+        <span className="ide-tree-tab mono">parkdohyun / Structure</span>
+      </div>
+      <div className="ide-tree-body">
+        <TreeFolder label="portfolio" root>
+          <TreeFile href="#s-overview" label="Overview.md" active={activeId === "s-overview"} />
+          <TreeFile href="#s-life" label="Career.md" active={activeId === "s-life"} />
+          <TreeFile href="#s-style" label="DevStyle.md" active={activeId === "s-style"} />
+          <TreeFolder label="stack">
+            {wikiData.signatureStack.map((s) => (
+              <TreeFile
+                key={s.id}
+                href={`#s-stack-${s.id}`}
+                label={`${s.id}.java`}
+                code
+                active={activeId === `s-stack-${s.id}`}
+              />
+            ))}
+          </TreeFolder>
+          <TreeFolder label="projects">
+            {wikiData.projects.map((p) => (
+              <TreeFile
+                key={p.id}
+                href={`#s-proj-${p.id}`}
+                label={`${p.id}.java`}
+                code
+                active={activeId === `s-proj-${p.id}`}
+              />
+            ))}
+          </TreeFolder>
+          <TreeFolder label="vibe-labs">
+            {wikiData.vibeLabs.map((v) => (
+              <TreeFile
+                key={v.id}
+                href={`#s-vibe-${v.id}`}
+                label={`${v.id}.tsx`}
+                code
+                active={activeId === `s-vibe-${v.id}`}
+              />
+            ))}
+          </TreeFolder>
+          <TreeFolder label="academic">
+            {wikiData.academic.map((a) => (
+              <TreeFile
+                key={a.id}
+                href={`#s-acad-${a.id}`}
+                label={`${a.id}.md`}
+                active={activeId === `s-acad-${a.id}`}
+              />
+            ))}
+          </TreeFolder>
+          <TreeFolder label="knowledge">
+            {wikiData.knowledge.map((k) => (
+              <TreeFile
+                key={k.id}
+                href={`#s-kn-${k.id}`}
+                label={`${k.id}.md`}
+                active={activeId === `s-kn-${k.id}`}
+              />
+            ))}
+          </TreeFolder>
+          <TreeFile href="#s-gears" label="Gears.md" active={activeId === "s-gears"} />
+          <TreeFile href="#s-cert" label="Certifications.md" active={activeId === "s-cert"} />
+          <TreeFile href="#s-lang" label="Languages.md" active={activeId === "s-lang"} />
+          <TreeFile href="#s-nick" label="Aliases.md" active={activeId === "s-nick"} />
+          <TreeFile href="#s-quote" label="Quotes.md" active={activeId === "s-quote"} />
+          <TreeFile href="#s-trivia" label="Trivia.md" active={activeId === "s-trivia"} />
+          <TreeFile href="#s-references" label="References.md" active={activeId === "s-references"} />
+        </TreeFolder>
+      </div>
+    </nav>
+  );
+
   const mainContent = (
     <React.Fragment>
       <main className="namu-main">
+        <div className="doc-container">
         {/* 제목 */}
         <h1 className="namu-title">
           {wikiData.title}
@@ -128,300 +376,25 @@ export default function WikiPortfolioPage() {
           <span>최근 수정 시각: {wikiData.lastEdited}</span>
           <span className="namu-editbadge">{wikiData.editCount}</span>
           <span className="namu-tabs">
-            <button onClick={fireEdit}>☆</button>
-            <button onClick={fireEdit}>편집 요청</button>
-            <button onClick={fireEdit}>토론</button>
-            <button onClick={fireEdit}>역사</button>
+            <button onClick={fireEdit}>★ Star</button>
+            <button onClick={fireEdit}>Pull Request</button>
+            <button onClick={fireEdit}>Issues</button>
+            <button onClick={fireEdit}>History</button>
           </span>
         </div>
 
-        {/* 광고 배너 (패러디) - top_ad 공백 제거 버전 */}
-        <div
-          className="namu-adbanner"
-          style={{
-            border: "none",
-            background: "transparent",
-            padding: 0,
-            overflow: "hidden",
-          }}
-        >
-          <span className="namu-ad-label">광고</span>
-          <a
-            href={wikiData.ads[0].href}
-            target="_blank"
-            rel="noreferrer"
-            style={{ display: "block", width: "100%" }}
-          >
-            <img
-              src={wikiData.ads[0].img}
-              alt="top ad"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                objectFit: "cover",
-              }}
-            />
-          </a>
-        </div>
-
-        {/* 분류 */}
-        <div className="namu-category">
-          <b>분류</b>
-          {wikiData.categories.map((c, i) => (
-            <span key={c}>
-              <a
-                href="#none"
-                onClick={(e) => e.preventDefault()}
-                style={{ color: "var(--namu-link)" }}
-              >
-                {c}
-              </a>
-              {i < wikiData.categories.length - 1 ? " · " : ""}
+        {/* 태그 (전문 키워드 Badge) */}
+        <div className="doc-tags">
+          {TECH_TAGS.map((t) => (
+            <span className="doc-tag" key={t}>
+              {t}
             </span>
-          ))}{" "}
-          <a
-            href="#none"
-            onClick={(e) => e.preventDefault()}
-            style={{
-              float: "right",
-              border: "1px solid var(--namu-border)",
-              padding: "1px 6px",
-              fontSize: "11px",
-              color: "var(--namu-text)",
-              textDecoration: "none",
-              background: "var(--namu-bg)"
-            }}
-          >
-            [더 보기]
-          </a>
+          ))}
         </div>
 
-        {/* 관련 문서 틀 (중앙 배치) */}
-        <details open
-          className="namu-navbox"
-          style={{ maxWidth: "700px", margin: "20px auto" }}
-        >
-          <summary
-            className="namu-navbox-head"
-            style={{ justifyContent: "center", gap: "15px" }}
-          >
-            <img className="namu-navbox-logo" src="/logo.png" alt="" />
-            <div style={{ textAlign: "center" }}>
-              <b>{titleFull}</b>
-              <div className="namu-navbox-sub">관련 문서 및 링크</div>
-            </div>
-          </summary>
-          <div className="namu-navbox-body">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: "15px 30px",
-              }}
-            >
-              <a href="#s-projects" style={{ color: "var(--namu-link)" }}>
-                메인 프로젝트
-              </a>
-              <a href="#s-vibe-labs" style={{ color: "var(--namu-link)" }}>
-                Vibe Coding Labs
-              </a>
-              <a href="#s-stack" style={{ color: "var(--namu-link)" }}>
-                주력 기술 스택
-              </a>
-              <a href="#s-academic" style={{ color: "var(--namu-link)" }}>
-                학술 활동
-              </a>
-              <a href="#s-knowledge" style={{ color: "var(--namu-link)" }}>
-                지식 창고
-              </a>
-            </div>
-            <div
-              style={{
-                borderTop: "1px solid #ebebeb",
-                margin: "10px 0",
-                paddingTop: "10px",
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: "15px 30px",
-              }}
-            >
-              {wikiData.infobox
-                .find((i) => i.type === "links")
-                ?.value.map((l) => (
-                  <Ext key={l.label} href={l.href} icon={l.icon}>
-                    {l.label}
-                  </Ext>
-                ))}
-            </div>
-          </div>
-        </details>
-
-        {/* 인포박스 (float right) */}
-        <aside className="namu-infobox">
-          <div className="namu-infobox-head">
-            {titleFull}
-            <span className="namu-romaja">{wikiData.romaja}</span>
-          </div>
-          <img
-            className="namu-infobox-img"
-            src={wikiData.image}
-            alt={wikiData.title}
-          />
-          <table>
-            <tbody>
-              {wikiData.infobox.map((row) => (
-                <tr key={row.label}>
-                  <th>{row.label}</th>
-                  <td>
-                    {row.type === "links" ? (
-                      <div
-                        style={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: "6px 12px",
-                        }}
-                      >
-                        {row.value.map((l) => (
-                          <Ext key={l.label} href={l.href} icon={l.icon}>
-                            {l.label}
-                          </Ext>
-                        ))}
-                      </div>
-                    ) : row.type === "debut" ? (
-                      <div>
-                        <div style={{ color: "var(--namu-link)" }}>
-                          {row.value}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: "0.85em",
-                            color: "var(--namu-muted)",
-                            marginTop: "3px",
-                          }}
-                        >
-                          {row.sub}
-                        </div>
-                      </div>
-                    ) : row.value === "TODO" ? (
-                      <span className="namu-todo">미정 (TODO)</span>
-                    ) : Array.isArray(row.value) ? (
-                      row.value.map((v, i) => <div key={i}>{v}</div>)
-                    ) : (
-                      <div className="namu-infobox-cell">{row.value}</div>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </aside>
+        {profileCard}
 
         <div className="namu-body">
-          {/* 목차 */}
-          <nav className="namu-toc" id="namu-toc">
-            <div className="namu-toc-title">목차</div>
-            <ol>
-              <li>
-                <span className="namu-toc-num">1.</span>
-                <a href="#s-overview">개요</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">2.</span>
-                <a href="#s-life">생애</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">3.</span>
-                <a href="#s-style">개발 스타일</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">4.</span>
-                <a href="#s-stack">주력 기술 스택</a>
-                <ol>
-                  {wikiData.signatureStack.map((s, i) => (
-                    <li key={s.id}>
-                      <span className="namu-toc-num">4.{i + 1}.</span>
-                      <a href={`#s-stack-${s.id}`}>{s.name}</a>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-              <li>
-                <span className="namu-toc-num">5.</span>
-                <a href="#s-projects">메인 프로젝트</a>
-                <ol>
-                  {wikiData.projects.map((p, i) => (
-                    <li key={p.id}>
-                      <span className="namu-toc-num">5.{i + 1}.</span>
-                      <a href={`#s-proj-${p.id}`}>{p.name}</a>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-              <li>
-                <span className="namu-toc-num">6.</span>
-                <a href="#s-vibe-labs">Vibe Coding Labs (Hobby)</a>
-                <ol>
-                  {wikiData.vibeLabs.map((v, i) => (
-                    <li key={v.id}>
-                      <span className="namu-toc-num">6.{i + 1}.</span>
-                      <a href={`#s-vibe-${v.id}`}>{v.name}</a>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-              <li>
-                <span className="namu-toc-num">7.</span>
-                <a href="#s-academic">학술 활동</a>
-                <ol>
-                  {wikiData.academic.map((a, i) => (
-                    <li key={a.id}>
-                      <span className="namu-toc-num">7.{i + 1}.</span>
-                      <a href={`#s-acad-${a.id}`}>{a.name}</a>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-              <li>
-                <span className="namu-toc-num">8.</span>
-                <a href="#s-knowledge">지식 창고</a>
-                <ol>
-                  {wikiData.knowledge.map((k, i) => (
-                    <li key={k.id}>
-                      <span className="namu-toc-num">8.{i + 1}.</span>
-                      <a href={`#s-kn-${k.id}`}>{k.name}</a>
-                    </li>
-                  ))}
-                </ol>
-              </li>
-              <li>
-                <span className="namu-toc-num">9.</span>
-                <a href="#s-gears">장비(Gears)</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">10.</span>
-                <a href="#s-cert">자격증</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">11.</span>
-                <a href="#s-lang">어학</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">12.</span>
-                <a href="#s-nick">별명</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">13.</span>
-                <a href="#s-quote">어록</a>
-              </li>
-              <li>
-                <span className="namu-toc-num">14.</span>
-                <a href="#s-trivia">여담</a>
-              </li>
-            </ol>
-          </nav>
 
           <details open className="namu-section">
             <summary>
@@ -969,7 +942,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 15. 둘러보기 */}
           <h2 id="s-links" className="namu-h2">
-            <span className="namu-secnum">15.</span>둘러보기
+            <span className="namu-secnum">15.</span>Dependencies & Links
             <Edit />
           </h2>
             </summary>
@@ -990,172 +963,64 @@ export default function WikiPortfolioPage() {
       </details>
     </div>
 
-          {/* 각주 */}
-        <div className="namu-footnotes">
-          <ol>
+          {/* References (API 문서 Reference 섹션 스타일) */}
+        <div className="namu-footnotes" id="s-references">
+          <div className="namu-ref-head"># References</div>
+          <dl className="namu-reflist">
             {wikiData.footnotes.map((f, i) => (
-              <li key={i} id={`fn-${i + 1}`}>
-                <a href={`#fnref-${i + 1}`} style={{ color: "var(--namu-link)", textDecoration: "none" }}>
-                  [{i + 1}]
-                </a>{" "}
-                {f}
-              </li>
+              <div className="namu-ref-item" key={i} id={`fn-${i + 1}`}>
+                <dt>
+                  <a href={`#fnref-${i + 1}`} className="namu-ref-anchor">
+                    [{i + 1}]
+                  </a>
+                </dt>
+                <dd>{f}</dd>
+              </div>
             ))}
-          </ol>
+          </dl>
         </div>
 
-        {/* 안내 틀 (최하단) */}
-        <div className="namu-notice">
-          <span className="namu-notice-icon">ⓘ</span>
-          <span>{wikiData.notice}</span>
-        </div>
-
-        {/* 라이선스 / 푸터 */}
-        <div className="namu-footer">
-          <div
-            style={{
-              borderBottom: "1px solid #ebebeb",
-              paddingBottom: "12px",
-              marginBottom: "12px",
-            }}
-          >
-            <div style={{ fontWeight: "bold", marginBottom: "8px" }}>
-              내용의 저작권은 박도현 본인에게 있습니다.
-            </div>
-          </div>
-          <div style={{ fontSize: "11px", color: "#888", lineHeight: "1.6" }}>
-            <p>
-              이 저작물은 CC BY-NC-SA 2.0 KR에 따라 이용할 수 있습니다. (단,
-              라이선스가 명시된 일부 문서 및 삽화 제외)
-            </p>
-            <p>
-              기여하신 문서의 저작권은 각 기여자에게 있으며, 각 기여자는
-              기여하신 부분의 저작권을 갖습니다.
-            </p>
-            <br />
-            <p>
-              나무위키는 백과사전이 아니며 검증되지 않았거나, 편향적이거나,
-              잘못된 서술이 있을 수 있습니다.
-            </p>
-            <p>
-              나무위키는 위키위키입니다. 여러분이 직접 문서를 고칠 수 있으며,
-              다른 사람의 의견을 원할 경우 직접 토론을 발제할 수 있습니다.
-            </p>
-          </div>
+        {/* 푸터 */}
+        <footer className="doc-footer">
+          <p>Designed &amp; Built by Park Do-hyun.</p>
+          <p>UI/UX inspired by Namuwiki. © 2026. All rights reserved.</p>
+        </footer>
         </div>
       </main>
     </React.Fragment>
   );
 
-  const sidebarContent = (
-    <React.Fragment>
-      <aside className="namu-rail">
-        <div className="namu-railbox">
-          <div className="namu-railbox-head">
-            <span className="namu-railbox-title">📈 실시간 검색어</span>
-          </div>
-          <ol className="namu-rt">
-            {wikiData.realtimeSearch.map((kw, i) => (
-              <li key={kw}>
-                <span className="namu-rt-rank">{i + 1}</span>
-                <span className="namu-rt-kw">{kw}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="namu-railbox">
-          <div className="namu-railbox-head">
-            <span className="namu-railbox-title">🕘 최근 변경</span>
-            <a
-              className="namu-railbox-more"
-              href="#none"
-              onClick={(e) => e.preventDefault()}
-            >
-              ›
-            </a>
-          </div>
-          <ul className="namu-recent">
-            {wikiData.recentChanges.map((r) => (
-              <li key={r.title}>
-                <a
-                  className="namu-recent-title"
-                  href={`#s-${r.title}`}
-                  onClick={(e) => e.preventDefault()}
-                >
-                  {r.title}
-                </a>
-                <span className="namu-recent-ago">{r.ago}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="namu-rail-sticky">
-          {/* 광고 1 */}
-          <a
-            className="namu-railad"
-            href={wikiData.ads[1].href}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: "block",
-              padding: 0,
-              border: "none",
-              background: "transparent",
-            }}
-          >
-            <span
-              className="namu-ad-label"
-              style={{ position: "static", marginBottom: "5px" }}
-            >
-              광고
-            </span>
-            <img
-              src={wikiData.ads[1].img}
-              alt="ad"
-              style={{
-                width: "100%",
-                borderRadius: "4px",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-              }}
-            />
-          </a>
-
-          {/* 광고 2 */}
-          <a
-            className="namu-railad"
-            href={wikiData.ads[2].href}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: "block",
-              padding: 0,
-              border: "none",
-              background: "transparent",
-              marginTop: "15px",
-            }}
-          >
-            <span
-              className="namu-ad-label"
-              style={{ position: "static", marginBottom: "5px" }}
-            >
-              광고
-            </span>
-            <img
-              src={wikiData.ads[2].img}
-              alt="ad"
-              style={{
-                width: "100%",
-                borderRadius: "4px",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-              }}
-            />
-          </a>
-        </div>
-      </aside>
-    </React.Fragment>
+  const commitBox = (
+    <div className="commitlog">
+      <div className="commitlog-head">
+        <GitCommit size={15} strokeWidth={1.8} />
+        <span>Recent Commits</span>
+      </div>
+      <ul className="commitlog-list">
+        {COMMITS.map((c) => (
+          <li className="commit-item" key={c.hash}>
+            <span className="commit-dot" />
+            <div className="commit-body">
+              <code className="commit-hash">{c.hash}</code>
+              <div className="commit-msg">
+                <span className={`commit-type type-${c.type}`}>{c.type}</span>
+                <span className="commit-scope">({c.scope})</span>
+                <span className="commit-colon">: </span>
+                {c.msg}
+              </div>
+              <span className="commit-ago">{c.ago}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
+
+  const leftSidebar = (
+    <div className="docs-left-inner">{fileTree}</div>
+  );
+
+  const rightSidebar = <div className="docs-right-inner">{commitBox}</div>;
 
   const LogoChar = ({ char, hasCircle }) => (
     <span style={{ position: "relative", display: "inline-block", lineHeight: 1 }}>
@@ -1218,10 +1083,40 @@ export default function WikiPortfolioPage() {
 
   return (
     <>
+      {!entered && (
+        <div
+          className={`splash${leaving ? " leaving" : ""}`}
+          onClick={enterSite}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") enterSite();
+          }}
+        >
+          <PixelCard ref={pixelRef} variant="matrix" className="splash-card">
+            <div className="splash-inner mono">
+              <div className="splash-prompt">root@park-brain:~#</div>
+              <div className="splash-name">박도현 / Backend Developer</div>
+              <div className="splash-cta">
+                [ CLICK TO ENTER ]<span className="splash-cursor">█</span>
+              </div>
+            </div>
+          </PixelCard>
+        </div>
+      )}
+      <div className="glitch-bg" aria-hidden="true">
+        <LetterGlitch
+          glitchSpeed={50}
+          smooth
+          outerVignette
+          centerVignette={false}
+        />
+        <div className="glitch-overlay" />
+      </div>
       <NamuwikiShell
+        leftSidebar={leftSidebar}
         mainContent={mainContent}
-        sidebarContent={sidebarContent}
-        logoContent={logoContent}
+        rightSidebar={rightSidebar}
       />
       {toast && (
         <div
