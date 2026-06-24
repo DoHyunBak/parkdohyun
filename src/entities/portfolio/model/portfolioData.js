@@ -167,37 +167,16 @@ export const portfolioData = {
       id: "english",
       language: "영어(English)",
       level: "Intermediate",
-      certificates: [
-        { name: "TOEFL", grade: "Planned" },
-        { name: "OPIC", grade: "Planned" },
-      ],
+      certificates: [{ name: "-", grade: "-" }],
     },
     {
       id: "japanese",
       language: "일본어(Japanese)",
       level: "Beginner",
-      certificates: [{ name: "JLPT N5", grade: "취득" }],
+      certificates: [{ name: "JLPT N5", grade: "학습 중" }],
     },
   ],
   certifications: [
-    {
-      id: "ipe",
-      name: "정보처리기사",
-      status: "준비중",
-      detail: "소프트웨어 공학과 엔지니어링 전반에 대한 지식 체계화.",
-    },
-    {
-      id: "bdae",
-      name: "빅데이터분석기사",
-      status: "준비중",
-      detail: "대규모 데이터 수집, 저장, 처리 및 분석 모델링 파이프라인 이해.",
-    },
-    {
-      id: "ca2",
-      name: "전산회계2급",
-      status: "취득",
-      detail: "기본적인 기업 회계 및 재무 흐름의 이해.",
-    },
     {
       id: "sqld",
       name: "SQLD",

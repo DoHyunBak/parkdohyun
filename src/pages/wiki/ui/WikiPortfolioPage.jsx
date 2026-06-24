@@ -100,9 +100,21 @@ function Fn({ n, onHover, onLeave }) {
   );
 }
 
+/* 링크 도메인 파비콘 (브랜드 아이콘이 없는 외부 http(s) 링크에 표시) */
+function faviconUrl(href) {
+  try {
+    const u = new URL(href);
+    if (u.protocol !== "http:" && u.protocol !== "https:") return null;
+    return `https://www.google.com/s2/favicons?domain=${u.hostname}&sz=64`;
+  } catch {
+    return null;
+  }
+}
+
 /* 외부 링크 */
 function Ext({ href, children, blue = true, icon }) {
   const IconComp = icon ? LINK_ICONS[icon] : null;
+  const favicon = !IconComp ? faviconUrl(href) : null;
 
   return (
     <a
@@ -112,6 +124,16 @@ function Ext({ href, children, blue = true, icon }) {
       style={blue ? { color: "var(--namu-link)", textDecoration: "none", display: 'inline-flex', alignItems: 'center' } : { display: 'inline-flex', alignItems: 'center' }}
     >
       {IconComp}
+      {favicon && (
+        <img
+          src={favicon}
+          alt=""
+          width={14}
+          height={14}
+          loading="lazy"
+          style={{ verticalAlign: "middle", marginRight: "4px", borderRadius: "2px", flexShrink: 0 }}
+        />
+      )}
       {children}
     </a>
   );
@@ -331,16 +353,6 @@ export default function WikiPortfolioPage() {
               />
             ))}
           </TreeFolder>
-          <TreeFolder label="academic">
-            {wikiData.academic.map((a) => (
-              <TreeFile
-                key={a.id}
-                href={`#s-acad-${a.id}`}
-                label={`${a.id}.md`}
-                active={activeId === `s-acad-${a.id}`}
-              />
-            ))}
-          </TreeFolder>
           <TreeFolder label="knowledge">
             {wikiData.knowledge.map((k) => (
               <TreeFile
@@ -357,6 +369,7 @@ export default function WikiPortfolioPage() {
           <TreeFile href="#s-nick" label="Aliases.md" active={activeId === "s-nick"} />
           <TreeFile href="#s-quote" label="Quotes.md" active={activeId === "s-quote"} />
           <TreeFile href="#s-trivia" label="Trivia.md" active={activeId === "s-trivia"} />
+          <TreeFile href="#s-contact" label="Contact.md" active={activeId === "s-contact"} />
           <TreeFile href="#s-references" label="References.md" active={activeId === "s-references"} />
         </TreeFolder>
       </div>
@@ -426,7 +439,7 @@ export default function WikiPortfolioPage() {
             </Ext>{" "}
             기반의 <b>Park Brain</b>이라는 지식 저장소를 직접 구축하여 운영
             중이다.
-            <FnWithProps n={5} />
+            <FnWithProps n={4} />
           </p>
           <p>
             주력 기술 스택은 Java와 Spring Boot이며, 관계형 데이터베이스(MySQL)
@@ -444,14 +457,14 @@ export default function WikiPortfolioPage() {
             합의의 모호함을 극도로 경계하고 <b>정의서</b>(센서 이벤트 정의서·스키마
             정의서·API 명세)로 오해의 여지 없는 기준을 먼저 합의한 뒤 개발을
             시작한다.
-            <Fn n={30} />
+            <Fn n={7} />
           </p>
           <p>
             기술을 "도구 세트"로 보고 <b>"무엇을 쓸지보다 무엇을 믿고 무엇을 버릴지"</b>를
             판단하는 능력을 중시한다. 요약·숏폼 문화가 읽고 이해하는 힘을
             퇴화시킨다고 보아, 긴 글을 끝까지 읽고 자기 언어로 바꾸는
             능력(Reading Capacity)
-            <Fn n={33} />을 진짜 실력으로 여기며 회고와 글쓰기로 사고를 정리하는
+            <Fn n={9} />을 진짜 실력으로 여기며 회고와 글쓰기로 사고를 정리하는
             습관을 갖고 있다. 같은 맥락에서 기술을 단순히 시간을 아껴주는 도구가
             아니라 "사람이 정보를 받아들이고 판단하는 방식 자체를 바꾸는 것"으로
             바라보며, 그래서 무엇을 자동화하고 무엇을 직접 사고할지를 의식적으로
@@ -537,15 +550,15 @@ export default function WikiPortfolioPage() {
             백엔드 설계 시에는 <b>데이터의 정합성과 안정성</b>을 최우선으로
             한다. 외부 API 연동 시 발생할 수 있는 네트워크 불안정성과 스키마
             변화에 대응하기 위해 <b>Sync History 패턴</b>
-            <FnWithProps n={7} />을 적극 도입하며, 트랜잭션 물리적 분리(
-            <code>REQUIRES_NEW</code>)<FnWithProps n={8} />를 통해 로그 기록과 비즈니스
+            <FnWithProps n={5} />을 적극 도입하며, 트랜잭션 물리적 분리(
+            <code>REQUIRES_NEW</code>)<FnWithProps n={6} />를 통해 로그 기록과 비즈니스
             로직의 독립성을 확보한다.
           </p>
           <p>
             디버깅은 추측으로 코드를 고치는 대신 <b>문제 재진술 → 가능 원인
             2~3개 → 검증 명령 → 최소 수정</b>의 순서로 좁힌다. 예컨대 세션 인증이
             간헐적으로 풀리는 문제는 쿠키·세션·인증 3단 로그
-            <Fn n={32} />로 원인을 격리한다 — 쿠키가 없으면 프론트 전송, 세션이
+            <Fn n={8} />로 원인을 격리한다 — 쿠키가 없으면 프론트 전송, 세션이
             없으면 서버 저장/만료, 인증이 없으면 SecurityContext 저장, 인증은
             살아있는데 실패하면 권한이나 DTO 변환 문제다. 외부 시스템의 결과
             코드는 클라이언트에 그대로 노출하지 않고 내부 코드로 매핑하며,
@@ -703,41 +716,9 @@ export default function WikiPortfolioPage() {
 
           <details open className="namu-section">
             <summary>
-              {/* 7. 학술 활동 */}
-          <h2 id="s-academic" className="namu-h2">
-            <span className="namu-secnum">7.</span>학술 활동
-            <Edit />
-          </h2>
-            </summary>
-            <div className="namu-section-body">
-
-          {wikiData.academic.map((a, i) => (
-            <details open key={a.id} className="namu-section">
-              <summary>
-                <h3 id={`s-acad-${a.id}`} className="namu-h3">
-                  <span className="namu-secnum">7.{i + 1}.</span>
-                  {a.name}
-                
-                  <Edit />
-                </h3>
-              </summary>
-              <div className="namu-section-body">
-                <p>
-                  <b>핵심 주제: {a.topic}</b>
-                </p>
-                <p>{a.desc}</p>
-              </div>
-            </details>
-          ))}
-
-            </div>
-          </details>
-
-          <details open className="namu-section">
-            <summary>
-              {/* 8. 지식 창고 */}
+              {/* 7. 지식 창고 */}
           <h2 id="s-knowledge" className="namu-h2">
-            <span className="namu-secnum">8.</span>지식 창고
+            <span className="namu-secnum">7.</span>지식 창고
             <Edit />
           </h2>
             </summary>
@@ -747,7 +728,7 @@ export default function WikiPortfolioPage() {
             <details open key={k.id} className="namu-section">
               <summary>
                 <h3 id={`s-kn-${k.id}`} className="namu-h3">
-                  <span className="namu-secnum">8.{i + 1}.</span>
+                  <span className="namu-secnum">7.{i + 1}.</span>
                   {k.name}
                 
                   <Edit />
@@ -766,7 +747,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 9. 장비(Gears) */}
           <h2 id="s-gears" className="namu-h2">
-            <span className="namu-secnum">9.</span>장비(Gears)
+            <span className="namu-secnum">8.</span>장비(Gears)
             <Edit />
           </h2>
             </summary>
@@ -787,7 +768,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 10. 자격증 */}
           <h2 id="s-cert" className="namu-h2">
-            <span className="namu-secnum">10.</span>자격증
+            <span className="namu-secnum">9.</span>자격증
             <Edit />
           </h2>
             </summary>
@@ -803,16 +784,7 @@ export default function WikiPortfolioPage() {
             <tbody>
               {wikiData.certifications.map((c) => (
                 <tr key={c.name}>
-                  <td>
-                    {c.name === "SAP Certified Associate - ABAP Cloud" ? (
-                      <>
-                        {c.name}
-                        <FnWithProps n={4} />
-                      </>
-                    ) : (
-                      c.name
-                    )}
-                  </td>
+                  <td>{c.name}</td>
                   <td>
                     <span
                       className={`namu-status ${c.status.includes("취득") ? "done" : "wip"}`}
@@ -832,7 +804,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 11. 어학 */}
           <h2 id="s-lang" className="namu-h2">
-            <span className="namu-secnum">11.</span>어학
+            <span className="namu-secnum">10.</span>어학
             <Edit />
           </h2>
             </summary>
@@ -862,7 +834,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 12. 별명 */}
           <h2 id="s-nick" className="namu-h2">
-            <span className="namu-secnum">12.</span>별명
+            <span className="namu-secnum">11.</span>별명
             <Edit />
           </h2>
             </summary>
@@ -883,7 +855,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 13. 어록 */}
           <h2 id="s-quote" className="namu-h2">
-            <span className="namu-secnum">13.</span>어록
+            <span className="namu-secnum">12.</span>어록
             <Edit />
           </h2>
             </summary>
@@ -903,7 +875,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 14. 여담 */}
           <h2 id="s-trivia" className="namu-h2">
-            <span className="namu-secnum">14.</span>여담
+            <span className="namu-secnum">13.</span>여담
             <Edit />
           </h2>
             </summary>
@@ -921,7 +893,7 @@ export default function WikiPortfolioPage() {
                 ) : t.includes("Park Brain") ? (
                   <>
                     {t.split("Park Brain")[0]}
-                    <Ext href="https://github.com/DoHyunBak/Park_Brain">
+                    <Ext href="https://github.com/DoHyunBak">
                       Park Brain
                     </Ext>
                     {t.split("Park Brain")[1]}
@@ -942,7 +914,7 @@ export default function WikiPortfolioPage() {
             <summary>
               {/* 15. 둘러보기 */}
           <h2 id="s-links" className="namu-h2">
-            <span className="namu-secnum">15.</span>Dependencies & Links
+            <span className="namu-secnum">14.</span>Dependencies & Links
             <Edit />
           </h2>
             </summary>
@@ -961,6 +933,58 @@ export default function WikiPortfolioPage() {
           </ul>
         </div>
       </details>
+
+          <details open className="namu-section">
+            <summary>
+              {/* 16. 연락 및 협업 */}
+          <h2 id="s-contact" className="namu-h2">
+            <span className="namu-secnum">15.</span>연락 및 협업
+            <Edit />
+          </h2>
+            </summary>
+            <div className="namu-section-body">
+
+          <p>
+            새로운 백엔드·ERP/SAP 도메인 기회와 협업 제안을 환영한다. 아래 채널로
+            연락하면 빠르게 회신한다.
+          </p>
+          <table className="namu-table">
+            <tbody>
+              <tr>
+                <th>이메일</th>
+                <td>
+                  <Ext href="mailto:badberg2002@gmail.com">badberg2002@gmail.com</Ext>
+                </td>
+              </tr>
+              <tr>
+                <th>GitHub</th>
+                <td>
+                  <Ext href="https://github.com/DoHyunBak">github.com/DoHyunBak</Ext>
+                </td>
+              </tr>
+              <tr>
+                <th>블로그</th>
+                <td>
+                  <Ext href="https://parkdohyun.tistory.com/">두리안 스무디의 블로그 (Tistory)</Ext>
+                </td>
+              </tr>
+              <tr>
+                <th>LinkedIn</th>
+                <td>
+                  <Ext href="https://linkedin.com/in/dohyunbak">linkedin.com/in/dohyunbak</Ext>
+                </td>
+              </tr>
+              <tr>
+                <th>YouTube</th>
+                <td>
+                  <Ext href="https://www.youtube.com/@Mr.Share_Man">Mr. Share_Man</Ext>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+                      </div>
+          </details>
     </div>
 
           {/* References (API 문서 Reference 섹션 스타일) */}
