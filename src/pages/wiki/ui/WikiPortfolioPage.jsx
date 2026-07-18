@@ -20,7 +20,7 @@ import {
 
 /* Activity Log — Conventional Commits 더미 */
 const COMMITS = [
-  { hash: "a1b2c3d", type: "feat", scope: "park-brain", msg: "sync daily obsidian logs", ago: "2시간 전" },
+  { hash: "a1b2c3d", type: "feat", scope: "portfolio", msg: "refresh selected work", ago: "2시간 전" },
   { hash: "f8e9d0a", type: "refactor", scope: "auth", msg: "separate session config", ago: "5시간 전" },
   { hash: "7c4b2e1", type: "docs", scope: "profile", msg: "update career timeline & stack", ago: "어제" },
   { hash: "3d9a6f5", type: "fix", scope: "ui", msg: "resolve layout shift in right sidebar", ago: "어제" },
@@ -185,6 +185,9 @@ export default function WikiPortfolioPage() {
   useEffect(() => {
     document.body.classList.add("theseed-dark-mode");
     document.body.classList.remove("theseed-light-mode");
+    return () => {
+      document.body.classList.remove("theseed-dark-mode", "site-enter");
+    };
   }, []);
 
   // 입장 시 컴포넌트들이 픽셀처럼 조립되는 애니메이션 트리거
@@ -316,6 +319,7 @@ export default function WikiPortfolioPage() {
         <span className="ide-tree-tab mono">parkdohyun / Structure</span>
       </div>
       <div className="ide-tree-body">
+        <TreeFile href="#/" label="← Portfolio Home" />
         <TreeFolder label="portfolio" root>
           <TreeFile href="#s-overview" label="Overview.md" active={activeId === "s-overview"} />
           <TreeFile href="#s-life" label="Career.md" active={activeId === "s-life"} />
@@ -424,21 +428,18 @@ export default function WikiPortfolioPage() {
             <div className="namu-section-body">
 
           <p>
-            대한민국의 백엔드 개발자(지망). {wikiData.romaja}. 2002년 3월 23일
+            대한민국의 개발자. {wikiData.romaja}. 2002년 3월 23일
             서울특별시 관악구에서 태어났다. 현재 한양대학교 소프트웨어융합대학에
-            재학 중이며, B2B와 ERP/SAP로 대표되는 엔터프라이즈급 백엔드 시스템
-            도메인을 전문 분야로 삼고 있다.
+            재학 중이며, 백엔드 시스템에서 출발해 게임·AI·웹·자동화와 제품 경험을
+            연결하는 개발을 탐구하고 있다.
             <FnWithProps n={3} />
           </p>
           <p>
-            단순한 '기능 구현'을 넘어 비즈니스 시스템의 안정성과 데이터 정합성을
-            확보하는 백엔드 엔지니어링을 지향한다. 부서 간 데이터 흐름과
-            비즈니스 규칙을 분석하고 설계하는 데 강점이 있으며, 이를 위해{" "}
-            <Ext href="https://obsidian.md" blue>
-              Obsidian
-            </Ext>{" "}
-            기반의 <b>Park Brain</b>이라는 지식 저장소를 직접 구축하여 운영
-            중이다.
+            단순한 '기능 구현'을 넘어 문제에 필요한 분야를 연결하고 실제로 작동하는
+            결과를 만드는 것을 지향한다. 데이터 흐름과 비즈니스 규칙을 분석하고
+            설계하는 백엔드 역량을 기반으로, 인터랙션과 AI 안전 경계까지 관심을
+            확장하고 있다. 프로젝트의 결과뿐 아니라 문제 정의와 설계 판단도
+            README·블로그·도현위키에 함께 기록한다.
             <FnWithProps n={4} />
           </p>
           <p>
@@ -447,13 +448,13 @@ export default function WikiPortfolioPage() {
             <Ext href="https://namu.wiki/w/인공지능" blue>
               AI 에이전트
             </Ext>
-            를 통한 업무 자동화(AX) 등은 백엔드 개발자로서의 생산성을 높이고
-            서비스의 가치를 더하기 위한 보조 기술로 탐구하고 있다.
+            를 통한 업무 자동화(AX), 결정적 게임 엔진과 AI Guardrail 등을
+            서비스의 가치를 높이는 독립적인 설계 영역으로 탐구하고 있다.
           </p>
           <p>
-            스스로를 "전체 데이터 흐름을 설계하고 운영해 본, 끝까지 책임지는
-            백엔드 개발자"로 정의한다. 단순 CRUD가 아니라 외부 연동·트랜잭션
-            경계·배포 운영까지 직접 다루는 것에 보람을 느끼며, 협업에서는 구두
+            스스로를 "분야의 경계를 넘어 아이디어를 작동하는 시스템으로 만드는
+            개발자"로 정의한다. 외부 연동·트랜잭션 경계·배포 운영부터 게임 규칙과
+            사용자 피드백까지 직접 연결하는 것에 보람을 느끼며, 협업에서는 구두
             합의의 모호함을 극도로 경계하고 <b>정의서</b>(센서 이벤트 정의서·스키마
             정의서·API 명세)로 오해의 여지 없는 기준을 먼저 합의한 뒤 개발을
             시작한다.
@@ -493,7 +494,7 @@ export default function WikiPortfolioPage() {
               제31보병사단 95여단
             </Ext>
             에서 복무하며 병장으로 만기 전역했다. 복학 이후에는 실무형
-            프로젝트인 'U-sto'와 'Kids-Friends'를 통해 엔지니어링 역량을
+            프로젝트인 'U-sto'와 '키즈카페로봇 Kids-Friends'를 통해 엔지니어링 역량을
             비약적으로 성장시켰다. 특히 ITCEN Global과의 산학협력
             <FnWithProps n={1} /> 과정에서 공공데이터 아키텍처 설계의 복잡성을 직접
             경험하며 전문가로서의 눈높이를 갖추게 되었다.
@@ -890,14 +891,6 @@ export default function WikiPortfolioPage() {
                     <Ext href="https://parkdohyun.tistory.com/">Tistory</Ext>
                     {t.split("Tistory")[1]}
                   </>
-                ) : t.includes("Park Brain") ? (
-                  <>
-                    {t.split("Park Brain")[0]}
-                    <Ext href="https://github.com/DoHyunBak">
-                      Park Brain
-                    </Ext>
-                    {t.split("Park Brain")[1]}
-                  </>
                 ) : t.includes("똑똑한 형님들") ? (
                   <>{t}</>
                 ) : (
@@ -1119,8 +1112,8 @@ export default function WikiPortfolioPage() {
         >
           <PixelCard ref={pixelRef} variant="matrix" className="splash-card">
             <div className="splash-inner mono">
-              <div className="splash-prompt">root@park-brain:~#</div>
-              <div className="splash-name">박도현 / Backend Developer</div>
+              <div className="splash-prompt">root@dohyun-wiki:~#</div>
+              <div className="splash-name">박도현 / Developer</div>
               <div className="splash-cta">
                 [ CLICK TO ENTER ]<span className="splash-cursor">█</span>
               </div>

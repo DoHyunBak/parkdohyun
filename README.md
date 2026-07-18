@@ -1,5 +1,5 @@
 # DOHYUN PARK
-## Enterprise Backend Engineer
+## Developer across Systems, Game, AI & Product
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-parkdohyun.com-black?style=for-the-badge)](https://parkdohyun.com)
 [![GitHub](https://img.shields.io/badge/GitHub-DoHyunBak-black?style=for-the-badge)](https://github.com/DoHyunBak)
@@ -12,8 +12,18 @@
 
 ## Philosophy
 
-I focus on how technology sustains real business operations.  
-Beyond individual features, I design backend systems around data flow, process consistency, and enterprise-scale reliability.
+I connect systems, game mechanics, AI, and product experience to turn ideas into working software.
+Backend engineering is my foundation, not the boundary of what I build.
+
+---
+
+## Featured Work
+
+| Project | What it explores | Link |
+|---|---|---|
+| VIBE:UNBOUND | Natural-language rules, deterministic auto-battle, responsibility logs, and guarded AI | [Play the vertical slice](https://vibe-unbound.com/) |
+| U-sto | Public data integration and university asset lifecycle operations | [Repository](https://github.com/U-sto/U-sto_BE) |
+| 키즈카페로봇 Kids-Friends | Robot, sensor, messaging, and service-flow integration | [Organization](https://github.com/Kids-Friends) |
 
 ---
 
@@ -58,7 +68,7 @@ flowchart LR
 | Category | Value |
 |---|---|
 | Name | 박도현 (Dohyun Park) |
-| Target Role | Enterprise Backend Engineer |
-| Core Domain | ERP / SAP / Enterprise Data Flow |
+| Target Role | Developer |
+| Core Domain | Systems / Game / AI / Product |
 | Email | badberg2002@gmail.com |
 | Portfolio | [parkdohyun.com](https://parkdohyun.com) |

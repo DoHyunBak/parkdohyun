@@ -1,5 +1,5 @@
-// 나무위키 패러디 포트폴리오 콘텐츠 데이터 (박도현 / 백엔드 개발자)
-// Park Brain(Obsidian 지식 저장소) 심층 데이터를 기반으로 콘텐츠 전면 동기화
+// 나무위키 패러디 포트폴리오 콘텐츠 데이터 (박도현 / 개발자)
+// 공개 포트폴리오와 프로젝트 기록을 기반으로 콘텐츠 동기화
 import React from 'react';
 
 // 각주/역참조로 부드럽게 스크롤 이동 (SPA 해시 라우터와 충돌 방지 위해 기본 동작 차단)
@@ -37,7 +37,7 @@ export const wikiData = {
   image: "/profile.jpg",
 
   notice:
-    "이 문서는 나무위키를 패러디한 박도현 본인의 포트폴리오입니다. 실제 나무위키 문서가 아니며, 등재된 사실도 없습니다. 모든 내용은 로컬 지식 저장소인 'Park Brain'의 심층 데이터를 기반으로 동기화되었습니다.",
+    "이 문서는 나무위키를 패러디한 박도현 본인의 포트폴리오입니다. 실제 나무위키 문서가 아니며, 등재된 사실도 없습니다. 공개된 프로젝트와 개발 기록을 기반으로 구성되었습니다.",
 
   infobox: [
     { label: "출생", value: <><a href="https://namu.wiki/w/2002년" target="_blank" rel="noreferrer">2002년</a> <a href="https://namu.wiki/w/3월 23일" target="_blank" rel="noreferrer">3월 23일</a> (만 {age}세)</> },
@@ -57,9 +57,9 @@ export const wikiData = {
         <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> (졸업예정)<br /><span style={{ fontSize: '0.82em', color: 'var(--namu-muted)' }}>(ICT융합학부 21 / 공학사)</span></>
       ],
     },
-    { label: "직업", value: <><a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">백엔드 개발자</a> (지망)</> },
+    { label: "직업", value: <><a href="https://namu.wiki/w/소프트웨어_개발자" target="_blank" rel="noreferrer">개발자</a></> },
     { label: "데뷔", type: "debut", value: <><a href="https://namu.wiki/w/2025년" target="_blank" rel="noreferrer">2025년</a> 산학협력 캡스톤(U-sto)</>, sub: `(데뷔일로부터 +${diffDays}일)` },
-    { label: "분야", value: <><a href="https://namu.wiki/w/B2B" target="_blank" rel="noreferrer">B2B</a> · <a href="https://namu.wiki/w/전사적 자원 관리" target="_blank" rel="noreferrer">ERP/SAP</a> · <a href="https://namu.wiki/w/백엔드" target="_blank" rel="noreferrer">엔터프라이즈 백엔드</a></> },
+    { label: "분야", value: <>Systems · Game · AI · Product</> },
     { label: "주력 스택", value: <><a href="https://namu.wiki/w/Java" target="_blank" rel="noreferrer">Java</a> · <a href="https://namu.wiki/w/Spring(프레임워크)" target="_blank" rel="noreferrer">Spring Boot</a> · <a href="https://namu.wiki/w/MySQL" target="_blank" rel="noreferrer">MySQL</a> · AI/RAG</> },
     { label: "MBTI", value: "신뢰하지 않는 편이지만 T는 확실함" }, 
     { label: "소속", value: <><a href="https://namu.wiki/w/한양대학교/학부/소프트웨어융합대학" target="_blank" rel="noreferrer">한양대학교 소프트웨어융합대학</a> (졸업예정)</> },
@@ -81,8 +81,8 @@ export const wikiData = {
     "세화고등학교 출신",
     "한양대학교 재학생",
     "대한민국의 개발자",
-    "백엔드 개발자",
-    "Park_Brain 운영자",
+    "융합형 개발자",
+    "프로젝트 기록자",
     "밀양 박씨",
     "ERP/SAP 지망생",
     "산학협력 프로젝트 참여자",
@@ -124,11 +124,22 @@ export const wikiData = {
     {
       id: "ai",
       name: "RAG & AX (Subsidiary)",
-      desc: <>백엔드 생산성 향상과 지능형 서비스 구현을 위한 보조 기술. LLM의 환각{fn(17)}을 줄이기 위해 Query Encoder → MIPS 검색 → Generator로 이어지는 RAG 파이프라인을 이해하고, 매개변수 메모리(언어 능력)와 비매개변수 메모리(외부 지식 DB)를 구분해 설계한다. AI를 '정답 생성기'가 아니라 '작업 분배 도구'로 보고 결과를 항상 검증하며, 여러 모델을 역할별로 나눠 쓴다. 이 철학을 'Park Brain' 지식 자동화 시스템과 AI 에이전트 기반 업무 자동화(AX)로 직접 구현하고 있다.</>,
+      desc: <>백엔드 생산성 향상과 지능형 서비스 구현을 위한 보조 기술. LLM의 환각{fn(17)}을 줄이기 위해 Query Encoder → MIPS 검색 → Generator로 이어지는 RAG 파이프라인을 이해하고, 매개변수 메모리(언어 능력)와 비매개변수 메모리(외부 지식 DB)를 구분해 설계한다. AI를 '정답 생성기'가 아니라 '작업 분배 도구'로 보고 결과를 항상 검증하며, 여러 모델을 역할별로 나눠 쓴다. VIBE:UNBOUND의 제한된 Schema와 Guardrail, 외부 AI API 계약 설계에 이 원칙을 적용하고 있다.</>,
     }
   ],
 
   projects: [
+    {
+      id: "vibe-unbound",
+      name: "VIBE:UNBOUND",
+      domain: "AI 방치형 RPG · 자연어 규칙 컴파일 · 결정적 게임 시스템",
+      role: "기획 · 시스템 설계 · 게임/웹 구현 · AI 안전 경계 실험",
+      desc: <>자연어 명령을 제한된 규칙으로 컴파일하고, 그 규칙이 자동전투에서 반복해 만든 결과를 책임 로그로 되짚는 React + Phaser 3 WebGL Vertical Slice. 예를 들어 "체력 낮으면 쉬어"를 HP &lt; 5% → REST로 해석한 뒤 기준을 30%로 수정하면 실제 전투 행동과 결과가 달라진다. React는 HUD와 Loop Compiler 등 제품 화면을, Phaser는 월드·전투·카메라·이펙트를 담당하며, 별도의 결정적 GameEngine과 동일 Seed 회귀 검증으로 명령 변경 전후를 비교한다. AI는 허용된 Schema와 Guardrail 안에서 명령을 제안할 뿐 게임 상태를 직접 조작하지 못하도록 경계를 설계했다.</>,
+      status: "개발 중 · Vertical Slice 공개",
+      links: [
+        { label: "Play", href: "https://vibe-unbound.com/" },
+      ],
+    },
     {
       id: "usto",
       name: "대학물품관리시스템 (U-sto)",
@@ -144,7 +155,7 @@ export const wikiData = {
     },
     {
       id: "kids-friends",
-      name: "키즈카페 서비스 로봇 (Kids-Friends)",
+      name: "키즈카페로봇 Kids-Friends",
       domain: "로봇 서비스 자동화 · Physical AI · IoT",
       role: "백엔드 API 설계 · 시스템 아키텍처 · 메시징",
       desc: <>Temi 서비스 로봇{fn(20)}에 라즈베리파이 센서·AI·웹 서비스를 연결해 키즈카페에서 안내·대화·안전 보조를 제공하는 5인 팀 프로젝트(모바일로봇의이해). 'Temi로 무엇을 할까'가 아니라 '현장에서 누가 어떤 반복 문제를 겪는가'에서 출발해, 직원이 위치 안내·규칙 설명·호출 응대를 반복하느라 안전관리에 집중 못 하는 pain point를 1차 응대 자동화로 풀었다. 박도현은 '소프트웨어만으로 가능한 기능(AI 대화·FAQ·안내 시나리오)'과 '센서/HW가 필요한 기능(장애물 감지·위험구역 알림·실시간 제어)'을 분리해, 센서 도착 전에 FE/BE와 API 정의서를 먼저 끝내는 선개발 전략을 세웠다. 일반 조회는 REST, 센서·로봇 실시간 제어는 WebSocket/MQTT(pub/sub{fn(21)})로 통신을 분리하고, 라즈베리파이는 현장 센서 게이트웨이 / EC2는 백엔드 서버로 역할을 나눴다. 하드웨어 팀과는 '센서 이벤트 정의서'(eventType·deviceId·distanceCm·detectedAt JSON)를 계약서로 합의해 TB_SENSOR_EVENT 스키마로 적재했고, DB는 회원 중심이 아닌 visitor_session·robot·staff_call·chat_log·zone·faq 중심으로 재설계했다.</>,
@@ -154,15 +165,6 @@ export const wikiData = {
         { label: "유튜브", href: "https://www.youtube.com/watch?v=tAUQZem72Ao&t=207s" },
       ],
     },
-    {
-      id: "park-brain",
-      name: "Park Brain (지식 자동화 시스템)",
-      domain: "개인 백엔드 · 자동화 · RAG 지식관리",
-      role: "기획 · 구현 · 운영 (1인)",
-      desc: <>개발 활동(Git 커밋·AI 대화·터미널 명령어·수정 파일)을 매일 자동 수집해 Obsidian 볼트에 기록하고 GitHub에 push하는 Python 기반 자동화 시스템. dev_logger.py(일간)·weekly_reporter.py(주간 Mermaid 차트)·vault_sync.py(30분마다 즉시 동기화)가 Windows Task Scheduler{fn(22)}로 무인 구동된다. 단순 로깅을 넘어 운영 안정성을 직접 설계한 것이 핵심으로, ① 민감 패턴(API 키·JWT eyJ… 토큰)을 정규식으로 잡아 [REDACTED] 치환하는 보안 스캔{fn(23)}, ② Park_Brain 이외 remote URL push를 차단하는 검증(HTTPS '/'와 SSH ':' 형식 모두 커버), ③ Windows 8.3 짧은 경로와 전체 경로 혼용으로 생긴 문자열 오프셋 버그, CP949에서 em dash 출력 시 UnicodeEncodeError, PS1 한글 깨짐(UTF-8 BOM) 등을 트러블슈팅하며 재현 가능한 방법론 문서로 남겼다. 수집된 원천 노트는 RAG 지식층(Wiki)으로 ingest되어 이 포트폴리오 데이터의 근간이 된다.</>,
-      status: "운영 중",
-      links: [],
-    }
   ],
 
   vibeLabs: [
@@ -171,12 +173,6 @@ export const wikiData = {
       name: "하나주택종합관리 회사 홈페이지",
       desc: "어버이날 선물로 직접 제작한 아버지 회사 홈페이지. Vercel Functions로 민감한 환경 변수를 백엔드로 격리 처리한 보안 강화형 관리 웹.",
       links: [{ label: "Site", href: "https://hanahm.co.kr" }],
-    },
-    {
-      id: "living-lot",
-      name: "교내 공유 모빌리티 주차 해결 (리빙랩)",
-      desc: "한양대 ERICA 캠퍼스 전동킥보드 불법주정차 문제를 IoT 위치추적 + AI 불법주차 판별 + 1클릭 신고로 푸는 리빙랩·디자인싱킹 프로토타입. 페르소나·경험 여정 맵으로 문제를 정의하고, 이용자를 단순 사용자가 아닌 문제 발굴~평가 주체로 끌어들였다.",
-      links: [{ label: "Demo", href: "https://living-lot-fe.vercel.app/" }],
     },
     {
       id: "smockout",
@@ -199,7 +195,7 @@ export const wikiData = {
     {
       id: "parkdohyun-web",
       name: "박도현 포트폴리오 (본 사이트)",
-      desc: "Vite 5.4.8 + React 19 기반의 나무위키 패러디 포트폴리오. Park Brain 볼트 데이터를 콘텐츠 단일 소스로 연동한다.",
+      desc: "Vite 5.4.8 + React 19 기반 포트폴리오. 전문적인 프로젝트 홈과 나무위키 패러디 아카이브를 분리해 구성한다.",
       links: [{ label: "Repo", href: "https://github.com/DoHyunBak/parkdohyun" }],
     }
   ],
@@ -208,7 +204,7 @@ export const wikiData = {
     {
       id: "rag-deep",
       name: "RAG (Retrieval-Augmented Generation)",
-      desc: <>AI가 학습 데이터(매개변수 메모리)에만 의존하지 않고 외부 지식 DB(비매개변수 메모리)에서 관련 정보를 실시간 검색해 답변을 생성하는 기술. 질문을 벡터로 바꾸는 Query Encoder{fn(24)}, 수억 개 지식 중 내적 최대로 광속 검색하는 MIPS(Maximum Inner Product Search), 검색 결과와 질문을 결합해 답을 만드는 Generator로 이어진다. '무지성 자동화는 수익화가 아니다 — 고유한 지식이 있어야 가치가 생긴다'는 전제를 Park Brain에 체계화했다.</>,
+      desc: <>AI가 학습 데이터(매개변수 메모리)에만 의존하지 않고 외부 지식 DB(비매개변수 메모리)에서 관련 정보를 실시간 검색해 답변을 생성하는 기술. 질문을 벡터로 바꾸는 Query Encoder{fn(24)}, 수억 개 지식 중 내적 최대로 광속 검색하는 MIPS(Maximum Inner Product Search), 검색 결과와 질문을 결합해 답을 만드는 Generator로 이어진다. 자동화 자체보다 검증 가능한 원천 데이터와 책임 경계를 중요하게 본다.</>,
     },
     {
       id: "ai-collab",
@@ -251,7 +247,7 @@ export const wikiData = {
     { name: "본 컴퓨터", desc: "i5-14500 | RTX 3060 12GB | RAM 32GB | SSD 3TB. 주력 개발 워크스테이션 겸 로컬 LLM 실험용." },
     { name: "서브 컴퓨터", desc: "i5-9400F | GTX 1060 3GB | RAM 16GB | SSD 240GB. 모니터링 및 서브 작업용." },
     { name: "노트북", desc: "삼성 갤럭시북4 프로. 이동 중 개발 및 미팅용 메인 랩탑." },
-    { name: "작업 환경", desc: "LG 모니터 기반 코딩 세팅. Obsidian(Park Brain) + VS Code + Git/GitHub CLI로 구성된 지식·개발 파이프라인." },
+    { name: "작업 환경", desc: "LG 모니터 기반 코딩 세팅. VS Code와 Git/GitHub CLI를 중심으로 프로젝트를 개발하고 기록한다." },
   ],
 
   certifications: [
@@ -303,7 +299,7 @@ export const wikiData = {
 
   trivia: [
     "기술 블로그(Tistory) '두리안 스무디의 블로그'를 통해 실제 삽질의 기록을 공유한다.",
-    "로컬에 'Park Brain'이라는 Obsidian 기반 지식 저장소가 30분마다 자동 동기화되고 매일 23:59 개발 일지가 자동 생성된다.",
+    "프로젝트의 결과뿐 아니라 문제 정의와 설계 판단을 README·블로그·도현위키에 함께 기록한다.",
     "백엔드 개발의 완성도를 높이기 위한 도구로서 AX와 RAG를 탐구한다.",
     "똑똑한 형님들이 구상하고 만든 것을 재배치해서 내 것으로 만드는 것을 모토로 삼는다.",
     "자기계발을 주제로 한 유튜브 채널 'Mr. Share_Man'을 운영하며, MrBeast의 영상 데이터를 직접 분석해 콘텐츠 전략을 연구했다.",
@@ -317,7 +313,7 @@ export const wikiData = {
     "박도현",
     "백엔드 개발자",
     "Spring Boot",
-    "Park Brain",
+    "VIBE UNBOUND",
     "공공데이터 G2B 연동",
     "REQUIRES_NEW",
     "ERP SAP",
@@ -355,7 +351,7 @@ export const wikiData = {
     "ITCEN Global과의 산학협력으로 진행한 프로젝트다.",
     "직접 화면을 짜기보다 AI 도구를 활용해 빠르게 구현하는 방식. 본인은 이를 '바이브 코딩'이라 부른다.",
     "정확히는 ERP/SAP로 대표되는 기업용 백엔드 시스템 도메인.",
-    "Park Brain: Obsidian 기반의 지식 관리 시스템으로, 본 포트폴리오 데이터의 근간이다.",
+    "도현위키: 프로젝트와 개발 경험을 나무위키 패러디 형식으로 정리한 포트폴리오 아카이브.",
     "Sync History 패턴: 외부 API 동기화 시 성공/실패 여부와 처리 건수를 별도 이력 테이블에 남기는 설계 방식.",
     "REQUIRES_NEW: Spring의 트랜잭션 전파 속성 중 하나로, 부모 트랜잭션 여부와 상관없이 항상 새로운 트랜잭션을 시작한다.",
     "정의서 주도 개발: 구두 합의 대신 센서 이벤트 정의서·스키마 정의서·API 명세 같은 '오해의 여지 없는 기준'을 먼저 합의하고 개발을 시작하는 협업 방식.",

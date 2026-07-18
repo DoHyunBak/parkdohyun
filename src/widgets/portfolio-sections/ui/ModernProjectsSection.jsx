@@ -18,7 +18,7 @@ const PROJECT_COPY = {
   },
   "kids-friends": {
     code: "PRJ-002",
-    title: "키즈카페 로봇",
+    title: "키즈카페로봇 Kids-Friends",
     domain: "로봇 서비스 자동화",
     summary: "Temi 로봇과 AI 챗봇을 연동해 키즈카페 고객 응대를 자동화한 프로젝트입니다.",
     role: "백엔드 API, 데이터 연동, 로봇 서비스 흐름 설계",

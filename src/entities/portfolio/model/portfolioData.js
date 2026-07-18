@@ -1,12 +1,12 @@
 export const portfolioData = {
   profile: {
     name: "박도현",
-    role: "Java/Spring Boot Backend Developer",
+    role: "Developer · Systems, Game, AI & Product",
     headline: "Portfolio of DoHyun Park",
     subHeadline:
-      "전체 데이터 흐름을 설계하고 운영해 본, 끝까지 책임지는 백엔드 개발자.\n단순 CRUD가 아니라 외부 연동·트랜잭션 경계·배포 운영까지 직접 다루는 것에 보람을 느낍니다.\n\n(a.k.a '빡도': 친구들이 부르기 쉬워서 쓰는 별명, '시고르': 시고르자브종 닮았다고 여자친구가 지어준 별명)",
+      "백엔드에서 출발했지만 한 기술이나 직무에 스스로를 가두지 않습니다.\n시스템·게임·AI·제품 경험을 연결해 아이디어를 실제로 작동하게 만드는 개발자입니다.\n\n(a.k.a '빡도': 친구들이 부르기 쉬워서 쓰는 별명, '시고르': 시고르자브종 닮았다고 여자친구가 지어준 별명)",
     subHeadlineKo:
-      "전체 데이터 흐름을 설계하고 운영해 본, 끝까지 책임지는 백엔드 개발자.\n단순 CRUD가 아니라 외부 연동·트랜잭션 경계·배포 운영까지 직접 다루는 것에 보람을 느낍니다.\n\n(a.k.a '빡도': 친구들이 부르기 쉬워서 쓰는 별명, '시고르': 시고르자브종 닮았다고 여자친구가 지어준 별명)",
+      "백엔드에서 출발했지만 한 기술이나 직무에 스스로를 가두지 않습니다.\n시스템·게임·AI·제품 경험을 연결해 아이디어를 실제로 작동하게 만드는 개발자입니다.\n\n(a.k.a '빡도': 친구들이 부르기 쉬워서 쓰는 별명, '시고르': 시고르자브종 닮았다고 여자친구가 지어준 별명)",
     email: "mailto:badberg2002@gmail.com",
     tistory: "https://parkdohyun.tistory.com/",
     github: "https://github.com/DoHyunBak",
@@ -15,9 +15,9 @@ export const portfolioData = {
     resumeLink: "/resume_park.pdf",
   },
   kpis: [
-    { id: 1, label: "핵심 도메인", value: "Backend / API", icon: "building2" },
-    { id: 2, label: "주력 스택", value: "Java / Spring Boot", icon: "server" },
-    { id: 3, label: "핵심 역량", value: "Data Flow & Operations", icon: "briefcase" },
+    { id: 1, label: "개발 영역", value: "Systems / Game / AI", icon: "building2" },
+    { id: 2, label: "기술 기반", value: "Java / Spring / Web", icon: "server" },
+    { id: 3, label: "핵심 역량", value: "Connect & Ship", icon: "briefcase" },
   ],
   philosophy: {
     direction: {
@@ -38,10 +38,35 @@ export const portfolioData = {
       title: "한양대학교 (졸업예정)",
       role: "ICT융합학부 미디어테크놀로지 전공",
       description:
-        "소프트웨어 엔지니어링 및 데이터 관리 기반 학습. 대학물품관리시스템, 키즈카페 로봇, 전동킥보드 리빙랩 등 다양한 실무 중심 산학 프로젝트 수행.",
+        "소프트웨어 엔지니어링 및 데이터 관리 기반 학습. 대학물품관리시스템, 키즈카페로봇 Kids-Friends 등 다양한 실무 중심 산학 프로젝트 수행.",
     },
   ],
   projects: [
+    {
+      id: "vibe-unbound",
+      title: "VIBE:UNBOUND",
+      summary: "자연어 명령을 제한된 규칙으로 컴파일하고, 자동전투에서 반복된 결과를 책임 로그로 되짚는 AI 방치형 RPG Vertical Slice.",
+      roleKo: "기획 · 시스템 설계 · 게임/웹 구현 · AI 안전 경계 실험",
+      achievement: "결정적 GameEngine과 동일 Seed 회귀 검증으로 명령 수정 전후를 비교",
+      status: "개발 중",
+      tags: ["React", "TypeScript", "Phaser 3", "GameEngine", "AI Guardrail", "Capacitor"],
+      problem:
+        "모호한 자연어 명령이 반복 실행될 때 생기는 수많은 결과를 플레이어가 이해하고 수정할 수 있어야 함.",
+      solution:
+        "React 제품 화면과 Phaser 전투 런타임을 분리하고, 제한된 Schema와 Guardrail 안에서만 AI가 명령을 제안하도록 설계.",
+      result:
+        "동일 Seed 기반으로 명령 변경 전후의 행동과 결과를 비교하고 책임 로그로 추적할 수 있는 Vertical Slice 공개.",
+      role: "Product Concept, Game System Design, Web/Game Development, AI Guardrails",
+      links: {
+        docs: "https://vibe-unbound.com/",
+      },
+      architecture: [
+        "React Product UI / Loop Compiler",
+        "Deterministic GameEngine",
+        "Phaser 3 WebGL Runtime",
+        "AI Schema / Provider / Guardrail",
+      ],
+    },
     {
       id: "usto",
       title: "대학물품관리시스템 (U-sto)",
@@ -69,7 +94,7 @@ export const portfolioData = {
     },
     {
       id: "kids-friends",
-      title: "키즈카페 서비스 로봇",
+      title: "키즈카페로봇 Kids-Friends",
       summary: "Temi 로봇에 센서·라즈베리파이·AI·웹 서비스를 연결해 키즈카페에서 안내·대화·안전 보조를 제공하는 자동화 시스템.",
       roleKo: "백엔드·시스템 설계 · 센서 이벤트 정의",
       achievement: "소프트웨어 기능과 하드웨어 기능을 분리하고 정의서 기반 협업 환경 구축",
@@ -84,25 +109,6 @@ export const portfolioData = {
       role: "Backend & System Design, Data Integration",
       links: {
         github: "https://github.com/Kids-Friends",
-      },
-    },
-    {
-      id: "electric-scooter",
-      title: "전동킥보드 불법주정차 리빙랩",
-      summary: "캠퍼스·역세권 전동킥보드 불법주정차 문제를 IoT/AI로 해결하기 위한 디자인싱킹 및 리빙랩 프로젝트.",
-      roleKo: "문제 정의 · 해결 프로세스 설계",
-      achievement: "데이터 기반 관리 및 사용자 참여형 문제 해결 프로세스(Smart Kickboard Control System) 설계",
-      status: "완료",
-      tags: ["IoT", "Smart City", "Design Thinking", "Living Lab", "AI"],
-      problem:
-        "캠퍼스/역세권 전동킥보드 불법주정차로 인한 보행 방해와 사고 위험, 낮은 신고율.",
-      solution:
-        "불법주차 자체가 아닌 관리 시스템 부재 및 사용자 행동 통제 실패를 본질로 정의하고, 사용자 참여형 리빙랩을 기획.",
-      result:
-        "위치수집 → 경고알림 → AI 판별·자동신고로 이어지는 점진적 개발 단계 및 리빙랩 사용자 참여 구조 마련.",
-      role: "Design Thinking & Process Architect",
-      links: {
-        github: "",
       },
     }
   ],
